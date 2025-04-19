@@ -29,6 +29,7 @@ void U8G2E_SaveBuffer(void);
 void U8G2E_CoverBuffer(void);
 void U8G2E_StartAnimation(const char *str1, const char *str2);
 void U8G2E_PromptWindow(const char *str1);
+void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H);
 void U8G2E_Blurring(void);
 void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width);
 void Move_Cursor(int GoalValue, float *CurrentValue);

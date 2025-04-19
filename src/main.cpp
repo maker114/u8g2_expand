@@ -44,20 +44,35 @@ void setup()
   u8g2.clear();
 }
 
+float change_H1[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+float change_H2[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+int Time = 0, A = 0;
 void loop()
 {
-  u8g2.setFont(u8g2_font_6x10_mf);
-  U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
-  delay(500);
-  u8g2.setFont(u8g2_font_5x8_mf);
-  U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
-  delay(500);
-  u8g2.setFont(u8g2_font_4x6_mf);
-  U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
-  delay(500);
-  //   u8g2.clearBuffer();
-  //   u8g2.setFont(u8g2_font_6x10_mf);
-  // u8g2.drawVLine(90, 0, U8G2E_StrHight("warning:\nChannel 1 has been disconnected", 80, 10));
-  // U8G2E_DrawWrappedText(10, 0, "warning:\nChannel 1 has been disconnected", 80);
-  // u8g2.sendBuffer();
+
+  // u8g2.setFont(u8g2_font_6x10_mf);
+  // U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
+  // delay(500);
+  // u8g2.setFont(u8g2_font_5x8_mf);
+  // U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
+  // delay(500);
+  // u8g2.setFont(u8g2_font_4x6_mf);
+  // U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
+  do
+  {
+    u8g2.clearBuffer();
+    U8G2E_NUMDisplay(Time / 10, 14, 20, change_H1, 10, 15);
+    U8G2E_NUMDisplay(Time % 10, 14 + 15, 20, change_H2, 10, 15);
+    u8g2.sendBuffer();
+    delay(20);
+    A++;
+  } while (A < 20);
+  Time++;
+  A = 0;
+  delay(1000);
+  //    u8g2.clearBuffer();
+  //    u8g2.setFont(u8g2_font_6x10_mf);
+  //  u8g2.drawVLine(90, 0, U8G2E_StrHight("warning:\nChannel 1 has been disconnected", 80, 10));
+  //  U8G2E_DrawWrappedText(10, 0, "warning:\nChannel 1 has been disconnected", 80);
+  //  u8g2.sendBuffer();
 }

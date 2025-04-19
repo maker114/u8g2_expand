@@ -247,4 +247,34 @@ void U8G2E_PromptWindow(const char *str1)
     } while (y_Cursor < Window_Y);
 }
 
-
+/**
+ * @brief 丝滑数字显示函数
+ *
+ * @param num 待显示的数字
+ * @param x 数字的x坐标
+ * @param y 数字的y坐标
+ * @param change 数字对应的数组
+ * @param W 数字的宽度
+ * @param H 数字的高度
+ */
+void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)
+{
+    // TODO:将显示函数集成到子函数内
+    static const uint8_t digit_patterns[10] = {0x7D, 0x50, 0x37, 0x57, 0x5A, 0x4F, 0x6F, 0x51, 0x7F, 0x5F};
+    uint8_t pattern = digit_patterns[num];
+    for (int i = 0; i < 7; i++)
+    {
+        if (i >= 0 && i <= 2)
+            Move_Cursor((pattern & (1 << i)) ? W : 0, &change[i]);
+        if (i >= 3 && i <= 6)
+            Move_Cursor((pattern & (1 << i)) ? H : 0, &change[i]);
+    }
+    Move_Cursor(H, &change[7]);                      // 计数用
+    u8g2.drawHLine(x + 1, y, change[0]);             // 上横线
+    u8g2.drawHLine(x + 1, y + H, change[1]);         // 中横线
+    u8g2.drawHLine(x + 1, y + 2 * H - 1, change[2]); // 下横线
+    u8g2.drawVLine(x + 1, y, change[3]);             // 左上竖线
+    u8g2.drawVLine(x + W, y, change[4]);             // 右上竖线
+    u8g2.drawVLine(x + 1, y + H, change[5]);         // 左下竖线
+    u8g2.drawVLine(x + W, y + H, change[6]);         // 右下竖线
+}
