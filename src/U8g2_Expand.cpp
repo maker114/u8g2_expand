@@ -66,11 +66,11 @@ void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_u
     const char *text = str;
     uint8_t Display_width = u8g2.getDisplayWidth();                     // 获取屏幕宽度
     max_width = max_width >= Display_width ? Display_width : max_width; // 判断最大宽度是否超过屏幕宽度
+    max_width -= max_width % u8g2.getMaxCharWidth();                    // 最大宽度取整
     int X_Cursor = x, Y_Cursor = y + u8g2.getMaxCharHeight();           // 光标位置
     for (uint8_t i = 0; i < strlen(str); i++)                           // 遍历整个字符串
     {
-        // FIXME:换行后第一个字符空一格
-        if (X_Cursor > max_width + x || *text == '\n')
+        if (X_Cursor >= max_width + x)
         {
             X_Cursor = x;
             Y_Cursor += u8g2.getMaxCharHeight();
@@ -80,6 +80,13 @@ void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_u
                 continue; // 换行遇到空格直接跳过
             }
         }
+        if (*text == '\n')
+        {
+            X_Cursor = x;
+            Y_Cursor += u8g2.getMaxCharHeight();
+            text++;
+        }
+
         u8g2.setCursor(X_Cursor, Y_Cursor);
         u8g2.printf("%c", *text);
         text++;
@@ -99,10 +106,11 @@ uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x)
     const char *text = str;
     uint8_t Display_width = u8g2.getDisplayWidth();                     // 获取屏幕宽度
     max_width = max_width >= Display_width ? Display_width : max_width; // 判断最大宽度是否超过屏幕宽度
-    int X_Cursor = x, Y_Cursor = 0;                                     // 光标位置
+    max_width -= max_width % u8g2.getMaxCharWidth();                    // 最大宽度取整
+    int X_Cursor = x, Y_Cursor = u8g2.getMaxCharHeight();               // 光标位置
     for (uint8_t i = 0; i < strlen(str); i++)                           // 遍历整个字符串
     {
-        if (X_Cursor > max_width || *text == '\n')
+        if (X_Cursor >= max_width + x)
         {
             X_Cursor = x;
             Y_Cursor += u8g2.getMaxCharHeight();
@@ -111,6 +119,12 @@ uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x)
                 text++;
                 continue; // 换行遇到空格直接跳过
             }
+        }
+        if (*text == '\n')
+        {
+            X_Cursor = x;
+            Y_Cursor += u8g2.getMaxCharHeight();
+            text++;
         }
         text++;
         X_Cursor += u8g2.getMaxCharWidth();
@@ -196,12 +210,11 @@ void U8G2E_PromptWindow(const char *str1)
 {
     // TODO: 设置选择位，使能时弹窗延时退出，失能时弹窗按键退出
     uint8_t MaxWight = 80; // 字符串最大宽度
-    uint8_t Window_W = MaxWight + 20;
+    uint8_t Window_W = MaxWight - MaxWight % u8g2.getMaxCharWidth() + 14;
     uint8_t Window_X = (int)((128 - Window_W) / 2);
     uint8_t Window_H = U8G2E_StrHight(str1, MaxWight, Window_X + 5) + 10;
     uint8_t Window_Y = (int)((64 - Window_H) / 2);
     float y_Cursor = 64;
-    // FIXME:部分字体最后一行会超出边框
     U8G2E_SaveBuffer();
     do // 上升
     {
@@ -233,3 +246,5 @@ void U8G2E_PromptWindow(const char *str1)
         u8g2.sendBuffer();
     } while (y_Cursor < Window_Y);
 }
+
+

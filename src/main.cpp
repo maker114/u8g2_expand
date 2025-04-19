@@ -41,6 +41,7 @@ void setup()
   digitalWrite(LED_B, LOW);  // À¶µÆÃð
   digitalWrite(LED_R, LOW);  // ºìµÆÃð
   printf("Downloaded Successfully\r\n");
+  u8g2.clear();
 }
 
 void loop()
@@ -49,14 +50,14 @@ void loop()
   U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
   delay(500);
   u8g2.setFont(u8g2_font_5x8_mf);
-  U8G2E_PromptWindow("Successfully reconnected");
+  U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
   delay(500);
-  u8g2.setFont(u8g2_font_7x14_mf);
-  U8G2E_PromptWindow("Searching for devices");
+  u8g2.setFont(u8g2_font_4x6_mf);
+  U8G2E_PromptWindow("warning:\nChannel 1 has been disconnected");
   delay(500);
-  // u8g2.clearBuffer();
-  // u8g2.setFont(u8g2_font_6x10_mf);
-  // u8g2.drawVLine(100, 0, 64);
-  // U8G2E_DrawWrappedText(10, 0, "Return the address of the start of the buffer", 80);
+  //   u8g2.clearBuffer();
+  //   u8g2.setFont(u8g2_font_6x10_mf);
+  // u8g2.drawVLine(90, 0, U8G2E_StrHight("warning:\nChannel 1 has been disconnected", 80, 10));
+  // U8G2E_DrawWrappedText(10, 0, "warning:\nChannel 1 has been disconnected", 80);
   // u8g2.sendBuffer();
 }
