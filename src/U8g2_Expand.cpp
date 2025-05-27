@@ -1,4 +1,5 @@
 #include <U8g2_Expand.h> //引入动画扩展
+#include <string.h>
 
 /*************************************部分支持与底层实现***************************************/
 
@@ -8,14 +9,14 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R0, 14, 12, 13); // 定义U8g2库
  * @brief 初始化OLED
  * @param Enable 是否启用开机动画
  */
-void U8G2E_Init(bool Enable)
+void U8G2E_Init(bool Enable, const char *str1, const char *str2)
 {
     u8g2.begin();                    // 启动OLED
     u8g2.enableUTF8Print();          // 开启中文字符支持
     u8g2.setFont(u8g2_font_6x12_mf); // 设置初始字体
     if (Enable)
     {
-        U8G2E_StartAnimation("U8G2 Expand", "Design by maker114");
+        U8G2E_StartAnimation(str1, str2);
     }
 }
 
@@ -24,44 +25,57 @@ void U8G2E_Init(bool Enable)
  *
  * @param GoalValue 目标值
  * @param CurrentValue 待更改的当前值
+ * @param Mode 移动模式（Slow或Elasticity）
  * @note 函数不作延时，需要在每一帧的后面独立按照需求延时
  */
-typedef enum
-{
-    Slow = 1,
-    Elasticity = 2,
-} Mode;
 void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode)
 {
+    const float max_speed = 12.0f; // 限速
     if (Mode == Slow)
     {
-        float Error = GoalValue - *CurrentValue; // 误差等于目标值减去实际值
-        if (fabs(Error) > 1)                     // 误差大于1
+        float Error = GoalValue - *CurrentValue;
+        if (fabs(Error) > 1)
         {
-            *CurrentValue += Error / 4; // 实际值加上误差除以10
+            float delta = Error / 4.0f;
+            // 应用限速
+            if (max_speed > 0.0f)
+            {
+                if (delta > max_speed)
+                    delta = max_speed;
+                else if (delta < -max_speed)
+                    delta = -max_speed;
+            }
+            *CurrentValue += delta;
         }
         else
-            *CurrentValue = GoalValue; // 误差小于1 直接等于目标值
+            *CurrentValue = GoalValue;
     }
     else if (Mode == Elasticity)
     {
         static float Velocity = 0.0f; // 内部存储速度（静态变量）
-        const float Stiffness = 0.4f; // 弹性系数（刚度，控制回弹力度）
-        const float Damping = 0.5f;   // 阻尼系数（控制减震效果）
+        const float Stiffness = 0.3f; // 弹性系数（刚度，控制回弹力度）
+        const float Damping = 0.4f;   // 阻尼系数（控制减震效果）
 
         float Error = GoalValue - *CurrentValue;         // 目标差值
         float SpringForce = Error * Stiffness;           // 弹性力（拉向目标）
         float DampingForce = -Velocity * Damping;        // 阻尼力（减速）
         float Acceleration = SpringForce + DampingForce; // 总加速度
 
-        Velocity += Acceleration;  // 更新速度
-        *CurrentValue += Velocity; // 更新位置
-
+        Velocity += Acceleration;
+        // 应用限速
+        if (max_speed > 0.0f)
+        {
+            if (Velocity > max_speed)
+                Velocity = max_speed;
+            else if (Velocity < -max_speed)
+                Velocity = -max_speed;
+        }
+        *CurrentValue += Velocity;
         // 如果接近目标且速度足够小，直接设为目标值
         if (fabs(Error) < 1 && fabs(Velocity) < 0.1f)
         {
             *CurrentValue = GoalValue;
-            Velocity = 0.0f; // 重置速度
+            Velocity = 0.0f;
         }
     }
 }
@@ -202,13 +216,6 @@ void U8G2E_SignKeyFun(int Put_in_fun(void))
 {
     KEY_Scan = Put_in_fun;
 }
-typedef enum
-{
-    KEY_NULL = 0,    // 无返回
-    KEY_DOWN = 3,    // 返回向下
-    KEY_UP = 2,      // 返回向上
-    KEY_CONFIRM = 1, // 返回确认
-} Key_mapping;       // 按键映射
 
 /*************************************动画部分***************************************/
 
@@ -334,4 +341,143 @@ void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)
     u8g2.drawVLine(x + W, y, change[4]);             // 右上竖线
     u8g2.drawVLine(x + 1, y + H, change[5]);         // 左下竖线
     u8g2.drawVLine(x + W, y + H, change[6]);         // 右下竖线
+}
+
+void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
+{
+    static int8_t MenuOption_NUM = 0;
+    static uint8_t TOP_Flag = 0, BASE_Flag = 0, t = 0;
+    static float origin_y_Coordinate = 2, goal_origin_y_Coordinate = 2;
+    static float Cursor_y = 0;
+    u8g2.setFont(u8g2_font_6x12_mf);
+    uint8_t DisplayWigth = u8g2.getDisplayWidth();
+    uint8_t DisplayHeight = u8g2.getDisplayHeight();
+    uint8_t CharHeight = 12;
+    // uint8_t CharHeight = u8g2.getMaxCharHeight();
+    uint8_t CharWidth = u8g2.getMaxCharWidth();
+    U8G2E_SaveBuffer();
+    //**********进入动画**********//
+    for (uint8_t i = 0; i < 5; i++) // 赋予初始坐标
+    {
+        uint8_t Skew_Coefficient = 40; // 偏移系数，赋予了进入动画时的先后快慢
+        MenuOption_ARR[i].X_Coordinate = DisplayWigth + Skew_Coefficient * i;
+        MenuOption_ARR[i].Y_Coordinate = CharHeight * (i + 1);
+    }
+    do // 动画主体
+    {
+        u8g2.clearBuffer();
+        U8G2E_CoverBuffer();
+        for (uint8_t i = 0; i < 5; i++)
+        {
+            uint8_t DisplayWigth = u8g2.getDisplayWidth();
+            U8G2E_MoveCursor(0, &MenuOption_ARR[i].X_Coordinate, Slow);
+            u8g2.setDrawColor(0);
+            u8g2.drawBox(MenuOption_ARR[i].X_Coordinate, MenuOption_ARR[i].Y_Coordinate - CharHeight, 128, CharHeight);
+            u8g2.setDrawColor(1);
+            U8G2E_MenuDisplay(MenuOption_ARR[i]);
+        }
+        delay(10);
+        u8g2.sendBuffer();
+    } while (MenuOption_ARR[4].X_Coordinate != 0);
+    //**********主体部分**********//
+    do
+    {
+        u8g2.clearBuffer();
+        // 按钮移动
+        uint8_t Key_result = KEY_Scan();
+        if (Key_result == KEY_UP)
+        {
+            MenuOption_NUM--;
+            if (MenuOption_NUM <= 0)
+            {
+                TOP_Flag = 1;
+                MenuOption_NUM = 0;
+            }
+            if (MenuOption_ARR[MenuOption_NUM].Y_Coordinate - CharHeight < 1)
+            {
+                goal_origin_y_Coordinate += CharHeight;
+            }
+        }
+
+        else if (Key_result == KEY_DOWN)
+        {
+            MenuOption_NUM++;
+            if (MenuOption_NUM >= valid_num - 1)
+            {
+                BASE_Flag = 1;
+                MenuOption_NUM = valid_num - 1;
+            }
+            if (MenuOption_ARR[MenuOption_NUM].Y_Coordinate > 63)
+            {
+                goal_origin_y_Coordinate -= CharHeight;
+            }
+        }
+        if (TOP_Flag || BASE_Flag)
+        {
+            t = (t < 10) ? t + 2 : 0;
+            if (t == 0)
+            {
+                TOP_Flag = TOP_Flag ? 0 : TOP_Flag;
+                BASE_Flag = BASE_Flag ? 0 : BASE_Flag;
+            }
+        }
+        U8G2E_MoveCursor(goal_origin_y_Coordinate + t, &origin_y_Coordinate, Slow); // 移动整体
+        for (uint8_t i = 0; i < valid_num; i++)
+        {
+            if (MenuOption_NUM == i)
+            {
+                U8G2E_MoveCursor(5, &MenuOption_ARR[i].X_Coordinate, Slow);
+                U8G2E_MoveCursor(MenuOption_ARR[i].Y_Coordinate, &Cursor_y, Slow);
+            }
+            else
+                U8G2E_MoveCursor(0, &MenuOption_ARR[i].X_Coordinate, Slow);
+            u8g2.drawBox(1, Cursor_y - CharHeight + 4, 2, CharHeight - 4);
+            MenuOption_ARR[i].Y_Coordinate = origin_y_Coordinate + CharHeight * (i + 1); // 选项y坐标赋值
+            U8G2E_MenuDisplay(MenuOption_ARR[i]);                                        // 选项内容显示
+        }
+        delay(15);
+        u8g2.sendBuffer();
+    } while (1);
+
+    //**********退出动画**********//
+}
+
+void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member)
+{
+    u8g2.setCursor(MenuOption_Member.X_Coordinate, MenuOption_Member.Y_Coordinate);
+    u8g2.print(MenuOption_Member.Title);
+    switch (MenuOption_Member.Kind)
+    {
+    case U8G2E_OPTION_TEXT:
+        break;
+
+    case U8G2E_OPTION_KEY:
+        u8g2.drawFrame(MenuOption_Member.X_Coordinate + 100, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 2, 21, u8g2.getMaxCharHeight() - 2);
+        if (MenuOption_Member.Value == 1)
+            u8g2.drawBox(MenuOption_Member.X_Coordinate + 102, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 4, 8, u8g2.getMaxCharHeight() - 6);
+        else
+            u8g2.drawBox(MenuOption_Member.X_Coordinate + 111, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 4, 8, u8g2.getMaxCharHeight() - 6);
+        break;
+
+    case U8G2E_OPTION_PCT:
+        char buffer[20];
+        sprintf(buffer, "%.2f%%", MenuOption_Member.Value);
+        u8g2.setCursor(MenuOption_Member.X_Coordinate + 122 - u8g2.getStrWidth(buffer), MenuOption_Member.Y_Coordinate);
+        u8g2.print(buffer);
+        break;
+
+    case U8G2E_OPTION_NUM:
+        char buffer1[20];
+        if (MenuOption_Member.Value > 99)
+            sprintf(buffer1, "%.1f", MenuOption_Member.Value);
+        else if (MenuOption_Member.Value < 9)
+            sprintf(buffer1, "%.5f", MenuOption_Member.Value);
+        else
+            sprintf(buffer1, "%.3f", MenuOption_Member.Value);
+        u8g2.setCursor(MenuOption_Member.X_Coordinate + 122 - u8g2.getStrWidth(buffer1), MenuOption_Member.Y_Coordinate);
+        u8g2.print(buffer1);
+
+    default:
+        break;
+    }
 }
