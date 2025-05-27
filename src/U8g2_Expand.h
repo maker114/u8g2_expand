@@ -28,7 +28,7 @@ typedef enum // 定义按键映射
     KEY_NULL = 0,    // 无返回
     KEY_DOWN = 3,    // 向下
     KEY_UP = 1,      // 向上
-    KEY_CONFIRM = 1, // 确认
+    KEY_CONFIRM = 5, // 确认
     KEY_CANCEL = 4   // 取消
 } Key_mapping;
 
@@ -64,6 +64,7 @@ void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable);
 void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H);
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num);
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member);
+void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_Blurring(void);
 void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width);
 void U8G2E_Init(bool Enable, const char *str1, const char *str2);
