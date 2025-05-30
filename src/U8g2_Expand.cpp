@@ -343,19 +343,27 @@ void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)
     u8g2.drawVLine(x + W, y + H, change[6]);         // 右下竖线
 }
 
+/**
+ * @brief 丝滑移动菜单
+ *
+ * @param MenuOption_ARR 菜单结构体数组
+ * @param valid_num 有效选项数量
+ */
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
 {
     // 全局静态变量声明
-    static int8_t MenuOption_NUM = 0;          // 当前选中菜单项索引
-    static int8_t t = 0;                       // 边界弹性动画参数
-    static uint8_t TOP_Flag = 0;               // 顶部边界标志
-    static uint8_t BASE_Flag = 0;              // 底部边界标志
-    static float origin_y_Coordinate = 2;      // 当前Y轴基准坐标
-    static float goal_origin_y_Coordinate = 2; // 目标Y轴基准坐标
-    static float Cursor_y = 0;                 // 光标Y坐标
+    int8_t MenuOption_NUM = 0;          // 当前选中菜单项索引
+    int8_t t = 0;                       // 边界弹性动画参数
+    uint8_t y_skew = 3;                 // 光标垂直偏移量
+    uint8_t TOP_Flag = 0;               // 顶部边界标志
+    uint8_t BASE_Flag = 0;              // 底部边界标志
+    uint8_t Key_result;                 // 按键结果
+    float origin_y_Coordinate = 2;      // 当前Y轴基准坐标
+    float goal_origin_y_Coordinate = 2; // 目标Y轴基准坐标
+    float Cursor_y = 0;                 // 光标Y坐标
 
     // 初始化显示设置
-    u8g2.setFont(u8g2_font_6x12_mf);
+    u8g2.setFont(u8g2_font_questgiver_tr);
     const uint8_t DisplayWidth = u8g2.getDisplayWidth();
     const uint8_t DisplayHeight = u8g2.getDisplayHeight();
     const uint8_t CharHeight = u8g2.getMaxCharHeight();
@@ -374,7 +382,15 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
     {
         u8g2.clearBuffer();
         U8G2E_CoverBuffer();
-        for (uint8_t i = 0; i < MENU_ITEM_COUNT; i++)
+        U8G2E_MoveCursor(5, &MenuOption_ARR[0].X_Coordinate, Slow);
+        U8G2E_MoveCursor(MenuOption_ARR[0].Y_Coordinate, &Cursor_y, Slow);
+        u8g2.setDrawColor(0);
+        u8g2.drawBox(MenuOption_ARR[0].X_Coordinate - 5, MenuOption_ARR[0].Y_Coordinate - CharHeight - 2, DisplayWidth, CharHeight + 3); // +3像素垂直偏移
+        u8g2.setDrawColor(1);
+        u8g2.drawBox(1, Cursor_y - CharHeight + y_skew, 2, CharHeight - y_skew);
+        U8G2E_MenuDisplay(MenuOption_ARR[0]);
+
+        for (uint8_t i = 1; i < MENU_ITEM_COUNT; i++)
         {
             // 水平移动动画
             U8G2E_MoveCursor(0, &MenuOption_ARR[i].X_Coordinate, Slow);
@@ -393,20 +409,18 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
     do
     {
         u8g2.clearBuffer();
-        uint8_t Key_result = (goal_origin_y_Coordinate == origin_y_Coordinate) ? KEY_Scan() : 0; // 只在坐标稳定时检测按键
-        switch (Key_result)                                                                      // 处理按键输入
+        Key_result = (goal_origin_y_Coordinate == origin_y_Coordinate) ? KEY_Scan() : 0; // 只在坐标稳定时检测按键
+        switch (Key_result)                                                              // 处理按键输入
         {
         case KEY_UP:
             if (MenuOption_NUM > 0)
                 MenuOption_NUM--;
-            // 顶部边界检查
-            if (MenuOption_NUM <= 0)
+            if (MenuOption_NUM <= 0) // 顶部边界检查
             {
                 TOP_Flag = 1;
                 MenuOption_NUM = 0;
             }
-            // 需要上滚的情况
-            if (MenuOption_ARR[MenuOption_NUM].Y_Coordinate - CharHeight < 2)
+            if (MenuOption_ARR[MenuOption_NUM].Y_Coordinate - CharHeight < 2) // 需要上滚的情况
             {
                 goal_origin_y_Coordinate += CharHeight;
             }
@@ -415,26 +429,22 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
         case KEY_DOWN:
             if (MenuOption_NUM < valid_num - 1)
                 MenuOption_NUM++;
-            // 底部边界检查
-            if (MenuOption_NUM >= valid_num - 1)
+            if (MenuOption_NUM >= valid_num - 1) // 底部边界检查
             {
                 BASE_Flag = 1;
                 MenuOption_NUM = valid_num - 1;
             }
-            // 需要下滚的情况
-            if (MenuOption_ARR[MenuOption_NUM].Y_Coordinate > DisplayHeight - 2)
+            if (MenuOption_ARR[MenuOption_NUM].Y_Coordinate > DisplayHeight - 2) // 需要下滚的情况
             {
                 goal_origin_y_Coordinate -= CharHeight;
             }
             break;
         }
-
         // 处理边界弹性动画
         if (TOP_Flag)
             t = (t < 10) ? t + 2 : (TOP_Flag = 0, 0); // 顶部回弹效果
         if (BASE_Flag)
             t = (t > -10) ? t - 2 : (BASE_Flag = 0, 0); // 底部回弹效果
-
         // 更新整体位置
         U8G2E_MoveCursor(goal_origin_y_Coordinate + t, &origin_y_Coordinate, Slow);
 
@@ -447,30 +457,61 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
             // 处理选中项的特殊效果
             if (MenuOption_NUM == i)
             {
-                U8G2E_MoveCursor(5, &MenuOption_ARR[i].X_Coordinate, Slow);        // 水平弹性效果
-                U8G2E_MoveCursor(MenuOption_ARR[i].Y_Coordinate, &Cursor_y, Slow); // 光标Y坐标跟随选中项
-                u8g2.drawBox(1, Cursor_y - CharHeight + 4, 2, CharHeight - 4);     // 绘制选中光标
-                if (Key_result == KEY_CANCEL)
-                    U8G2E_MenuExecute(&MenuOption_ARR[i]);
+                U8G2E_MoveCursor(5, &MenuOption_ARR[i].X_Coordinate, Slow);              // 水平弹性效果
+                U8G2E_MoveCursor(MenuOption_ARR[i].Y_Coordinate, &Cursor_y, Slow);       // 光标Y坐标跟随选中项
+                u8g2.drawBox(1, Cursor_y - CharHeight + y_skew, 2, CharHeight - y_skew); // 绘制选中光标s
             }
             else
             {
                 U8G2E_MoveCursor(0, &MenuOption_ARR[i].X_Coordinate, Slow); // 非选中项无弹性
             }
-
             // 显示菜单内容
             U8G2E_MenuDisplay(MenuOption_ARR[i]);
-            // 执行菜单对应的操作
+        }
+        // 执行菜单动作
+        if (Key_result == KEY_CONFIRM) // 确认键
+            U8G2E_MenuExecute(&MenuOption_ARR[MenuOption_NUM]);
+        delay(10);
+        u8g2.sendBuffer(); // 刷新此帧
+    } while (Key_result != KEY_EXIT);
+
+    //**********退出动画**********/
+    do
+    {
+        u8g2.clearBuffer();
+        // 绘制所有菜单项
+        for (uint8_t i = 0; i < valid_num; i++)
+        {
+            // 更新菜单项Y坐标,以便整体移动
+            MenuOption_ARR[i].Y_Coordinate = origin_y_Coordinate + CharHeight * (i + 1);
+
+            // 处理选中项的特殊效果
+            if (MenuOption_NUM == i)
+            {
+                U8G2E_MoveCursor(130, &MenuOption_ARR[i].X_Coordinate, Slow);            // 水平弹性效果
+                U8G2E_MoveCursor(0, &Cursor_y, Slow);                                    // 光标Y坐标跟随选中项
+                u8g2.drawBox(1, Cursor_y - CharHeight + y_skew, 2, CharHeight - y_skew); // 绘制选中光标
+            }
+            else
+            {
+                U8G2E_MoveCursor(130, &MenuOption_ARR[i].X_Coordinate, Slow); // 非选中项无弹性
+            }
+            // 显示菜单内容
+            U8G2E_MenuDisplay(MenuOption_ARR[i]);
         }
         delay(10);
         u8g2.sendBuffer(); // 刷新此帧
     } while (1);
-
-    //**********退出动画**********//
 }
 
+/**
+ * @brief 绘制菜单项
+ *
+ * @param MenuOption_Member 菜单结构体
+ */
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member)
 {
+    uint8_t y_skew = 0;
     u8g2.setCursor(MenuOption_Member.X_Coordinate, MenuOption_Member.Y_Coordinate);
     u8g2.print(MenuOption_Member.Title);
     switch (MenuOption_Member.Kind)
@@ -479,20 +520,19 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member)
         break;
 
     case U8G2E_OPTION_KEY:
-        u8g2.drawFrame(MenuOption_Member.X_Coordinate + 100, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 4, 21, u8g2.getMaxCharHeight() - 2);
+        u8g2.drawFrame(MenuOption_Member.X_Coordinate + 100, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 2 + y_skew, 21, u8g2.getMaxCharHeight() - y_skew);
         if (MenuOption_Member.Value == 1)
         {
-            u8g2.setCursor(MenuOption_Member.X_Coordinate + 86, MenuOption_Member.Y_Coordinate);
+            u8g2.setCursor(MenuOption_Member.X_Coordinate + 95 - 1 * u8g2.getMaxCharWidth(), MenuOption_Member.Y_Coordinate);
             u8g2.print("ON");
-            u8g2.drawBox(MenuOption_Member.X_Coordinate + 102, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 6, 8, u8g2.getMaxCharHeight() - 6);
+            u8g2.drawBox(MenuOption_Member.X_Coordinate + 102, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 4 + y_skew, 8, u8g2.getMaxCharHeight() - 4 - y_skew);
         }
         else
         {
-            u8g2.setCursor(MenuOption_Member.X_Coordinate + 80, MenuOption_Member.Y_Coordinate);
+            u8g2.setCursor(MenuOption_Member.X_Coordinate + 95 - 1 * u8g2.getMaxCharWidth() - 3, MenuOption_Member.Y_Coordinate);
             u8g2.print("OFF");
-            u8g2.drawBox(MenuOption_Member.X_Coordinate + 111, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 6, 8, u8g2.getMaxCharHeight() - 6);
+            u8g2.drawBox(MenuOption_Member.X_Coordinate + 111, MenuOption_Member.Y_Coordinate - u8g2.getMaxCharHeight() + 4 + y_skew, 8, u8g2.getMaxCharHeight() - 4 - y_skew);
         }
-
         break;
 
     case U8G2E_OPTION_PCT:
@@ -518,6 +558,11 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member)
     }
 }
 
+/**
+ * @brief 执行菜单项动作
+ *
+ * @param MenuOption_Member 菜单结构体
+ */
 void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)
 {
     switch (MenuOption_Member->Kind)
@@ -525,5 +570,72 @@ void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)
     case U8G2E_OPTION_KEY:
         MenuOption_Member->Value = !MenuOption_Member->Value;
         break;
+
+    case U8G2E_OPTION_PCT:
+        U8G2E_PCT_ACTION(MenuOption_Member); // 处理百分比选项
+        break;
     }
+}
+
+/**
+ * @brief 处理百分比选项
+ *
+ * @param MenuOption_Member 菜单结构体
+ */
+void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)
+{
+    uint8_t key_result = 0;
+    uint8_t Digital_bit = 1;
+    float Base_Y_Coordinate = 64;        // 基准Y坐标
+    float Goal_Y_Coordinate = 0;         // 目标Y坐标
+    float ProgressBar_ExternalFarme = 0; // 进度条外框长度
+    float ProgressBar_InsideFarme = 0;   // 进度条内框长度
+    bool Exit_tigger = false;
+    bool Exit_Flag = false;
+    U8G2E_SaveBuffer();
+    do
+    {
+        key_result = (Exit_tigger == true) ? KEY_EXIT : KEY_Scan(); // 检测按键,在返回时停止检测
+        u8g2.clearBuffer();
+        U8G2E_CoverBuffer();
+        U8G2E_Blurring(); // 背景虚化
+        // 计算坐标
+        Goal_Y_Coordinate = (key_result == KEY_EXIT) ? 64 : 12;
+        Exit_tigger = (key_result == KEY_EXIT) ? true : false;
+        U8G2E_MoveCursor(Goal_Y_Coordinate, &Base_Y_Coordinate, Slow);
+        Exit_Flag = (Base_Y_Coordinate == 64) ? true : false;
+        // 绘制窗口
+        u8g2.setDrawColor(0);
+        u8g2.drawBox(10 - 3, Base_Y_Coordinate - 3, 128 - 10 * 2 + 6, 38 + 6);
+        u8g2.setDrawColor(1);
+        u8g2.drawFrame(10, Base_Y_Coordinate, 128 - 10 * 2, 38); // 绘制窗口
+        // 绘制进度条
+        U8G2E_MoveCursor(98, &ProgressBar_ExternalFarme, Slow);                             // 外框
+        U8G2E_MoveCursor(MenuOption_Member->Value * 0.94f, &ProgressBar_InsideFarme, Slow); // 内框
+        u8g2.drawFrame(15, Base_Y_Coordinate + 18, ProgressBar_ExternalFarme, 15);          // 外框
+        u8g2.drawBox(17, Base_Y_Coordinate + 20, ProgressBar_InsideFarme, 11);              // 内框
+        // 文字部分
+        u8g2.setFont(u8g2_font_6x13_mf);
+        u8g2.setCursor(15, Base_Y_Coordinate + u8g2.getMaxCharHeight());
+        u8g2.print("Percent:");
+        char buffer[20];
+        sprintf(buffer, "%.2f%%", MenuOption_Member->Value);
+        u8g2.setCursor(113 - u8g2.getStrWidth(buffer), Base_Y_Coordinate + u8g2.getMaxCharHeight());
+        u8g2.print(buffer);
+        // 操作部分
+        Digital_bit = (key_result == KEY_CONFIRM) ? Digital_bit + 1 : Digital_bit;
+        Digital_bit = (Digital_bit > 4) ? 1 : Digital_bit;
+        float Operand = 0.001 * pow(10, Digital_bit);
+        MenuOption_Member->Value = (key_result == KEY_UP) ? MenuOption_Member->Value + Operand : MenuOption_Member->Value;
+        MenuOption_Member->Value = (key_result == KEY_DOWN) ? MenuOption_Member->Value - Operand : MenuOption_Member->Value;
+        uint8_t skew = (Digital_bit == 3 || Digital_bit == 4) ? 1 : 0;
+        u8g2.drawHLine(113 - (Digital_bit + 1 + skew) * u8g2.getMaxCharWidth(), Base_Y_Coordinate + u8g2.getMaxCharHeight() + 2, 6);
+        MenuOption_Member->Value = MenuOption_Member->Value > 100 ? 100 : MenuOption_Member->Value;
+        MenuOption_Member->Value = MenuOption_Member->Value < 0 ? 0 : MenuOption_Member->Value;
+        //  帧刷新
+        u8g2.setFont(u8g2_font_questgiver_tr);
+        delay(10);
+        u8g2.sendBuffer();
+
+    } while (Exit_Flag != true); // 退出标志
 }

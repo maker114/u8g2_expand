@@ -28,7 +28,7 @@ int Key_Scan(void);
 U8G2E_MenuOption MenuOption_ARR[7]{
     {"Text Option1", 0, U8G2E_OPTION_TEXT},
     {"KEY Option2", 1, U8G2E_OPTION_KEY},
-    {"PCT Option3", 78.1, U8G2E_OPTION_PCT},
+    {"PCT Option3", 0, U8G2E_OPTION_PCT},
     {"NUM Option4", 0.98786, U8G2E_OPTION_NUM},
     {"NUM Option5", 134045, U8G2E_OPTION_NUM},
     {"Text Option6", 1, U8G2E_OPTION_KEY},
@@ -63,6 +63,7 @@ void loop()
   // uint8_t Key_result = Key_Scan();
   // printf("Key_result = %d\n", digitalRead(Button2));
   U8G2E_MenuDisplay(MenuOption_ARR, 7);
+
   /*u8g2.setFont(u8g2_font_6x10_mf);
   U8G2E_PromptWindow("Please put button 1", true);
   delay(200);
@@ -93,8 +94,9 @@ int Key_Scan(void)
       return 3;
   }
 
-  if (digitalRead(Button1) == LOW)
+  if (digitalRead(Button1) == LOW && Button_Hold == false)
   {
+    Button_Hold = true;
     while (digitalRead(Button1) != HIGH && ++Count < 25)
       delay(25);
     uint8_t result = (Count >= 20) ? 4 : 1; // 三目运算符简化判断
@@ -102,7 +104,7 @@ int Key_Scan(void)
     return result;
   }
 
-  if (digitalRead(Button2) == HIGH && digitalRead(Button3) == HIGH)
+  if (digitalRead(Button1) == HIGH && digitalRead(Button2) == HIGH && digitalRead(Button3) == HIGH)
     Button_Hold = false;
   return 0;
 }
