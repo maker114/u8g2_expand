@@ -35,7 +35,7 @@ typedef enum // 定义按键映射
 typedef struct // 菜单选项结构体
 {
     String Title;       // 选项标题
-    float Value;        // 选项数值
+    double Value;       // 选项数值
     uint8_t Kind;       // 选项种类
     float X_Coordinate; // x轴坐标
     float Y_Coordinate; // y轴坐标
@@ -59,6 +59,7 @@ uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x);
 void U8G2E_SaveBuffer(void);
 void U8G2E_CoverBuffer(void);
 void U8G2E_SignKeyFun(int Put_in_fun(void));
+void U8G2E_CountDigits(double number, int *integer_digits, int *decimal_digits);
 void U8G2E_StartAnimation(const char *str1, const char *str2);
 void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable);
 void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H);
@@ -66,7 +67,7 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num);
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member);
 void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member);
-char *substringFromEnd(char *str, int n);
+void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_Blurring(void);
 void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width);
 void U8G2E_Init(bool Enable, const char *str1, const char *str2);

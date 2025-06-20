@@ -2,12 +2,13 @@
 #include <string.h>
 
 /*************************************部分支持与底层实现***************************************/
-
 U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R0, 14, 12, 13); // 定义U8g2库
 
 /**
  * @brief 初始化OLED
  * @param Enable 是否启用开机动画
+ * @param str1 开机动画第一行文字(主标题)
+ * @param str2 开机动画第二行文字(副标题）
  */
 void U8G2E_Init(bool Enable, const char *str1, const char *str2)
 {
@@ -215,6 +216,80 @@ Key_scan_fun KEY_Scan;
 void U8G2E_SignKeyFun(int Put_in_fun(void))
 {
     KEY_Scan = Put_in_fun;
+}
+
+void U8G2E_CountDigits(double number, int *integer_digits, int *decimal_digits)
+{
+    char buf[32];
+    *integer_digits = 0;
+    *decimal_digits = 0;
+
+    // 处理特殊情况：0、NaN、Infinity
+    if (number == 0.0)
+    {
+        *integer_digits = 1;
+        return;
+    }
+    if (isnan(number) || isinf(number))
+    {
+        return;
+    }
+
+    // 使用%g格式，但先检查是否会使用科学计数法
+    double abs_num = fabs(number);
+    if (abs_num >= 1e6 || abs_num <= 1e-4)
+    {
+        // 可能会使用科学计数法，改用%f格式
+        snprintf(buf, sizeof(buf), "%.8f", number);
+    }
+    else
+    {
+        snprintf(buf, sizeof(buf), "%.8g", number);
+    }
+
+    // 检查科学计数法(e或E)
+    char *e_pos = strchr(buf, 'e');
+    if (!e_pos)
+        e_pos = strchr(buf, 'E');
+
+    if (e_pos)
+    {
+        // 处理科学计数法的情况
+        *e_pos = '\0'; // 截断指数部分
+
+        // 计算有效数字部分的整数和小数位数
+        char *dot = strchr(buf, '.');
+        if (dot)
+        {
+            *integer_digits = (int)(dot - buf) - (*buf == '-');
+            *decimal_digits = (int)strlen(dot + 1);
+        }
+        else
+        {
+            *integer_digits = (int)strlen(buf) - (*buf == '-');
+        }
+        return;
+    }
+
+    // 非科学计数法的情况
+    char *dot = strchr(buf, '.');
+    if (dot)
+    {
+        *integer_digits = (int)(dot - buf) - (*buf == '-');
+
+        // 计算小数位数，去除末尾的0
+        char *decimal_start = dot + 1;
+        char *p = decimal_start + strlen(decimal_start) - 1;
+        while (p >= decimal_start && *p == '0')
+        {
+            p--;
+        }
+        *decimal_digits = (int)(p - decimal_start + 1);
+    }
+    else
+    {
+        *integer_digits = (int)strlen(buf) - (*buf == '-');
+    }
 }
 
 /*************************************动画部分***************************************/
@@ -544,7 +619,7 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member)
 
     case U8G2E_OPTION_NUM:
         char buffer1[20];
-        if (MenuOption_Member.Value > 99)
+        if (MenuOption_Member.Value > 999)
             sprintf(buffer1, "%.1f", MenuOption_Member.Value);
         else if (MenuOption_Member.Value < 9)
             sprintf(buffer1, "%.5f", MenuOption_Member.Value);
@@ -573,6 +648,10 @@ void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)
 
     case U8G2E_OPTION_PCT:
         U8G2E_PCT_ACTION(MenuOption_Member); // 处理百分比选项
+        break;
+
+    case U8G2E_OPTION_NUM:
+        U8G2E_NUM_ACTION(MenuOption_Member); // 处理数字选项
         break;
     }
 }
@@ -633,6 +712,83 @@ void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)
         MenuOption_Member->Value = MenuOption_Member->Value > 100 ? 100 : MenuOption_Member->Value;
         MenuOption_Member->Value = MenuOption_Member->Value < 0 ? 0 : MenuOption_Member->Value;
         //  帧刷新
+        u8g2.setFont(u8g2_font_questgiver_tr);
+        delay(10);
+        u8g2.sendBuffer();
+
+    } while (Exit_Flag != true); // 退出标志
+}
+
+/**
+ * @brief 数字处理选项
+ *
+ * @param MenuOption_Member 菜单结构体
+ */
+void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member)
+{
+    uint8_t key_result = 0;
+    uint8_t Digital_bit = 1;
+    float Base_Y_Coordinate = 64; // 基准Y坐标
+    float Goal_Y_Coordinate = 0;  // 目标Y坐标
+    bool Exit_tigger = false;
+    bool Exit_Flag = false;
+    U8G2E_SaveBuffer();
+    do
+    {
+        key_result = (Exit_tigger == true) ? KEY_EXIT : KEY_Scan(); // 检测按键,在返回时停止检测
+        u8g2.clearBuffer();
+        U8G2E_CoverBuffer();
+        U8G2E_Blurring(); // 背景虚化
+        // 计算坐标
+        Goal_Y_Coordinate = (key_result == KEY_EXIT) ? 64 : 12;
+        Exit_tigger = (key_result == KEY_EXIT) ? true : false;
+        U8G2E_MoveCursor(Goal_Y_Coordinate, &Base_Y_Coordinate, Slow);
+        Exit_Flag = (Base_Y_Coordinate == 64) ? true : false;
+        // 绘制窗口
+        u8g2.setDrawColor(0);
+        u8g2.drawBox(10 - 3, Base_Y_Coordinate - 3, 128 - 10 * 2 + 6, 38 + 6);
+        u8g2.setDrawColor(1);
+        u8g2.drawFrame(10, Base_Y_Coordinate, 128 - 10 * 2, 38); // 绘制窗口
+        // 文字部分
+        u8g2.setFont(u8g2_font_6x13_mf);
+        u8g2.setCursor(15, Base_Y_Coordinate + u8g2.getMaxCharHeight());
+        u8g2.print("NUM:");
+        char buffer[20];
+
+        // sprintf(buffer, "%.8f", MenuOption_Member->Value);
+        double abs_num = fabs(MenuOption_Member->Value);
+        if (abs_num >= 1e6 || abs_num <= 1e-4)
+        {
+            snprintf(buffer, sizeof(buffer), "%.8f", MenuOption_Member->Value);
+        }
+        else
+        {
+            snprintf(buffer, sizeof(buffer), "%.8g", MenuOption_Member->Value);
+        }
+        u8g2.setCursor(113 - u8g2.getStrWidth(buffer), Base_Y_Coordinate + u8g2.getMaxCharHeight());
+        u8g2.print(buffer);
+        // 计算整数与小数
+        int Interger = 0;                                                 // 整数位数
+        int Decimal = 0;                                                  // 小数位数
+        U8G2E_CountDigits(MenuOption_Member->Value, &Interger, &Decimal); // 计算整数与小数位数
+        // 操作部分
+        Digital_bit = (key_result == KEY_CONFIRM) ? Digital_bit + 1 : Digital_bit;
+        Digital_bit = (Digital_bit > Interger + Decimal) ? 1 : Digital_bit;
+        float Operand = 0;
+        if (Digital_bit >= Interger) // 位于整数位
+            Operand = pow(10, Digital_bit - Decimal - 1);
+        else
+            Operand = pow(10, -(Decimal - Digital_bit + 1));
+        MenuOption_Member->Value = (key_result == KEY_UP) ? MenuOption_Member->Value + Operand : MenuOption_Member->Value;
+        MenuOption_Member->Value = (key_result == KEY_DOWN) ? MenuOption_Member->Value - Operand : MenuOption_Member->Value;
+        uint8_t skew = 0;
+        if (Decimal != 0)
+            skew = (Digital_bit > Decimal) ? 1 : 0; // 如果位于整数位则向前跳一格以跳过小数点
+        else
+            skew = 0;
+        u8g2.drawHLine(113 - (Digital_bit + skew) * u8g2.getMaxCharWidth(), Base_Y_Coordinate + u8g2.getMaxCharHeight() + 2, 6);
+        //  帧刷新
+        printf("Interger:%d,Decimal:%d,Digital_bit:%d \n", Interger, Decimal, Digital_bit);
         u8g2.setFont(u8g2_font_questgiver_tr);
         delay(10);
         u8g2.sendBuffer();

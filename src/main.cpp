@@ -9,17 +9,18 @@
 #include <U8g2lib.h>     //引入U8g2库
 #include <SPI.h>         //引入SPI库
 #include <U8g2_Expand.h> //引入动画扩展库
+#include "driver/gpio.h"
 
 /* **************************************************************************************** */
 /*                                           定义部分                                        */
 /* **************************************************************************************** */
 
 // 定义外设引脚
-const int LED_B = 15;   // 蓝灯
-const int LED_R = 2;    // 红灯
-const int Button1 = 4;  // 按键1
-const int Button2 = 16; // 按键2
-const int Button3 = 17; // 按键3
+const int LED_B = 15; // 蓝灯
+const int LED_R = 2;  // 红灯
+#define Button1 21    // 按键1
+#define Button2 5     // 按键2
+#define Button3 4     // 按键3
 
 // 定义函数
 int Key_Scan(void);
@@ -29,7 +30,7 @@ U8G2E_MenuOption MenuOption_ARR[7]{
     {"Text Option1", 0, U8G2E_OPTION_TEXT},
     {"KEY Option2", 1, U8G2E_OPTION_KEY},
     {"PCT Option3", 0, U8G2E_OPTION_PCT},
-    {"NUM Option4", 0.98786, U8G2E_OPTION_NUM},
+    {"NUM Option4", 123.123456, U8G2E_OPTION_NUM},
     {"NUM Option5", 134045, U8G2E_OPTION_NUM},
     {"Text Option6", 1, U8G2E_OPTION_KEY},
     {"Text Option7", 0, U8G2E_OPTION_KEY}};
@@ -38,11 +39,13 @@ void setup()
 {
   // 初始化外设
   Serial.begin(9600);             // 初始化串口通信
+  Serial2.begin(9600);            // 初始化串口通信
   pinMode(LED_B, OUTPUT);         // 设置蓝灯引脚为输出模式
   pinMode(LED_R, OUTPUT);         // 设置红灯引脚为输出模式
   pinMode(Button1, INPUT_PULLUP); // 设置按键1引脚为输入模式
-  pinMode(Button2, INPUT_PULLUP); // 设置按键2引脚为输入模式
-  pinMode(Button3, INPUT_PULLUP); // 设置按键3引脚为输入模式
+  pinMode(21, INPUT_PULLUP);      // 设置按键2引脚为输入模式
+  pinMode(Button3, INPUT_PULLUP); // 设置按键2引脚为输入模式
+
   U8G2E_Init(true, "U8G2 Expand", "Design by maker114");
   U8G2E_SignKeyFun(Key_Scan);
 
@@ -61,7 +64,6 @@ void loop()
 {
 
   // uint8_t Key_result = Key_Scan();
-  // printf("Key_result = %d\n", digitalRead(Button2));
   U8G2E_MenuDisplay(MenuOption_ARR, 7);
 
   /*u8g2.setFont(u8g2_font_6x10_mf);
@@ -73,7 +75,6 @@ void loop()
   u8g2.setFont(u8g2_font_4x6_mf);
   U8G2E_PromptWindow("Please put button 1digitalRead(Button2) again", true);
   delay(200);*/
-
   //  u8g2.clearBuffer();
   //  u8g2.setFont(u8g2_font_6x10_mf);
   //  u8g2.drawVLine(90, 0, U8G2E_StrHight("warning:\nChannel 1 has been disconnected", 80, 10));
