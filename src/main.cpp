@@ -10,6 +10,8 @@
 #include <SPI.h>         //引入SPI库
 #include <U8g2_Expand.h> //引入动画扩展库
 #include "driver/gpio.h"
+#include "esp_now.h"
+#include "WiFi.h"
 
 /* **************************************************************************************** */
 /*                                           定义部分                                        */
@@ -24,10 +26,11 @@ const int LED_R = 2;  // 红灯
 
 // 定义函数
 int Key_Scan(void);
+void Packaging_1(void);
 
 // 实例化对象
 U8G2E_MenuOption MenuOption_ARR[7]{
-    {"Text Option1", 0, U8G2E_OPTION_TEXT},
+    {"Text Option1", (int)Packaging_1, U8G2E_OPTION_FUNC},
     {"KEY Option2", 1, U8G2E_OPTION_KEY},
     {"PCT Option3", 0, U8G2E_OPTION_PCT},
     {"NUM Option4", 123.123456, U8G2E_OPTION_NUM},
@@ -65,21 +68,10 @@ void loop()
 
   // uint8_t Key_result = Key_Scan();
   U8G2E_MenuDisplay(MenuOption_ARR, 7);
-
-  /*u8g2.setFont(u8g2_font_6x10_mf);
-  U8G2E_PromptWindow("Please put button 1", true);
-  delay(200);
-  u8g2.setFont(u8g2_font_5x8_mf);
-  U8G2E_PromptWindow("Just wait", false);
-  delay(200);
-  u8g2.setFont(u8g2_font_4x6_mf);
-  U8G2E_PromptWindow("Please put button 1digitalRead(Button2) again", true);
-  delay(200);*/
-  //  u8g2.clearBuffer();
-  //  u8g2.setFont(u8g2_font_6x10_mf);
-  //  u8g2.drawVLine(90, 0, U8G2E_StrHight("warning:\nChannel 1 has been disconnected", 80, 10));
-  //  U8G2E_DrawWrappedText(10, 0, "warning:\nChannel 1 has been disconnected", 80);
-  //  u8g2.sendBuffer();
+  // u8g2.setFont(u8g2_font_6x10_mf);
+  // U8G2E_PromptWindow("Put button 2 to restart menu\n     OK", true);
+  // 输出函数指针数据
+  // int p1 = (int)Key_Scan;
 }
 
 int Key_Scan(void)
@@ -108,4 +100,12 @@ int Key_Scan(void)
   if (digitalRead(Button1) == HIGH && digitalRead(Button2) == HIGH && digitalRead(Button3) == HIGH)
     Button_Hold = false;
   return 0;
+}
+
+void Packaging_1(void)
+{
+  u8g2.setFont(u8g2_font_6x10_mf);
+  U8G2E_PromptWindow("Put button 2 to restart menu\n     OK", true);
+  u8g2.setFont(u8g2_font_5x7_mf);
+  U8G2E_PromptWindow("Put button 1 to restart menu\n     OK", true);
 }

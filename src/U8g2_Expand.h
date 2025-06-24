@@ -1,3 +1,12 @@
+/**
+ * @file U8g2_Expand.h
+ * @author maker114
+ * @brief U8G2库扩展头文件
+ * @version 0.1
+ * @date 2025-06-23
+ *
+ *
+ */
 #ifndef _U8G2EXPAND_
 #define _U8G2EXPAND_
 #include <Arduino.h>
@@ -47,12 +56,13 @@ typedef enum // 菜单选项类型
     U8G2E_OPTION_NUM = 1,  // 数值类型（整数/小数）
     U8G2E_OPTION_PCT = 2,  // 百分比类型（percent）
     U8G2E_OPTION_TEXT = 3, // 文本类型(仅显示文本，没有数据更改)
+    U8G2E_OPTION_FUNC = 4, // 函数类型(仅执行函数，没有数据更改)
 } U8G2E_OptionType;
 
 typedef enum // 动画显示模式
 {
-    Slow = 1,
-    Elasticity = 2,
+    Slow = 1,       // 缓动
+    Elasticity = 2, // 弹性
 } Mode;
 /***********************函数声明部分**********************/
 uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x);
@@ -64,7 +74,7 @@ void U8G2E_StartAnimation(const char *str1, const char *str2);
 void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable);
 void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H);
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num);
-void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_Member);
+void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member);
 void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member);
