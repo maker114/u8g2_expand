@@ -147,7 +147,7 @@ void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_u
  * @param max_width 最大宽度
  * @return uint8_t 字符串高度
  */
-uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x)
+uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x)
 {
     const char *text = str;
     uint8_t Display_width = u8g2.getDisplayWidth();                     // 获取屏幕宽度
@@ -344,7 +344,7 @@ void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable)
     uint8_t MaxWight = 80; // 字符串最大宽度
     uint8_t Window_W = MaxWight - MaxWight % u8g2.getMaxCharWidth() + 14;
     uint8_t Window_X = (int)((128 - Window_W) / 2);
-    uint8_t Window_H = U8G2E_StrHight(str1, MaxWight, Window_X + 5) + 10;
+    uint8_t Window_H = U8G2E_StrHeight(str1, MaxWight, Window_X + 5) + 10;
     uint8_t Window_Y = (int)((64 - Window_H) / 2);
     float y_Cursor = 64;
     U8G2E_SaveBuffer();

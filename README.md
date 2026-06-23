@@ -25,7 +25,7 @@
 | `U8G2E_MoveCursor()` | 数字平滑移动（缓动/弹性模式） |
 | `U8G2E_Blurring()` | 背景虚化效果 |
 | `U8G2E_DrawWrappedText()` | 自动换行文本渲染 |
-| `U8G2E_StrHight()` | 计算文本渲染高度 |
+| `U8G2E_StrHeight()` | 计算文本渲染高度 |
 | `U8G2E_SaveBuffer()` | 保存显示缓冲区 |
 | `U8G2E_CoverBuffer()` | 恢复显示缓冲区 |
 | `U8G2E_SignKeyFun()` | 注册按键扫描函数 |
@@ -203,7 +203,7 @@ void U8G2E_Init(bool Enable, const char *str1, const char *str2)
 - 根据参数决定是否显示开机动画
 
 #### NOTE
-- 需要根据实际OLED显示器型号实例化`u8g2`对象
+- 如需更换屏幕型号或引脚则需要根据实际OLED显示器型号实例化`u8g2`对象，默认为7线硬件SPI通讯，引脚在头文件中定义
 
 ---
 
@@ -341,28 +341,6 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
 - 依赖`KEY_Scan()`函数获取输入
 
 ---
-
-### **U8G2E_MenuDisplay**
-
-**函数原型**  
-```c
-void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
-```
-
-#### **输入参数**
-| 参数名 | 类型 | 说明 |
-|--------|------|------|
-| MenuOption_ARR | U8G2E_MenuOption[] | 菜单选项结构体数组 |
-| valid_num | uint8_t | 有效的菜单选项数量 |
-
-
-#### **函数功能**
-- 实现动态交互式菜单显示系统，主要功能包括：
-  - 平滑的进入/退出动画效果
-  - 支持5种菜单项类型（开关/数值/百分比/文本/函数）
-  - 弹性边界检测（顶部/底部回弹效果）
-  - 光标跟随动画
-  - 自动内容滚动
 
 ### **U8G2E_MenuDisplay**
 
@@ -532,10 +510,10 @@ void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member)
 
 ---
 
-### **U8G2E_StrHight**
+### **U8G2E_StrHeight**
 
 ```c
-uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x)
+uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x)
 ```
 
 #### 参数说明
@@ -650,7 +628,7 @@ void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)
 - 内部使用`Slow`缓动模式
 
 #### NOTE
-- 需要配置数组
+- 需要配置数组，内部固定访问 change[0] ~ change[7]，必须传入长度为 8 的数组，否则越界访问会导致程序崩溃
 
 #### 使用例
 

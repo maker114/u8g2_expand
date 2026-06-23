@@ -70,7 +70,7 @@ typedef enum // 动画显示模式
     Elasticity = 2, // 弹性
 } Mode;
 /***********************函数声明部分**********************/
-uint8_t U8G2E_StrHight(const char *str, uint8_t max_width, uint8_t x);
+uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x);
 void U8G2E_SaveBuffer(void);
 void U8G2E_CoverBuffer(void);
 void U8G2E_SignKeyFun(int Put_in_fun(void));
