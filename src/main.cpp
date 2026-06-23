@@ -30,10 +30,10 @@ void Packaging_1(void);
 
 // 实例化对象
 U8G2E_MenuOption MenuOption_ARR[7]{
-    {"Text Option1", (int)Packaging_1, U8G2E_OPTION_FUNC},
-    {"KEY Option2", 1, U8G2E_OPTION_KEY},
-    {"PCT Option3", 0, U8G2E_OPTION_PCT},
-    {"NUM Option4", 123.123456, U8G2E_OPTION_NUM},
+    {"Channel-1 SW", 0, U8G2E_OPTION_KEY},
+    {"Channel-2 SW", 0, U8G2E_OPTION_KEY},
+    {"Channel-3 SW", 0, U8G2E_OPTION_KEY},
+    {"Channel-4 SW", 0, U8G2E_OPTION_KEY},
     {"NUM Option5", 134045, U8G2E_OPTION_NUM},
     {"Text Option6", 1, U8G2E_OPTION_KEY},
     {"Text Option7", 0, U8G2E_OPTION_KEY}};
@@ -45,8 +45,10 @@ void setup()
   Serial2.begin(9600);            // 初始化串口通信
   pinMode(LED_B, OUTPUT);         // 设置蓝灯引脚为输出模式
   pinMode(LED_R, OUTPUT);         // 设置红灯引脚为输出模式
+  pinMode(27, OUTPUT);            // 设置红灯引脚为输出模式
+  pinMode(22, OUTPUT);            // 设置红灯引脚为输出模式
   pinMode(Button1, INPUT_PULLUP); // 设置按键1引脚为输入模式
-  pinMode(21, INPUT_PULLUP);      // 设置按键2引脚为输入模式
+  pinMode(Button2, INPUT_PULLUP); // 设置按键2引脚为输入模式
   pinMode(Button3, INPUT_PULLUP); // 设置按键2引脚为输入模式
 
   U8G2E_Init(true, "U8G2 Expand", "Design by maker114");
@@ -59,19 +61,28 @@ void setup()
   digitalWrite(LED_B, LOW);  // 蓝灯灭
   digitalWrite(LED_R, LOW);  // 红灯灭
 }
-
-float change_H1[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-float change_H2[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-int Time = 0, A = 0;
 void loop()
 {
-
-  // uint8_t Key_result = Key_Scan();
   U8G2E_MenuDisplay(MenuOption_ARR, 7);
-  // u8g2.setFont(u8g2_font_6x10_mf);
-  // U8G2E_PromptWindow("Put button 2 to restart menu\n     OK", true);
-  // 输出函数指针数据
-  // int p1 = (int)Key_Scan;
+  if (MenuOption_ARR[0].Value == 1)
+    digitalWrite(2, HIGH);
+  else
+    digitalWrite(2, LOW);
+
+  if (MenuOption_ARR[1].Value == 1)
+    digitalWrite(15, HIGH);
+  else
+    digitalWrite(15, LOW);
+
+  if (MenuOption_ARR[2].Value == 1)
+    digitalWrite(27, HIGH);
+  else
+    digitalWrite(27, LOW);
+
+  if (MenuOption_ARR[3].Value == 1)
+    digitalWrite(22, HIGH);
+  else
+    digitalWrite(22, LOW);
 }
 
 int Key_Scan(void)

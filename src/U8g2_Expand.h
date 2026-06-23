@@ -32,6 +32,11 @@ n	字体仅包含数字及用于编写日期和时间字符串的额外字形
 extern U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2; // 定义U8g2库
 
 /***********************设置部分**********************/
+
+#define U8G2E_PIN_CS 14
+#define U8G2E_PIN_DC 12
+#define U8G2E_PIN_RST 13
+
 typedef enum // 定义按键映射
 {
     KEY_NULL = 0,    // 无返回

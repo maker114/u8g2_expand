@@ -2,7 +2,7 @@
 #include <string.h>
 
 /*************************************部分支持与底层实现***************************************/
-U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R0, 14, 12, 13); // 定义U8g2库
+U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R2, U8G2E_PIN_CS, U8G2E_PIN_DC, U8G2E_PIN_RST); // 定义U8g2库
 
 /**
  * @brief 初始化OLED
@@ -443,7 +443,7 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
     const uint8_t DisplayHeight = u8g2.getDisplayHeight();
     const uint8_t CharHeight = u8g2.getMaxCharHeight();
     const uint8_t CharWidth = u8g2.getMaxCharWidth();
-    const uint8_t MENU_ITEM_COUNT = 5; // 进入动画菜单项数量
+    uint8_t MENU_ITEM_COUNT = valid_num > 5 ? 5 : valid_num; // 进入动画菜单项数量
 
     /******************** 进入动画部分 ********************/
     U8G2E_SaveBuffer();
@@ -554,6 +554,11 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
     do
     {
         u8g2.clearBuffer();
+        // 擦除旧内容
+        U8G2E_CoverBuffer();
+        u8g2.setDrawColor(0);
+        u8g2.drawBox(MenuOption_ARR[0].X_Coordinate, 0, DisplayWidth, DisplayHeight); // +3像素垂直偏移
+        u8g2.setDrawColor(1);
         // 绘制所有菜单项
         for (uint8_t i = 0; i < valid_num; i++)
         {
@@ -637,6 +642,7 @@ void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member)
  * @brief 执行菜单项动作
  *
  * @param MenuOption_Member 菜单结构体
+ *
  */
 void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)
 {
@@ -730,6 +736,7 @@ void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)
  *
  * @param MenuOption_Member 菜单结构体
  */
+
 void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member)
 {
     uint8_t key_result = 0;
