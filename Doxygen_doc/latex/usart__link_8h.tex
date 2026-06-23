@@ -1,0 +1,267 @@
+\doxysubsection{D\+:/\+STM32 Project/\+STM32\+F103/smart\+\_\+motor/\+USER/\+HARDWARE/usart\+\_\+link.h 文件参考}
+\hypertarget{usart__link_8h}{}\label{usart__link_8h}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.h}}
+
+
+串口通信协议程序头文件  
+
+
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+{\ttfamily \#include "{}stm32f10x\+\_\+usart.\+h"{}}\newline
+\doxysubsubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usart__link_8h_a0a6b8db42b5fbd5c3cb3a884e7cf2f8f}\label{usart__link_8h_a0a6b8db42b5fbd5c3cb3a884e7cf2f8f} 
+\#define {\bfseries LINK\+\_\+\+FRAME\+\_\+\+HEADER1}~0x\+A1
+\begin{DoxyCompactList}\small\item\em 帧头1 \end{DoxyCompactList}\item 
+\Hypertarget{usart__link_8h_af566e761407f57a60ec774684e030286}\label{usart__link_8h_af566e761407f57a60ec774684e030286} 
+\#define {\bfseries LINK\+\_\+\+FRAME\+\_\+\+HEADER2}~0x\+B1
+\begin{DoxyCompactList}\small\item\em 帧头2 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{枚举}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bd}{linkpackenum}} \{ \newline
+\mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085}{LINK\+\_\+\+Frame\+Header1}}
+, \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195}{LINK\+\_\+\+Frame\+Header2}}
+, \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4}{LINK\+\_\+\+CMD}}
+, \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a}{LINK\+\_\+\+DATA\+\_\+H}}
+, \newline
+\mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97}{LINK\+\_\+\+DATA\+\_\+L}}
+, \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948}{LINK\+\_\+\+Check\+Sum}}
+, \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4}{SUM}}
+ \}
+\item 
+enum \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981}{linkcmd\+\_\+in}} \{ \newline
+{\bfseries LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+NULL} = 0x00
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+LED}} = 0x01
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+APWM}} = 0x12
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+BPWM}} = 0x22
+, \newline
+\mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+AGoal\+Speed}} = 0x13
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+BGoal\+Speed}} = 0x23
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+Mode}} = 0x04
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Orientation}} = 0x05
+, \newline
+\mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Switch\+OLED}} = 0x06
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+Statue}} = 0x07
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+ADC}} = 0x08
+, \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+Motor\+ASpeed}} = 0x09
+, \newline
+\mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51}{LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+Motor\+BSpeed}} = 0x0A
+ \}
+\item 
+enum \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258}{linkcmd\+\_\+out}} \{ \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758}{LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+NULL}} = 0x00
+, \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884}{LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+RE\+\_\+\+ADC}} = 0x01
+, \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109}{LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+RE\+\_\+\+Motor\+ASpeed}} = 0x02
+, \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe}{LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+RE\+\_\+\+Motor\+BSpeed}} = 0x03
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{usart__link_8h_a4aa1f631924e1fc725bd4baf6c03c1e8}{LINK\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化串口连接 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart__link_8h_a6a2a1b593c87ad63c2d36e83b473282e}{LINK\+\_\+\+Send\+Pack}} (uint8\+\_\+t CMD, uint16\+\_\+t DATA)
+\begin{DoxyCompactList}\small\item\em 发送数据包函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart__link_8h_a351dd3fb1e02a7f6584a098e0678941a}{LINK\+\_\+\+Get\+Pack}} (void)
+\begin{DoxyCompactList}\small\item\em 从\+USART3接收数据包并进行处理。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart__link_8h_a9aefa85023944f884dde62716217f15a}{LINK\+\_\+\+Handle\+Data}} (uint8\+\_\+t CMD, int16\+\_\+t DATA)
+\begin{DoxyCompactList}\small\item\em 处理接收到的数据命令。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{详细描述}
+串口通信协议程序头文件 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/06-\/16 
+\end{DoxyDate}
+
+
+\doxysubsubsection{枚举类型说明}
+\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981} 
+\index{usart\_link.h@{usart\_link.h}!linkcmd\_in@{linkcmd\_in}}
+\index{linkcmd\_in@{linkcmd\_in}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{linkcmd\_in}{linkcmd\_in}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981}{linkcmd\+\_\+in}}}
+
+\begin{DoxyEnumFields}{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_LED@{LINK\_CMD\_IN\_SET\_LED}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_LED@{LINK\_CMD\_IN\_SET\_LED}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+LED&设置\+LED，低字节\+LED编号，高字节\+LED状态 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_MotorAPWM@{LINK\_CMD\_IN\_SET\_MotorAPWM}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_MotorAPWM@{LINK\_CMD\_IN\_SET\_MotorAPWM}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+APWM&设置电机A PWM（仅手动模式有效） \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_MotorBPWM@{LINK\_CMD\_IN\_SET\_MotorBPWM}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_MotorBPWM@{LINK\_CMD\_IN\_SET\_MotorBPWM}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+BPWM&设置电机B PWM（仅手动模式有效） \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_MotorAGoalSpeed@{LINK\_CMD\_IN\_SET\_MotorAGoalSpeed}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_MotorAGoalSpeed@{LINK\_CMD\_IN\_SET\_MotorAGoalSpeed}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+AGoal\+Speed&设置电机A 目标速度（仅自动模式有效） \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_MotorBGoalSpeed@{LINK\_CMD\_IN\_SET\_MotorBGoalSpeed}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_MotorBGoalSpeed@{LINK\_CMD\_IN\_SET\_MotorBGoalSpeed}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+BGoal\+Speed&设置电机B 目标速度（仅自动模式有效） \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_MotorMode@{LINK\_CMD\_IN\_SET\_MotorMode}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_MotorMode@{LINK\_CMD\_IN\_SET\_MotorMode}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+Mode&设置电机模式，1为手动模式，0为自动模式 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_Orientation@{LINK\_CMD\_IN\_SET\_Orientation}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_Orientation@{LINK\_CMD\_IN\_SET\_Orientation}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Orientation&设置模块安装方向，1为逆时针，0为顺时针 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_SwitchOLED@{LINK\_CMD\_IN\_SET\_SwitchOLED}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_SwitchOLED@{LINK\_CMD\_IN\_SET\_SwitchOLED}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Switch\+OLED&设置\+OLED开关，1为开，0为关 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_SET\_MotorStatue@{LINK\_CMD\_IN\_SET\_MotorStatue}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_SET\_MotorStatue@{LINK\_CMD\_IN\_SET\_MotorStatue}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+Statue&设置电机状态，1为启动，0为停止 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_ASK\_ADC@{LINK\_CMD\_IN\_ASK\_ADC}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_ASK\_ADC@{LINK\_CMD\_IN\_ASK\_ADC}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+ADC&查询电池电量 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_ASK\_MotorASpeed@{LINK\_CMD\_IN\_ASK\_MotorASpeed}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_ASK\_MotorASpeed@{LINK\_CMD\_IN\_ASK\_MotorASpeed}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+Motor\+ASpeed&查询电机\+A速度 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_IN\_ASK\_MotorBSpeed@{LINK\_CMD\_IN\_ASK\_MotorBSpeed}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_IN\_ASK\_MotorBSpeed@{LINK\_CMD\_IN\_ASK\_MotorBSpeed}}}\Hypertarget{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51}\label{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51} 
+LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+Motor\+BSpeed&查询电机\+B速度 \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258}\label{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258} 
+\index{usart\_link.h@{usart\_link.h}!linkcmd\_out@{linkcmd\_out}}
+\index{linkcmd\_out@{linkcmd\_out}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{linkcmd\_out}{linkcmd\_out}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258}{linkcmd\+\_\+out}}}
+
+\begin{DoxyEnumFields}{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_OUT\_NULL@{LINK\_CMD\_OUT\_NULL}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_OUT\_NULL@{LINK\_CMD\_OUT\_NULL}}}\Hypertarget{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758}\label{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758} 
+LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+NULL&无 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_OUT\_RE\_ADC@{LINK\_CMD\_OUT\_RE\_ADC}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_OUT\_RE\_ADC@{LINK\_CMD\_OUT\_RE\_ADC}}}\Hypertarget{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884}\label{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884} 
+LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+RE\+\_\+\+ADC&回传电池电量(倍率=100) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_OUT\_RE\_MotorASpeed@{LINK\_CMD\_OUT\_RE\_MotorASpeed}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_OUT\_RE\_MotorASpeed@{LINK\_CMD\_OUT\_RE\_MotorASpeed}}}\Hypertarget{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109}\label{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109} 
+LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+RE\+\_\+\+Motor\+ASpeed&回传电机\+A速度(倍率=1) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD\_OUT\_RE\_MotorBSpeed@{LINK\_CMD\_OUT\_RE\_MotorBSpeed}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD\_OUT\_RE\_MotorBSpeed@{LINK\_CMD\_OUT\_RE\_MotorBSpeed}}}\Hypertarget{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe}\label{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe} 
+LINK\+\_\+\+CMD\+\_\+\+OUT\+\_\+\+RE\+\_\+\+Motor\+BSpeed&回传电机\+B速度(倍率=1) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bd}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bd} 
+\index{usart\_link.h@{usart\_link.h}!linkpackenum@{linkpackenum}}
+\index{linkpackenum@{linkpackenum}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{linkpackenum}{linkpackenum}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bd}{linkpackenum}}}
+
+\begin{DoxyEnumFields}{枚举值}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_FrameHeader1@{LINK\_FrameHeader1}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_FrameHeader1@{LINK\_FrameHeader1}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085} 
+LINK\+\_\+\+Frame\+Header1&帧头1 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_FrameHeader2@{LINK\_FrameHeader2}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_FrameHeader2@{LINK\_FrameHeader2}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195} 
+LINK\+\_\+\+Frame\+Header2&帧头2 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CMD@{LINK\_CMD}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CMD@{LINK\_CMD}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4} 
+LINK\+\_\+\+CMD&指令 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_DATA\_H@{LINK\_DATA\_H}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_DATA\_H@{LINK\_DATA\_H}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a} 
+LINK\+\_\+\+DATA\+\_\+H&数据高字节 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_DATA\_L@{LINK\_DATA\_L}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_DATA\_L@{LINK\_DATA\_L}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97} 
+LINK\+\_\+\+DATA\+\_\+L&数据低字节 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LINK\_CheckSum@{LINK\_CheckSum}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!LINK\_CheckSum@{LINK\_CheckSum}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948} 
+LINK\+\_\+\+Check\+Sum&校验和 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUM@{SUM}!usart\_link.h@{usart\_link.h}}\index{usart\_link.h@{usart\_link.h}!SUM@{SUM}}}\Hypertarget{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4}\label{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4} 
+SUM&数据包长度 \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsubsection{函数说明}
+\Hypertarget{usart__link_8h_a351dd3fb1e02a7f6584a098e0678941a}\label{usart__link_8h_a351dd3fb1e02a7f6584a098e0678941a} 
+\index{usart\_link.h@{usart\_link.h}!LINK\_GetPack@{LINK\_GetPack}}
+\index{LINK\_GetPack@{LINK\_GetPack}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{LINK\_GetPack()}{LINK\_GetPack()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Get\+Pack (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+从\+USART3接收数据包并进行处理。 
+
+\begin{DoxyNote}{注解}
+该函数通过\+USART3接收一个数据包，包括帧头、命令、数据和高低字节，并进行校验。如果校验成功，则处理数据；否则，丢弃数据包。 
+\end{DoxyNote}
+\Hypertarget{usart__link_8h_a9aefa85023944f884dde62716217f15a}\label{usart__link_8h_a9aefa85023944f884dde62716217f15a} 
+\index{usart\_link.h@{usart\_link.h}!LINK\_HandleData@{LINK\_HandleData}}
+\index{LINK\_HandleData@{LINK\_HandleData}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{LINK\_HandleData()}{LINK\_HandleData()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Handle\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{CMD,  }\item[{int16\+\_\+t}]{DATA }\end{DoxyParamCaption})}
+
+
+
+处理接收到的数据命令。 
+
+\begin{DoxyNote}{注解}
+根据接收到的命令字节（\+CMD）和数据（\+DATA），执行相应的操作。 
+\end{DoxyNote}
+
+\begin{DoxyParams}{参数}
+{\em CMD} & 命令字节，指定要执行的操作。 \\
+\hline
+{\em DATA} & 数据，与命令相关联的具体数据。 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{usart__link_8h_a4aa1f631924e1fc725bd4baf6c03c1e8}\label{usart__link_8h_a4aa1f631924e1fc725bd4baf6c03c1e8} 
+\index{usart\_link.h@{usart\_link.h}!LINK\_Init@{LINK\_Init}}
+\index{LINK\_Init@{LINK\_Init}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{LINK\_Init()}{LINK\_Init()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+初始化串口连接 
+
+\begin{DoxyNote}{注解}
+使用串口三接收 
+\end{DoxyNote}
+\Hypertarget{usart__link_8h_a6a2a1b593c87ad63c2d36e83b473282e}\label{usart__link_8h_a6a2a1b593c87ad63c2d36e83b473282e} 
+\index{usart\_link.h@{usart\_link.h}!LINK\_SendPack@{LINK\_SendPack}}
+\index{LINK\_SendPack@{LINK\_SendPack}!usart\_link.h@{usart\_link.h}}
+\doxyparagraph{\texorpdfstring{LINK\_SendPack()}{LINK\_SendPack()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Send\+Pack (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{CMD,  }\item[{uint16\+\_\+t}]{DATA }\end{DoxyParamCaption})}
+
+
+
+发送数据包函数 
+
+
+\begin{DoxyParams}{参数}
+{\em CMD} & 命令字节 \\
+\hline
+{\em DATA} & 16位数据 \\
+\hline
+\end{DoxyParams}

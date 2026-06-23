@@ -1,0 +1,46 @@
+\doxysubsection{WS2812.\+h}
+\hypertarget{_w_s2812_8h_source}{}\label{_w_s2812_8h_source}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/WS2812.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/WS2812.h}}
+\mbox{\hyperlink{_w_s2812_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_WS2812\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_WS2812\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}delay.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}usart.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}sys.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_ab01500f08920070b4863b61e1bf16dd6}{WS2812\_init}}(uint8\_t\ NUM);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_abfeb0ddba57046aa0087ac4bbad4398e}{ws281x\_delay}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ delay\_num);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_ab922d66a8e90ee1a7cb564b4bbf1c76c}{ws281x\_sendLow}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_adf64701e5f6fc617c581089d9895152a}{ws281x\_sendHigh}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_ab78c2ad1bc3b9808f5a23ff38e0a386a}{ws2811\_Reset}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_a1d7c228de344746df85a26ce7de7e67f}{ws281x\_sendOne}}(uint32\_t\ dat);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_a4b4458a436e4cbc44edcfa3104589fe2}{WS2812\_SendColor}}(uint8\_t\ NUM,\ uint8\_t\ R,\ uint8\_t\ G,\ uint8\_t\ B);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_a2eb8b439537b3fc6fe6660af38d982ef}{WS2812\_SendColor\_u32}}(uint8\_t\ NUM,\ uint32\_t\ Color);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ uint32\_t\ \mbox{\hyperlink{_w_s2812_8h_acf4c523689bd7d358725bc6a1924b5d7}{WS2812\_Wheel}}(uint32\_t\ pos);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_w_s2812_8h_a4290cbd5ce4cf1bd24a809759108b1b7}{WS2812\_StreamColor}}(u8\ pos);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ 常用颜色GRB编码宏定义，搭配WS2812\_SendColor\_u32使用}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ WS2812\_BLACK\ 0x000000\ \ \ }}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ WS2812\_WHITE\ 0xFFFFFF\ \ \ }}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ WS2812\_RED\ 0x00FF00\ \ \ \ \ }}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ WS2812\_GREEN\ 0xFF0000\ \ \ }}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ WS2812\_BLUE\ 0x0000FF\ \ \ \ }}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ WS2812\_YELLOW\ 0xFFFF00\ \ }}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ WS2812\_PURPLE\ 0x00FFFF\ \ }}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ WS2812\_CYAN\ 0xFF00FF\ \ \ \ }}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ WS2812\_ICEBLUE\ 0xFF99FF\ }}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,26 @@
+\doxysubsection{board.\+h}
+\hypertarget{board_8h_source}{}\label{board_8h_source}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/board.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/board.h}}
+\mbox{\hyperlink{board_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_BOARD\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_BOARD\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}delay.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}usart.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}sys.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ LED\ PCout(13)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ KEY1\ GPIO\_ReadInputDataBit(GPIOA,\ GPIO\_Pin\_7)\ \ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ KEY2\ GPIO\_ReadInputDataBit(GPIOA,\ GPIO\_Pin\_11)\ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ KEY3\ GPIO\_ReadInputDataBit(GPIOA,\ GPIO\_Pin\_12)\ }}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ Board\_Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{int}\ Board\_KeyScan(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ Board\_LED\_Toggle(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ Board\_BEEP\_ActiveMs(\textcolor{keywordtype}{int}\ ms);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ Board\_BEEP\_ContinuousActive(\textcolor{keywordtype}{int}\ time);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

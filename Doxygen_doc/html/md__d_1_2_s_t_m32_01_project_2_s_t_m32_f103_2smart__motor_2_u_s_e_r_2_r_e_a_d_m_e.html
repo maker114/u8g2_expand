@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMART MOTOR: README</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="邻二溴苯(doxygen).png"/></td>
+  <td id="projectalign">
+   <div id="projectname">SMART MOTOR
+   </div>
+   <div id="projectbrief">Design by maker114</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">README</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+定时器配置</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">定时器名   </th><th class="markdownTableHeadLeft">功能   </th><th class="markdownTableHeadLeft">通道号   </th><th class="markdownTableHeadLeft">引脚    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">TIM1   </td><td class="markdownTableBodyLeft">速度计算定时器   </td><td class="markdownTableBodyLeft">无   </td><td class="markdownTableBodyLeft">无（内部定时器）    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">TIM2   </td><td class="markdownTableBodyLeft">电机A编码器计数   </td><td class="markdownTableBodyLeft">CH1, CH2   </td><td class="markdownTableBodyLeft">PA0 (CH1), PA1 (CH2)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">TIM3   </td><td class="markdownTableBodyLeft">电机PWM驱动   </td><td class="markdownTableBodyLeft">CH3, CH4   </td><td class="markdownTableBodyLeft">PB0 (CH3), PB1 (CH4)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">TIM4   </td><td class="markdownTableBodyLeft">电机B编码器计数   </td><td class="markdownTableBodyLeft">CH1, CH2   </td><td class="markdownTableBodyLeft">PB6 (CH1), PB7 (CH2)   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md2"></a>
+WS2812 颜色映射</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">值   </th><th class="markdownTableHeadNone">常量   </th><th class="markdownTableHeadNone">颜色   </th><th class="markdownTableHeadNone">RGB值    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone"><code>WS2812_BLACK</code>   </td><td class="markdownTableBodyNone">黑色   </td><td class="markdownTableBodyNone">(0, 0, 0)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone"><code>WS2812_RED</code>   </td><td class="markdownTableBodyNone">红色   </td><td class="markdownTableBodyNone">(255, 0, 0)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone"><code>WS2812_GREEN</code>   </td><td class="markdownTableBodyNone">绿色   </td><td class="markdownTableBodyNone">(0, 255, 0)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone"><code>WS2812_BLUE</code>   </td><td class="markdownTableBodyNone">蓝色   </td><td class="markdownTableBodyNone">(0, 0, 255)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone"><code>WS2812_YELLOW</code>   </td><td class="markdownTableBodyNone">黄色   </td><td class="markdownTableBodyNone">(255, 255, 0)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone"><code>WS2812_PURPLE</code>   </td><td class="markdownTableBodyNone">紫色   </td><td class="markdownTableBodyNone">(128, 0, 128)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone"><code>WS2812_CYAN</code>   </td><td class="markdownTableBodyNone">青色   </td><td class="markdownTableBodyNone">(0, 255, 255)   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md3"></a>
+电机宏定义部分</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">分类   </th><th class="markdownTableHeadLeft">宏定义名称   </th><th class="markdownTableHeadLeft">值   </th><th class="markdownTableHeadLeft">描述    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">积分限幅   </td><td class="markdownTableBodyLeft"><code>MOTORA_I_MAX</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机A积分限幅    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">积分限幅   </td><td class="markdownTableBodyLeft"><code>MOTORB_I_MAX</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机B积分限幅    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">PID参数   </td><td class="markdownTableBodyLeft"><code>MOTORA_KP</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机A PID-KP值    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PID参数   </td><td class="markdownTableBodyLeft"><code>MOTORA_KI</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机A PID-KI值    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">PID参数   </td><td class="markdownTableBodyLeft"><code>MOTORA_KD</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机A PID-KD值    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PID参数   </td><td class="markdownTableBodyLeft"><code>MOTORB_KP</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机B PID-KP值    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">PID参数   </td><td class="markdownTableBodyLeft"><code>MOTORB_KI</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机B PID-KI值    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PID参数   </td><td class="markdownTableBodyLeft"><code>MOTORB_KD</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">电机B PID-KD值    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">电机编号   </td><td class="markdownTableBodyLeft"><code>MOTOR_A</code>   </td><td class="markdownTableBodyLeft">0   </td><td class="markdownTableBodyLeft">电机A编号    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">电机编号   </td><td class="markdownTableBodyLeft"><code>MOTOR_B</code>   </td><td class="markdownTableBodyLeft">1   </td><td class="markdownTableBodyLeft">电机B编号    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">运行状态编号   </td><td class="markdownTableBodyLeft"><code>MOTOR_STOP</code>   </td><td class="markdownTableBodyLeft">0   </td><td class="markdownTableBodyLeft">电机停止状态编号    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">运行状态编号   </td><td class="markdownTableBodyLeft"><code>MOTOR_FORWARD</code>   </td><td class="markdownTableBodyLeft">1   </td><td class="markdownTableBodyLeft">电机正向运行状态编号    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">运行状态编号   </td><td class="markdownTableBodyLeft"><code>MOTOR_BACKWARD</code>   </td><td class="markdownTableBodyLeft">2   </td><td class="markdownTableBodyLeft">电机反向运行状态编号    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">安装方向   </td><td class="markdownTableBodyLeft"><code>MOTOR_Clockwise</code>   </td><td class="markdownTableBodyLeft">0   </td><td class="markdownTableBodyLeft">顺时针旋转为正向    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">安装方向   </td><td class="markdownTableBodyLeft"><code>MOTOR_Anticlockwise</code>   </td><td class="markdownTableBodyLeft">1   </td><td class="markdownTableBodyLeft">逆时针旋转为正向    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">操作模式   </td><td class="markdownTableBodyLeft"><code>MOTOR_AUTO</code>   </td><td class="markdownTableBodyLeft">0   </td><td class="markdownTableBodyLeft">自动模式（使用内部PID）    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">操作模式   </td><td class="markdownTableBodyLeft"><code>MOTOR_MANUAL</code>   </td><td class="markdownTableBodyLeft">1   </td><td class="markdownTableBodyLeft">手动模式（使用外部PID）    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PWM限幅   </td><td class="markdownTableBodyLeft"><code>MOTOR_PWM_MAX</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">PWM最大限幅（补偿后）    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">PWM限幅   </td><td class="markdownTableBodyLeft"><code>MOTOR_PWM_MIN</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">PWM最小限幅（补偿后）    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">PWM限幅   </td><td class="markdownTableBodyLeft"><code>MOTOR_PWM_Compensate_A</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">A通道PWM补偿值    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">PWM限幅   </td><td class="markdownTableBodyLeft"><code>MOTOR_PWM_Compensate_B</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">B通道PWM补偿值    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_TIM_A</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">A通道引脚时钟    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_Group_A</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">A通道引脚组    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_AIN1</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">A通道方向引脚1    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_AIN2</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">A通道方向引脚2    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_TIM_B</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">B通道引脚时钟    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_Group_B</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">B通道引脚组    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_BIN1</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">B通道方向引脚1    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">引脚定义   </td><td class="markdownTableBodyLeft"><code>Direction_BIN2</code>   </td><td class="markdownTableBodyLeft">自定义   </td><td class="markdownTableBodyLeft">B通道方向引脚2   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md4"></a>
+总连接表</h1>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">模块   </th><th class="markdownTableHeadNone">名称   </th><th class="markdownTableHeadNone">对应引脚   </th><th class="markdownTableHeadNone">备注    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">PWM 定时器 - TIM3   </td><td class="markdownTableBodyNone">PWM_A   </td><td class="markdownTableBodyNone">PB0（CH3）   </td><td class="markdownTableBodyNone">控制电机 A 的 PWM 信号输出    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">PWM 定时器 - TIM3   </td><td class="markdownTableBodyNone">PWM_B   </td><td class="markdownTableBodyNone">PB1（CH4）   </td><td class="markdownTableBodyNone">控制电机 B 的 PWM 信号输出    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">编码器定时器 - TIM2   </td><td class="markdownTableBodyNone">EA-A   </td><td class="markdownTableBodyNone">PA0   </td><td class="markdownTableBodyNone">电机 A 编码器 A 相输入    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">编码器定时器 - TIM2   </td><td class="markdownTableBodyNone">EA-B   </td><td class="markdownTableBodyNone">PA1   </td><td class="markdownTableBodyNone">电机 A 编码器 B 相输入    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">编码器定时器 - TIM4   </td><td class="markdownTableBodyNone">EB-A   </td><td class="markdownTableBodyNone">PB6   </td><td class="markdownTableBodyNone">电机 B 编码器 A 相输入    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">编码器定时器 - TIM4   </td><td class="markdownTableBodyNone">EB-B   </td><td class="markdownTableBodyNone">PB7   </td><td class="markdownTableBodyNone">电机 B 编码器 B 相输入    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">方向控制   </td><td class="markdownTableBodyNone">AIN1   </td><td class="markdownTableBodyNone">PA3   </td><td class="markdownTableBodyNone">控制电机 A 方向的引脚 1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">方向控制   </td><td class="markdownTableBodyNone">AIN2   </td><td class="markdownTableBodyNone">PA4   </td><td class="markdownTableBodyNone">控制电机 A 方向的引脚 2    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">方向控制   </td><td class="markdownTableBodyNone">BIN1   </td><td class="markdownTableBodyNone">PA5   </td><td class="markdownTableBodyNone">控制电机 B 方向的引脚 1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">方向控制   </td><td class="markdownTableBodyNone">BIN2   </td><td class="markdownTableBodyNone">PA6   </td><td class="markdownTableBodyNone">控制电机 B 方向的引脚 2    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">电池检测   </td><td class="markdownTableBodyNone">ADC   </td><td class="markdownTableBodyNone">PA2（ADC1 - CH2）   </td><td class="markdownTableBodyNone">用于检测电池电压    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">电压电流检测 - INA226   </td><td class="markdownTableBodyNone">SDA   </td><td class="markdownTableBodyNone">PB13   </td><td class="markdownTableBodyNone">与 INA226 通信的数据线    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">电压电流检测 - INA226   </td><td class="markdownTableBodyNone">SCL   </td><td class="markdownTableBodyNone">PB12   </td><td class="markdownTableBodyNone">与 INA226 通信的时钟线    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">OLED 显示   </td><td class="markdownTableBodyNone">SCL   </td><td class="markdownTableBodyNone">PB5   </td><td class="markdownTableBodyNone">OLED 显示屏时钟线    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">OLED 显示   </td><td class="markdownTableBodyNone">SDA   </td><td class="markdownTableBodyNone">PB8   </td><td class="markdownTableBodyNone">OLED 显示屏数据线    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">OLED 显示   </td><td class="markdownTableBodyNone">RES   </td><td class="markdownTableBodyNone">PB9   </td><td class="markdownTableBodyNone">OLED 显示屏复位引脚    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">OLED 显示   </td><td class="markdownTableBodyNone">DC   </td><td class="markdownTableBodyNone">PB14   </td><td class="markdownTableBodyNone">OLED 显示屏数据 / 命令控制引脚    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">OLED 显示   </td><td class="markdownTableBodyNone">CS   </td><td class="markdownTableBodyNone">PB15   </td><td class="markdownTableBodyNone">OLED 显示屏片选引脚    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">WS2812 LED 灯带   </td><td class="markdownTableBodyNone">DAT   </td><td class="markdownTableBodyNone">PA8   </td><td class="markdownTableBodyNone">控制 WS2812 LED 灯带的引脚    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">串口传输 - USART1   </td><td class="markdownTableBodyNone">TX   </td><td class="markdownTableBodyNone">PA9   </td><td class="markdownTableBodyNone">USART1 的发送引脚    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">串口传输 - USART1   </td><td class="markdownTableBodyNone">RX   </td><td class="markdownTableBodyNone">PA10   </td><td class="markdownTableBodyNone">USART1 的接收引脚    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">按键输入   </td><td class="markdownTableBodyNone">KEY1   </td><td class="markdownTableBodyNone">PA7   </td><td class="markdownTableBodyNone">按键1的接收引脚    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">按键输入   </td><td class="markdownTableBodyNone">KEY2   </td><td class="markdownTableBodyNone">PA11   </td><td class="markdownTableBodyNone">按键2的接收引脚    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">按键输入   </td><td class="markdownTableBodyNone">KEY3   </td><td class="markdownTableBodyNone">PA12   </td><td class="markdownTableBodyNone">按键3的接收引脚    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">蜂鸣器   </td><td class="markdownTableBodyNone">BEEP   </td><td class="markdownTableBodyNone">PB3   </td><td class="markdownTableBodyNone">蜂鸣器的发送引脚   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md5"></a>
+串口数据包格式</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+数据包格式：</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">字段名称   </th><th class="markdownTableHeadNone">描述    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_FrameHeader1</code>   </td><td class="markdownTableBodyNone">帧头1    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_FrameHeader2</code>   </td><td class="markdownTableBodyNone">帧头2    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD</code>   </td><td class="markdownTableBodyNone">命令字段    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_DATA_H</code>   </td><td class="markdownTableBodyNone">数据高字节    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_DATA_L</code>   </td><td class="markdownTableBodyNone">数据低字节    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CheckSum</code>   </td><td class="markdownTableBodyNone">校验和字段    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>SUM</code>   </td><td class="markdownTableBodyNone">字段总数（枚举值）   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md7"></a>
+发送命令：</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">常量名称   </th><th class="markdownTableHeadNone">值   </th><th class="markdownTableHeadNone">描述    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_NULL</code>   </td><td class="markdownTableBodyNone">0x00   </td><td class="markdownTableBodyNone">Null command (no operation)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_LED</code>   </td><td class="markdownTableBodyNone">0x01   </td><td class="markdownTableBodyNone">设置LED，低字节LED编号，高字节LED状态    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_MotorAPWM</code>   </td><td class="markdownTableBodyNone">0x12   </td><td class="markdownTableBodyNone">设置电机A PWM（仅手动模式有效）    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_MotorBPWM</code>   </td><td class="markdownTableBodyNone">0x22   </td><td class="markdownTableBodyNone">设置电机B PWM（仅手动模式有效）    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_MotorAGoalSpeed</code>   </td><td class="markdownTableBodyNone">0x13   </td><td class="markdownTableBodyNone">设置电机A 目标速度（仅自动模式有效）    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_MotorBGoalSpeed</code>   </td><td class="markdownTableBodyNone">0x23   </td><td class="markdownTableBodyNone">设置电机B 目标速度（仅自动模式有效）    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_MotorMode</code>   </td><td class="markdownTableBodyNone">0x04   </td><td class="markdownTableBodyNone">设置电机模式，1为手动模式，0为自动模式    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_Orientation</code>   </td><td class="markdownTableBodyNone">0x05   </td><td class="markdownTableBodyNone">设置模块安装方向，1为逆时针，0为顺时针    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_SwitchOLED</code>   </td><td class="markdownTableBodyNone">0x06   </td><td class="markdownTableBodyNone">设置OLED开关，1为开，0为关    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_SET_MotorStatue</code>   </td><td class="markdownTableBodyNone">0x07   </td><td class="markdownTableBodyNone">设置电机状态，1为启动，0为停止    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_ASK_ADC</code>   </td><td class="markdownTableBodyNone">0x08   </td><td class="markdownTableBodyNone">查询电池电量    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_ASK_MotorASpeed</code>   </td><td class="markdownTableBodyNone">0x09   </td><td class="markdownTableBodyNone">查询电机A速度    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>LINK_CMD_IN_ASK_MotorBSpeed</code>   </td><td class="markdownTableBodyNone">0x0A   </td><td class="markdownTableBodyNone">查询电机B速度   </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

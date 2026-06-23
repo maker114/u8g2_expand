@@ -1,0 +1,57 @@
+\doxysubsection{D\+:/\+STM32 Project/\+STM32\+F103/smart\+\_\+motor/\+USER/\+HARDWARE/board.h 文件参考}
+\hypertarget{board_8h}{}\label{board_8h}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/board.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/board.h}}
+
+
+板载驱动头文件  
+
+
+{\ttfamily \#include "{}delay.\+h"{}}\newline
+{\ttfamily \#include "{}usart.\+h"{}}\newline
+{\ttfamily \#include "{}sys.\+h"{}}\newline
+\doxysubsubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{board_8h_aeb7a7ba1ab7e0406f1b5ab36d579f585}\label{board_8h_aeb7a7ba1ab7e0406f1b5ab36d579f585} 
+\#define {\bfseries LED}~PCout(13)
+\begin{DoxyCompactList}\small\item\em LED引脚 \end{DoxyCompactList}\item 
+\Hypertarget{board_8h_af709a8c6c00929607ff2bb1f35e14754}\label{board_8h_af709a8c6c00929607ff2bb1f35e14754} 
+\#define {\bfseries KEY1}~GPIO\+\_\+\+Read\+Input\+Data\+Bit(GPIOA, GPIO\+\_\+\+Pin\+\_\+7)
+\begin{DoxyCompactList}\small\item\em KEY1引脚 \end{DoxyCompactList}\item 
+\Hypertarget{board_8h_a28139a703782c6706c0c53bda00572d3}\label{board_8h_a28139a703782c6706c0c53bda00572d3} 
+\#define {\bfseries KEY2}~GPIO\+\_\+\+Read\+Input\+Data\+Bit(GPIOA, GPIO\+\_\+\+Pin\+\_\+11)
+\begin{DoxyCompactList}\small\item\em KEY2引脚 \end{DoxyCompactList}\item 
+\Hypertarget{board_8h_a110ce38bd8be5f986c9032a3535156f7}\label{board_8h_a110ce38bd8be5f986c9032a3535156f7} 
+\#define {\bfseries KEY3}~GPIO\+\_\+\+Read\+Input\+Data\+Bit(GPIOA, GPIO\+\_\+\+Pin\+\_\+12)
+\begin{DoxyCompactList}\small\item\em KEY3引脚 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{board_8h_ae8d2d761b984f48c3dbb27dd32a8c119}\label{board_8h_ae8d2d761b984f48c3dbb27dd32a8c119} 
+void {\bfseries Board\+\_\+\+Init} (void)
+\item 
+\Hypertarget{board_8h_ab02f9e7316c2c1b92333ea0d3abd098a}\label{board_8h_ab02f9e7316c2c1b92333ea0d3abd098a} 
+int {\bfseries Board\+\_\+\+Key\+Scan} (void)
+\item 
+\Hypertarget{board_8h_a9bf3b36e2cff1be4f76547a9e7453067}\label{board_8h_a9bf3b36e2cff1be4f76547a9e7453067} 
+void {\bfseries Board\+\_\+\+LED\+\_\+\+Toggle} (void)
+\item 
+\Hypertarget{board_8h_a89a225d345c395378ab68410fe1106ff}\label{board_8h_a89a225d345c395378ab68410fe1106ff} 
+void {\bfseries Board\+\_\+\+BEEP\+\_\+\+Active\+Ms} (int ms)
+\item 
+\Hypertarget{board_8h_acd3b3703c394450104094f0f6fd89054}\label{board_8h_acd3b3703c394450104094f0f6fd89054} 
+void {\bfseries Board\+\_\+\+BEEP\+\_\+\+Continuous\+Active} (int time)
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{详细描述}
+板载驱动头文件 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/06-\/16 
+\end{DoxyDate}

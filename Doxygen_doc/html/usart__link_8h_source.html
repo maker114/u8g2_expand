@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMART MOTOR: D:/STM32 Project/STM32F103/smart_motor/USER/HARDWARE/usart_link.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="邻二溴苯(doxygen).png"/></td>
+  <td id="projectalign">
+   <div id="projectname">SMART MOTOR
+   </div>
+   <div id="projectbrief">Design by maker114</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('usart__link_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">usart_link.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="usart__link_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef __USARTLINK_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define __USARTLINK_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;stm32f10x.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;stm32f10x_usart.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a0a6b8db42b5fbd5c3cb3a884e7cf2f8f">   14</a></span><span class="preprocessor">#define LINK_FRAME_HEADER1 0xA1 </span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="usart__link_8h.html#af566e761407f57a60ec774684e030286">   15</a></span><span class="preprocessor">#define LINK_FRAME_HEADER2 0xB1 </span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bd">   17</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085">   19</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085">LINK_FrameHeader1</a>, </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195">   20</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195">LINK_FrameHeader2</a>, </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4">   21</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4">LINK_CMD</a>,          </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a">   22</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a">LINK_DATA_H</a>,       </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97">   23</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97">LINK_DATA_L</a>,       </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948">   24</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948">LINK_CheckSum</a>,     </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4">SUM</a>                </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4">   26</a></span>} <a class="code hl_enumeration" href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bd">linkpackenum</a>;</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981">   28</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    LINK_CMD_IN_NULL = 0x00,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d">   31</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d">LINK_CMD_IN_SET_LED</a> = 0x01,             </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002">   32</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002">LINK_CMD_IN_SET_MotorAPWM</a> = 0x12,       </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933">   33</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933">LINK_CMD_IN_SET_MotorBPWM</a> = 0x22,       </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff">   34</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff">LINK_CMD_IN_SET_MotorAGoalSpeed</a> = 0x13, </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f">   35</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f">LINK_CMD_IN_SET_MotorBGoalSpeed</a> = 0x23, </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b">   36</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b">LINK_CMD_IN_SET_MotorMode</a> = 0x04,       </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b">   37</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b">LINK_CMD_IN_SET_Orientation</a> = 0x05,     </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206">   38</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206">LINK_CMD_IN_SET_SwitchOLED</a> = 0x06,      </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1">   39</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1">LINK_CMD_IN_SET_MotorStatue</a> = 0x07,     </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9">   40</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9">LINK_CMD_IN_ASK_ADC</a> = 0x08,             </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6">   41</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6">LINK_CMD_IN_ASK_MotorASpeed</a> = 0x09,     </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51">   42</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51">LINK_CMD_IN_ASK_MotorBSpeed</a> = 0x0A,     </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>} <a class="code hl_enumeration" href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981">linkcmd_in</a>;                               </div>
+</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258">   45</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758">   47</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758">LINK_CMD_OUT_NULL</a> = 0x00,           </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884">   48</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884">LINK_CMD_OUT_RE_ADC</a> = 0x01,         </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109">   49</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109">LINK_CMD_OUT_RE_MotorASpeed</a> = 0x02, </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe">   50</a></span>    <a class="code hl_enumvalue" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe">LINK_CMD_OUT_RE_MotorBSpeed</a> = 0x03, </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>} <a class="code hl_enumeration" href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258">linkcmd_out</a>;                          </div>
+</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="usart__link_8h.html#a4aa1f631924e1fc725bd4baf6c03c1e8">LINK_Init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">void</span> <a class="code hl_function" href="usart__link_8h.html#a6a2a1b593c87ad63c2d36e83b473282e">LINK_SendPack</a>(uint8_t CMD, uint16_t DATA);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="usart__link_8h.html#a351dd3fb1e02a7f6584a098e0678941a">LINK_GetPack</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keywordtype">void</span> <a class="code hl_function" href="usart__link_8h.html#a9aefa85023944f884dde62716217f15a">LINK_HandleData</a>(uint8_t CMD, int16_t DATA);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981">linkcmd_in</a></div><div class="ttdeci">linkcmd_in</div><div class="ttdef"><b>Definition</b> usart_link.h:29</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d">LINK_CMD_IN_SET_LED</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_LED</div><div class="ttdoc">设置LED，低字节LED编号，高字节LED状态</div><div class="ttdef"><b>Definition</b> usart_link.h:31</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b">LINK_CMD_IN_SET_Orientation</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_Orientation</div><div class="ttdoc">设置模块安装方向，1为逆时针，0为顺时针</div><div class="ttdef"><b>Definition</b> usart_link.h:37</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51">LINK_CMD_IN_ASK_MotorBSpeed</a></div><div class="ttdeci">@ LINK_CMD_IN_ASK_MotorBSpeed</div><div class="ttdoc">查询电机B速度</div><div class="ttdef"><b>Definition</b> usart_link.h:42</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1">LINK_CMD_IN_SET_MotorStatue</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_MotorStatue</div><div class="ttdoc">设置电机状态，1为启动，0为停止</div><div class="ttdef"><b>Definition</b> usart_link.h:39</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206">LINK_CMD_IN_SET_SwitchOLED</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_SwitchOLED</div><div class="ttdoc">设置OLED开关，1为开，0为关</div><div class="ttdef"><b>Definition</b> usart_link.h:38</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6">LINK_CMD_IN_ASK_MotorASpeed</a></div><div class="ttdeci">@ LINK_CMD_IN_ASK_MotorASpeed</div><div class="ttdoc">查询电机A速度</div><div class="ttdef"><b>Definition</b> usart_link.h:41</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933">LINK_CMD_IN_SET_MotorBPWM</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_MotorBPWM</div><div class="ttdoc">设置电机B PWM（仅手动模式有效）</div><div class="ttdef"><b>Definition</b> usart_link.h:33</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002">LINK_CMD_IN_SET_MotorAPWM</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_MotorAPWM</div><div class="ttdoc">设置电机A PWM（仅手动模式有效）</div><div class="ttdef"><b>Definition</b> usart_link.h:32</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b">LINK_CMD_IN_SET_MotorMode</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_MotorMode</div><div class="ttdoc">设置电机模式，1为手动模式，0为自动模式</div><div class="ttdef"><b>Definition</b> usart_link.h:36</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff">LINK_CMD_IN_SET_MotorAGoalSpeed</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_MotorAGoalSpeed</div><div class="ttdoc">设置电机A 目标速度（仅自动模式有效）</div><div class="ttdef"><b>Definition</b> usart_link.h:34</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9">LINK_CMD_IN_ASK_ADC</a></div><div class="ttdeci">@ LINK_CMD_IN_ASK_ADC</div><div class="ttdoc">查询电池电量</div><div class="ttdef"><b>Definition</b> usart_link.h:40</div></div>
+<div class="ttc" id="ausart__link_8h_html_a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f"><div class="ttname"><a href="usart__link_8h.html#a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f">LINK_CMD_IN_SET_MotorBGoalSpeed</a></div><div class="ttdeci">@ LINK_CMD_IN_SET_MotorBGoalSpeed</div><div class="ttdoc">设置电机B 目标速度（仅自动模式有效）</div><div class="ttdef"><b>Definition</b> usart_link.h:35</div></div>
+<div class="ttc" id="ausart__link_8h_html_a351dd3fb1e02a7f6584a098e0678941a"><div class="ttname"><a href="usart__link_8h.html#a351dd3fb1e02a7f6584a098e0678941a">LINK_GetPack</a></div><div class="ttdeci">void LINK_GetPack(void)</div><div class="ttdoc">从USART3接收数据包并进行处理。</div><div class="ttdef"><b>Definition</b> usart_link.c:101</div></div>
+<div class="ttc" id="ausart__link_8h_html_a4aa1f631924e1fc725bd4baf6c03c1e8"><div class="ttname"><a href="usart__link_8h.html#a4aa1f631924e1fc725bd4baf6c03c1e8">LINK_Init</a></div><div class="ttdeci">void LINK_Init(void)</div><div class="ttdoc">初始化串口连接</div><div class="ttdef"><b>Definition</b> usart_link.c:21</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bd"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bd">linkpackenum</a></div><div class="ttdeci">linkpackenum</div><div class="ttdef"><b>Definition</b> usart_link.h:18</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195">LINK_FrameHeader2</a></div><div class="ttdeci">@ LINK_FrameHeader2</div><div class="ttdoc">帧头2</div><div class="ttdef"><b>Definition</b> usart_link.h:20</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4">LINK_CMD</a></div><div class="ttdeci">@ LINK_CMD</div><div class="ttdoc">指令</div><div class="ttdef"><b>Definition</b> usart_link.h:21</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4">SUM</a></div><div class="ttdeci">@ SUM</div><div class="ttdoc">数据包长度</div><div class="ttdef"><b>Definition</b> usart_link.h:25</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085">LINK_FrameHeader1</a></div><div class="ttdeci">@ LINK_FrameHeader1</div><div class="ttdoc">帧头1</div><div class="ttdef"><b>Definition</b> usart_link.h:19</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948">LINK_CheckSum</a></div><div class="ttdeci">@ LINK_CheckSum</div><div class="ttdoc">校验和</div><div class="ttdef"><b>Definition</b> usart_link.h:24</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a">LINK_DATA_H</a></div><div class="ttdeci">@ LINK_DATA_H</div><div class="ttdoc">数据高字节</div><div class="ttdef"><b>Definition</b> usart_link.h:22</div></div>
+<div class="ttc" id="ausart__link_8h_html_a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97"><div class="ttname"><a href="usart__link_8h.html#a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97">LINK_DATA_L</a></div><div class="ttdeci">@ LINK_DATA_L</div><div class="ttdoc">数据低字节</div><div class="ttdef"><b>Definition</b> usart_link.h:23</div></div>
+<div class="ttc" id="ausart__link_8h_html_a6a2a1b593c87ad63c2d36e83b473282e"><div class="ttname"><a href="usart__link_8h.html#a6a2a1b593c87ad63c2d36e83b473282e">LINK_SendPack</a></div><div class="ttdeci">void LINK_SendPack(uint8_t CMD, uint16_t DATA)</div><div class="ttdoc">发送数据包函数</div><div class="ttdef"><b>Definition</b> usart_link.c:63</div></div>
+<div class="ttc" id="ausart__link_8h_html_a9aefa85023944f884dde62716217f15a"><div class="ttname"><a href="usart__link_8h.html#a9aefa85023944f884dde62716217f15a">LINK_HandleData</a></div><div class="ttdeci">void LINK_HandleData(uint8_t CMD, int16_t DATA)</div><div class="ttdoc">处理接收到的数据命令。</div><div class="ttdef"><b>Definition</b> usart_link.c:168</div></div>
+<div class="ttc" id="ausart__link_8h_html_ad4ea5ff0a23742d3cadacace1cb64258"><div class="ttname"><a href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258">linkcmd_out</a></div><div class="ttdeci">linkcmd_out</div><div class="ttdef"><b>Definition</b> usart_link.h:46</div></div>
+<div class="ttc" id="ausart__link_8h_html_ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe"><div class="ttname"><a href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe">LINK_CMD_OUT_RE_MotorBSpeed</a></div><div class="ttdeci">@ LINK_CMD_OUT_RE_MotorBSpeed</div><div class="ttdoc">回传电机B速度(倍率=1)</div><div class="ttdef"><b>Definition</b> usart_link.h:50</div></div>
+<div class="ttc" id="ausart__link_8h_html_ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109"><div class="ttname"><a href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109">LINK_CMD_OUT_RE_MotorASpeed</a></div><div class="ttdeci">@ LINK_CMD_OUT_RE_MotorASpeed</div><div class="ttdoc">回传电机A速度(倍率=1)</div><div class="ttdef"><b>Definition</b> usart_link.h:49</div></div>
+<div class="ttc" id="ausart__link_8h_html_ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884"><div class="ttname"><a href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884">LINK_CMD_OUT_RE_ADC</a></div><div class="ttdeci">@ LINK_CMD_OUT_RE_ADC</div><div class="ttdoc">回传电池电量(倍率=100)</div><div class="ttdef"><b>Definition</b> usart_link.h:48</div></div>
+<div class="ttc" id="ausart__link_8h_html_ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758"><div class="ttname"><a href="usart__link_8h.html#ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758">LINK_CMD_OUT_NULL</a></div><div class="ttdeci">@ LINK_CMD_OUT_NULL</div><div class="ttdoc">无</div><div class="ttdef"><b>Definition</b> usart_link.h:47</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_931234a3c317cabd3591a0440e39c79e.html">STM32 Project</a></li><li class="navelem"><a class="el" href="dir_82108a37b70c37f7b91d93948c87819e.html">STM32F103</a></li><li class="navelem"><a class="el" href="dir_d8db963ecc3a1a1fa28ccac49b0b0c8e.html">smart_motor</a></li><li class="navelem"><a class="el" href="dir_0966961a14c6273ab6517ab9bed7249c.html">USER</a></li><li class="navelem"><a class="el" href="dir_4187daa317efe6e02eef8ed07dbc90ea.html">HARDWARE</a></li><li class="navelem"><a class="el" href="usart__link_8h.html">usart_link.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

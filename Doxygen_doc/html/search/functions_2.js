@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['motor_5fadc_5finit_0',['MOTOR_ADC_Init',['../motor_8c.html#a83057e85f9cdec405b9682b4fa33d22e',1,'motor.c']]],
+  ['motor_5fcounttim_5finit_1',['MOTOR_CountTIM_Init',['../motor_8c.html#a631d1b00db96e487c9599e3dc9d21e1a',1,'motor.c']]],
+  ['motor_5fencoder_5finit_2',['MOTOR_ENCODER_Init',['../motor_8c.html#a12b272cbb242fcb65c664e15e1185bae',1,'motor.c']]],
+  ['motor_5fget_5fbatteryvoltage_3',['MOTOR_Get_BatteryVoltage',['../motor_8c.html#ab09dceceef35523a1f2eb9269617a047',1,'motor.c']]],
+  ['motor_5fget_5fgoalspeed_4',['MOTOR_Get_GoalSpeed',['../motor_8c.html#a9a7677fa901c8471fab0fa33f82cd16a',1,'motor.c']]],
+  ['motor_5fget_5fpwm_5',['MOTOR_Get_PWM',['../motor_8c.html#abece6aafe009eccfa6aa8da4116fc580',1,'motor.c']]],
+  ['motor_5fget_5fspeed_6',['MOTOR_Get_Speed',['../motor_8c.html#a768a040b8a1197af009508315b120b17',1,'motor.c']]],
+  ['motor_5fgpio_5finit_7',['MOTOR_GPIO_Init',['../motor_8c.html#abe7bddbacc5b8d177bdb56bd5a611a8f',1,'motor.c']]],
+  ['motor_5finit_8',['MOTOR_Init',['../motor_8c.html#a9b3a7f55576e8e8d5747c3ee4c1d960b',1,'motor.c']]],
+  ['motor_5fpid_5fcalculate_9',['MOTOR_PID_Calculate',['../motor_8c.html#a562ded4725036b4a1e9e8b78249be75c',1,'motor.c']]],
+  ['motor_5fpid_5finit_10',['MOTOR_PID_Init',['../motor_8c.html#a037a8c43ac6224905da534c5d7e4aeb4',1,'motor.c']]],
+  ['motor_5fpid_5ftimloop_11',['MOTOR_PID_TimLoop',['../motor_8c.html#a4ac47ed6a01a6bf95ac7670dc2dea9f8',1,'motor.c']]],
+  ['motor_5fpwm_5finit_12',['MOTOR_PWM_Init',['../motor_8c.html#a814d46535cffab376d59f690eb9c3607',1,'motor.c']]],
+  ['motor_5fpwm_5fload_13',['MOTOR_PWM_Load',['../motor_8c.html#a65ebe2172b9afdf3ee81a634c204f50f',1,'motor.c']]],
+  ['motor_5fset_5foperatingmode_14',['MOTOR_Set_OperatingMode',['../motor_8c.html#a15a59e0b7dbafa7b18acae3a18ca020f',1,'motor.c']]],
+  ['motor_5fset_5forientation_15',['MOTOR_Set_Orientation',['../motor_8c.html#a1a1166679af4013a92e900494657835e',1,'motor.c']]],
+  ['motor_5fset_5fpidgoalspeed_16',['MOTOR_Set_PIDGoalSpeed',['../motor_8c.html#a57fb0df0ed1175e783d711c63312e8ea',1,'motor.c']]],
+  ['motor_5fset_5fpwm_17',['MOTOR_Set_PWM',['../motor_8c.html#a43cff0fc5b8b17f8f38c9ea441065d0f',1,'motor.c']]],
+  ['motor_5fset_5fstate_18',['MOTOR_Set_State',['../motor_8c.html#a367d84ee0731dbe7931ab8cd024a92b4',1,'motor.c']]]
+];

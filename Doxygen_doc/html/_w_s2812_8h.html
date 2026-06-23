@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMART MOTOR: D:/STM32 Project/STM32F103/smart_motor/USER/HARDWARE/WS2812.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="邻二溴苯(doxygen).png"/></td>
+  <td id="projectalign">
+   <div id="projectname">SMART MOTOR
+   </div>
+   <div id="projectbrief">Design by maker114</div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_w_s2812_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">WS2812.h 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>WS2812驱动头文件  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &quot;delay.h&quot;</code><br />
+<code>#include &quot;usart.h&quot;</code><br />
+<code>#include &quot;sys.h&quot;</code><br />
+</div>
+<p><a href="_w_s2812_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a41c77a95ae983c7074989fecb2731cab" id="r_a41c77a95ae983c7074989fecb2731cab"><td class="memItemLeft" align="right" valign="top"><a id="a41c77a95ae983c7074989fecb2731cab" name="a41c77a95ae983c7074989fecb2731cab"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_BLACK</b>&#160;&#160;&#160;0x000000</td></tr>
+<tr class="memdesc:a41c77a95ae983c7074989fecb2731cab"><td class="mdescLeft">&#160;</td><td class="mdescRight">黑色 <br /></td></tr>
+<tr class="separator:a41c77a95ae983c7074989fecb2731cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae35f50c594da263da1ec0f8581a219ef" id="r_ae35f50c594da263da1ec0f8581a219ef"><td class="memItemLeft" align="right" valign="top"><a id="ae35f50c594da263da1ec0f8581a219ef" name="ae35f50c594da263da1ec0f8581a219ef"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_WHITE</b>&#160;&#160;&#160;0xFFFFFF</td></tr>
+<tr class="memdesc:ae35f50c594da263da1ec0f8581a219ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">白色 <br /></td></tr>
+<tr class="separator:ae35f50c594da263da1ec0f8581a219ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb85ccdac82e7266ae54a8149a852de6" id="r_afb85ccdac82e7266ae54a8149a852de6"><td class="memItemLeft" align="right" valign="top"><a id="afb85ccdac82e7266ae54a8149a852de6" name="afb85ccdac82e7266ae54a8149a852de6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_RED</b>&#160;&#160;&#160;0x00FF00</td></tr>
+<tr class="memdesc:afb85ccdac82e7266ae54a8149a852de6"><td class="mdescLeft">&#160;</td><td class="mdescRight">红色 <br /></td></tr>
+<tr class="separator:afb85ccdac82e7266ae54a8149a852de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df698f054e11fb044e07eae8839455f" id="r_a1df698f054e11fb044e07eae8839455f"><td class="memItemLeft" align="right" valign="top"><a id="a1df698f054e11fb044e07eae8839455f" name="a1df698f054e11fb044e07eae8839455f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_GREEN</b>&#160;&#160;&#160;0xFF0000</td></tr>
+<tr class="memdesc:a1df698f054e11fb044e07eae8839455f"><td class="mdescLeft">&#160;</td><td class="mdescRight">绿色 <br /></td></tr>
+<tr class="separator:a1df698f054e11fb044e07eae8839455f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fddd5d59e8e7e6ea5fa46b67153ef31" id="r_a6fddd5d59e8e7e6ea5fa46b67153ef31"><td class="memItemLeft" align="right" valign="top"><a id="a6fddd5d59e8e7e6ea5fa46b67153ef31" name="a6fddd5d59e8e7e6ea5fa46b67153ef31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_BLUE</b>&#160;&#160;&#160;0x0000FF</td></tr>
+<tr class="memdesc:a6fddd5d59e8e7e6ea5fa46b67153ef31"><td class="mdescLeft">&#160;</td><td class="mdescRight">蓝色 <br /></td></tr>
+<tr class="separator:a6fddd5d59e8e7e6ea5fa46b67153ef31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33eed6382ae50c2b4c78ae7a527e49b0" id="r_a33eed6382ae50c2b4c78ae7a527e49b0"><td class="memItemLeft" align="right" valign="top"><a id="a33eed6382ae50c2b4c78ae7a527e49b0" name="a33eed6382ae50c2b4c78ae7a527e49b0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_YELLOW</b>&#160;&#160;&#160;0xFFFF00</td></tr>
+<tr class="memdesc:a33eed6382ae50c2b4c78ae7a527e49b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">黄色 <br /></td></tr>
+<tr class="separator:a33eed6382ae50c2b4c78ae7a527e49b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88415628d26d4a1287d8c4b24726835f" id="r_a88415628d26d4a1287d8c4b24726835f"><td class="memItemLeft" align="right" valign="top"><a id="a88415628d26d4a1287d8c4b24726835f" name="a88415628d26d4a1287d8c4b24726835f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_PURPLE</b>&#160;&#160;&#160;0x00FFFF</td></tr>
+<tr class="memdesc:a88415628d26d4a1287d8c4b24726835f"><td class="mdescLeft">&#160;</td><td class="mdescRight">紫色 <br /></td></tr>
+<tr class="separator:a88415628d26d4a1287d8c4b24726835f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9524bdb452efbeffaf6b3759a8e3305" id="r_ab9524bdb452efbeffaf6b3759a8e3305"><td class="memItemLeft" align="right" valign="top"><a id="ab9524bdb452efbeffaf6b3759a8e3305" name="ab9524bdb452efbeffaf6b3759a8e3305"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_CYAN</b>&#160;&#160;&#160;0xFF00FF</td></tr>
+<tr class="memdesc:ab9524bdb452efbeffaf6b3759a8e3305"><td class="mdescLeft">&#160;</td><td class="mdescRight">青色 <br /></td></tr>
+<tr class="separator:ab9524bdb452efbeffaf6b3759a8e3305"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e62445bd894b5bb9a2c7fe653587f5" id="r_a15e62445bd894b5bb9a2c7fe653587f5"><td class="memItemLeft" align="right" valign="top"><a id="a15e62445bd894b5bb9a2c7fe653587f5" name="a15e62445bd894b5bb9a2c7fe653587f5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>WS2812_ICEBLUE</b>&#160;&#160;&#160;0xFF99FF</td></tr>
+<tr class="memdesc:a15e62445bd894b5bb9a2c7fe653587f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">雪蓝色 <br /></td></tr>
+<tr class="separator:a15e62445bd894b5bb9a2c7fe653587f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ab01500f08920070b4863b61e1bf16dd6" id="r_ab01500f08920070b4863b61e1bf16dd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#ab01500f08920070b4863b61e1bf16dd6">WS2812_init</a> (uint8_t NUM)</td></tr>
+<tr class="memdesc:ab01500f08920070b4863b61e1bf16dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化WS2812引脚并定义灯的数量  <br /></td></tr>
+<tr class="separator:ab01500f08920070b4863b61e1bf16dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfeb0ddba57046aa0087ac4bbad4398e" id="r_abfeb0ddba57046aa0087ac4bbad4398e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#abfeb0ddba57046aa0087ac4bbad4398e">ws281x_delay</a> (unsigned int delay_num)</td></tr>
+<tr class="memdesc:abfeb0ddba57046aa0087ac4bbad4398e"><td class="mdescLeft">&#160;</td><td class="mdescRight">ws281x模块用到的延时函数  <br /></td></tr>
+<tr class="separator:abfeb0ddba57046aa0087ac4bbad4398e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab922d66a8e90ee1a7cb564b4bbf1c76c" id="r_ab922d66a8e90ee1a7cb564b4bbf1c76c"><td class="memItemLeft" align="right" valign="top"><a id="ab922d66a8e90ee1a7cb564b4bbf1c76c" name="ab922d66a8e90ee1a7cb564b4bbf1c76c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ws281x_sendLow</b> (void)</td></tr>
+<tr class="memdesc:ab922d66a8e90ee1a7cb564b4bbf1c76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据WS281x芯片时序图编写的发送0码，1码与RESET码的函数 <br /></td></tr>
+<tr class="separator:ab922d66a8e90ee1a7cb564b4bbf1c76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf64701e5f6fc617c581089d9895152a" id="r_adf64701e5f6fc617c581089d9895152a"><td class="memItemLeft" align="right" valign="top"><a id="adf64701e5f6fc617c581089d9895152a" name="adf64701e5f6fc617c581089d9895152a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ws281x_sendHigh</b> (void)</td></tr>
+<tr class="memdesc:adf64701e5f6fc617c581089d9895152a"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送1码 <br /></td></tr>
+<tr class="separator:adf64701e5f6fc617c581089d9895152a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78c2ad1bc3b9808f5a23ff38e0a386a" id="r_ab78c2ad1bc3b9808f5a23ff38e0a386a"><td class="memItemLeft" align="right" valign="top"><a id="ab78c2ad1bc3b9808f5a23ff38e0a386a" name="ab78c2ad1bc3b9808f5a23ff38e0a386a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>ws2811_Reset</b> (void)</td></tr>
+<tr class="memdesc:ab78c2ad1bc3b9808f5a23ff38e0a386a"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送RESET码 <br /></td></tr>
+<tr class="separator:ab78c2ad1bc3b9808f5a23ff38e0a386a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d7c228de344746df85a26ce7de7e67f" id="r_a1d7c228de344746df85a26ce7de7e67f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#a1d7c228de344746df85a26ce7de7e67f">ws281x_sendOne</a> (uint32_t dat)</td></tr>
+<tr class="memdesc:a1d7c228de344746df85a26ce7de7e67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">发送点亮一个灯的数据（即24bit）  <br /></td></tr>
+<tr class="separator:a1d7c228de344746df85a26ce7de7e67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b4458a436e4cbc44edcfa3104589fe2" id="r_a4b4458a436e4cbc44edcfa3104589fe2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#a4b4458a436e4cbc44edcfa3104589fe2">WS2812_SendColor</a> (uint8_t NUM, uint8_t R, uint8_t G, uint8_t B)</td></tr>
+<tr class="memdesc:a4b4458a436e4cbc44edcfa3104589fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">以RGB的形式发送颜色  <br /></td></tr>
+<tr class="separator:a4b4458a436e4cbc44edcfa3104589fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb8b439537b3fc6fe6660af38d982ef" id="r_a2eb8b439537b3fc6fe6660af38d982ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#a2eb8b439537b3fc6fe6660af38d982ef">WS2812_SendColor_u32</a> (uint8_t NUM, uint32_t Color)</td></tr>
+<tr class="memdesc:a2eb8b439537b3fc6fe6660af38d982ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">以24位GRB的形式发送颜色  <br /></td></tr>
+<tr class="separator:a2eb8b439537b3fc6fe6660af38d982ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4c523689bd7d358725bc6a1924b5d7" id="r_acf4c523689bd7d358725bc6a1924b5d7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#acf4c523689bd7d358725bc6a1924b5d7">WS2812_Wheel</a> (uint32_t pos)</td></tr>
+<tr class="memdesc:acf4c523689bd7d358725bc6a1924b5d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">色彩轮盘（256色）  <br /></td></tr>
+<tr class="separator:acf4c523689bd7d358725bc6a1924b5d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4290cbd5ce4cf1bd24a809759108b1b7" id="r_a4290cbd5ce4cf1bd24a809759108b1b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_w_s2812_8h.html#a4290cbd5ce4cf1bd24a809759108b1b7">WS2812_StreamColor</a> (u8 pos)</td></tr>
+<tr class="memdesc:a4290cbd5ce4cf1bd24a809759108b1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">让所有灯珠显示以pos为起始的颜色流，在色轮上以步长step递增  <br /></td></tr>
+<tr class="separator:a4290cbd5ce4cf1bd24a809759108b1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>WS2812驱动头文件 </p>
+<dl class="section author"><dt>作者</dt><dd>maker114 </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2025-06-16 </dd></dl>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="ab01500f08920070b4863b61e1bf16dd6" name="ab01500f08920070b4863b61e1bf16dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab01500f08920070b4863b61e1bf16dd6">&#9670;&#160;</a></span>WS2812_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WS2812_init </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>NUM</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化WS2812引脚并定义灯的数量 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NUM</td><td>LED灯数量 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4b4458a436e4cbc44edcfa3104589fe2" name="a4b4458a436e4cbc44edcfa3104589fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4458a436e4cbc44edcfa3104589fe2">&#9670;&#160;</a></span>WS2812_SendColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WS2812_SendColor </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>NUM</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>R</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>G</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>B</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>以RGB的形式发送颜色 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NUM</td><td>对应灯珠的编号，从0开始 </td></tr>
+    <tr><td class="paramname">R</td><td>R通道颜色值 </td></tr>
+    <tr><td class="paramname">G</td><td>G通道颜色值 </td></tr>
+    <tr><td class="paramname">B</td><td>B通道颜色值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2eb8b439537b3fc6fe6660af38d982ef" name="a2eb8b439537b3fc6fe6660af38d982ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eb8b439537b3fc6fe6660af38d982ef">&#9670;&#160;</a></span>WS2812_SendColor_u32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WS2812_SendColor_u32 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>NUM</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>Color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>以24位GRB的形式发送颜色 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">NUM</td><td>对应灯珠的编号，从0开始 </td></tr>
+    <tr><td class="paramname">Color</td><td>颜色的GRB编码（24位） </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>常常搭配WS2812_Wheel函数使用 </dd></dl>
+
+</div>
+</div>
+<a id="a4290cbd5ce4cf1bd24a809759108b1b7" name="a4290cbd5ce4cf1bd24a809759108b1b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4290cbd5ce4cf1bd24a809759108b1b7">&#9670;&#160;</a></span>WS2812_StreamColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WS2812_StreamColor </td>
+          <td>(</td>
+          <td class="paramtype">u8&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>让所有灯珠显示以pos为起始的颜色流，在色轮上以步长step递增 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>起始颜色 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acf4c523689bd7d358725bc6a1924b5d7" name="acf4c523689bd7d358725bc6a1924b5d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf4c523689bd7d358725bc6a1924b5d7">&#9670;&#160;</a></span>WS2812_Wheel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t WS2812_Wheel </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>色彩轮盘（256色） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>颜色值 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>uint32_t 输出的GRB编码，搭配WS2812_SendColor_u32函数使用 </dd></dl>
+
+</div>
+</div>
+<a id="abfeb0ddba57046aa0087ac4bbad4398e" name="abfeb0ddba57046aa0087ac4bbad4398e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfeb0ddba57046aa0087ac4bbad4398e">&#9670;&#160;</a></span>ws281x_delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ws281x_delay </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>delay_num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ws281x模块用到的延时函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delay_num</td><td>:延时数 （示波器测量延时时间 = delay_num * 440ns ） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d7c228de344746df85a26ce7de7e67f" name="a1d7c228de344746df85a26ce7de7e67f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d7c228de344746df85a26ce7de7e67f">&#9670;&#160;</a></span>ws281x_sendOne()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ws281x_sendOne </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>dat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>发送点亮一个灯的数据（即24bit） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dat：颜色的24位编码</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>不包含帧间延时 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_931234a3c317cabd3591a0440e39c79e.html">STM32 Project</a></li><li class="navelem"><a class="el" href="dir_82108a37b70c37f7b91d93948c87819e.html">STM32F103</a></li><li class="navelem"><a class="el" href="dir_d8db963ecc3a1a1fa28ccac49b0b0c8e.html">smart_motor</a></li><li class="navelem"><a class="el" href="dir_0966961a14c6273ab6517ab9bed7249c.html">USER</a></li><li class="navelem"><a class="el" href="dir_4187daa317efe6e02eef8ed07dbc90ea.html">HARDWARE</a></li><li class="navelem"><a class="el" href="_w_s2812_8h.html">WS2812.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

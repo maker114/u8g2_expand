@@ -1,0 +1,119 @@
+\doxysubsection{D\+:/\+STM32 Project/\+STM32\+F103/smart\+\_\+motor/\+USER/\+HARDWARE/usart\+\_\+link.c 文件参考}
+\hypertarget{usart__link_8c}{}\label{usart__link_8c}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.c@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.c}}
+
+
+串口通信协议程序  
+
+
+{\ttfamily \#include "{}usart\+\_\+link.\+h"{}}\newline
+{\ttfamily \#include "{}WS2812.\+h"{}}\newline
+{\ttfamily \#include "{}motor.\+h"{}}\newline
+{\ttfamily \#include "{}oled.\+h"{}}\newline
+{\ttfamily \#include "{}board.\+h"{}}\newline
+{\ttfamily \#include "{}usart.\+h"{}}\newline
+\doxysubsubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{usart__link_8c_a4aa1f631924e1fc725bd4baf6c03c1e8}{LINK\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化串口连接 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart__link_8c_a6a2a1b593c87ad63c2d36e83b473282e}{LINK\+\_\+\+Send\+Pack}} (uint8\+\_\+t CMD, uint16\+\_\+t DATA)
+\begin{DoxyCompactList}\small\item\em 发送数据包函数 \end{DoxyCompactList}\item 
+\Hypertarget{usart__link_8c_a0d108a3468b2051548183ee5ca2158a0}\label{usart__link_8c_a0d108a3468b2051548183ee5ca2158a0} 
+void {\bfseries USART3\+\_\+\+IRQHandler} (void)
+\begin{DoxyCompactList}\small\item\em 串口中断处理函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart__link_8c_a351dd3fb1e02a7f6584a098e0678941a}{LINK\+\_\+\+Get\+Pack}} (void)
+\begin{DoxyCompactList}\small\item\em 从\+USART3接收数据包并进行处理。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{usart__link_8c_a9aefa85023944f884dde62716217f15a}{LINK\+\_\+\+Handle\+Data}} (uint8\+\_\+t CMD, int16\+\_\+t DATA)
+\begin{DoxyCompactList}\small\item\em 处理接收到的数据命令。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{usart__link_8c_a3711d375231bb96a3fdc79a6fd45c49d}\label{usart__link_8c_a3711d375231bb96a3fdc79a6fd45c49d} 
+uint8\+\_\+t {\bfseries packet} \mbox{[}\mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4}{SUM}}\mbox{]}
+\item 
+\Hypertarget{usart__link_8c_a034f2c5849f81c13fc2111da10c53b1e}\label{usart__link_8c_a034f2c5849f81c13fc2111da10c53b1e} 
+uint8\+\_\+t {\bfseries Get\+Pack\+\_\+\+Buffer} \mbox{[}\mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4}{SUM}}\mbox{]}
+\item 
+\Hypertarget{usart__link_8c_ade5b9514cfcadb973e9277c2017b9e2c}\label{usart__link_8c_ade5b9514cfcadb973e9277c2017b9e2c} 
+uint8\+\_\+t {\bfseries Get\+Pack\+\_\+\+DATA} \mbox{[}\mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4}{SUM}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{详细描述}
+串口通信协议程序 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/05-\/22 
+\end{DoxyDate}
+
+
+\doxysubsubsection{函数说明}
+\Hypertarget{usart__link_8c_a351dd3fb1e02a7f6584a098e0678941a}\label{usart__link_8c_a351dd3fb1e02a7f6584a098e0678941a} 
+\index{usart\_link.c@{usart\_link.c}!LINK\_GetPack@{LINK\_GetPack}}
+\index{LINK\_GetPack@{LINK\_GetPack}!usart\_link.c@{usart\_link.c}}
+\doxyparagraph{\texorpdfstring{LINK\_GetPack()}{LINK\_GetPack()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Get\+Pack (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+从\+USART3接收数据包并进行处理。 
+
+\begin{DoxyNote}{注解}
+该函数通过\+USART3接收一个数据包，包括帧头、命令、数据和高低字节，并进行校验。如果校验成功，则处理数据；否则，丢弃数据包。 
+\end{DoxyNote}
+\Hypertarget{usart__link_8c_a9aefa85023944f884dde62716217f15a}\label{usart__link_8c_a9aefa85023944f884dde62716217f15a} 
+\index{usart\_link.c@{usart\_link.c}!LINK\_HandleData@{LINK\_HandleData}}
+\index{LINK\_HandleData@{LINK\_HandleData}!usart\_link.c@{usart\_link.c}}
+\doxyparagraph{\texorpdfstring{LINK\_HandleData()}{LINK\_HandleData()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Handle\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{CMD,  }\item[{int16\+\_\+t}]{DATA }\end{DoxyParamCaption})}
+
+
+
+处理接收到的数据命令。 
+
+\begin{DoxyNote}{注解}
+根据接收到的命令字节（\+CMD）和数据（\+DATA），执行相应的操作。 
+\end{DoxyNote}
+
+\begin{DoxyParams}{参数}
+{\em CMD} & 命令字节，指定要执行的操作。 \\
+\hline
+{\em DATA} & 数据，与命令相关联的具体数据。 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{usart__link_8c_a4aa1f631924e1fc725bd4baf6c03c1e8}\label{usart__link_8c_a4aa1f631924e1fc725bd4baf6c03c1e8} 
+\index{usart\_link.c@{usart\_link.c}!LINK\_Init@{LINK\_Init}}
+\index{LINK\_Init@{LINK\_Init}!usart\_link.c@{usart\_link.c}}
+\doxyparagraph{\texorpdfstring{LINK\_Init()}{LINK\_Init()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+初始化串口连接 
+
+\begin{DoxyNote}{注解}
+使用串口三接收 
+\end{DoxyNote}
+\Hypertarget{usart__link_8c_a6a2a1b593c87ad63c2d36e83b473282e}\label{usart__link_8c_a6a2a1b593c87ad63c2d36e83b473282e} 
+\index{usart\_link.c@{usart\_link.c}!LINK\_SendPack@{LINK\_SendPack}}
+\index{LINK\_SendPack@{LINK\_SendPack}!usart\_link.c@{usart\_link.c}}
+\doxyparagraph{\texorpdfstring{LINK\_SendPack()}{LINK\_SendPack()}}
+{\footnotesize\ttfamily void LINK\+\_\+\+Send\+Pack (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{CMD,  }\item[{uint16\+\_\+t}]{DATA }\end{DoxyParamCaption})}
+
+
+
+发送数据包函数 
+
+
+\begin{DoxyParams}{参数}
+{\em CMD} & 命令字节 \\
+\hline
+{\em DATA} & 16位数据 \\
+\hline
+\end{DoxyParams}

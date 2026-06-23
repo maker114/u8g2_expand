@@ -1,0 +1,440 @@
+\doxysubsection{D\+:/\+STM32 Project/\+STM32\+F103/smart\+\_\+motor/\+USER/\+HARDWARE/motor.c 文件参考}
+\hypertarget{motor_8c}{}\label{motor_8c}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/motor.c@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/motor.c}}
+
+
+电机驱动函数  
+
+
+{\ttfamily \#include "{}stm32f10x.\+h"{}}\newline
+{\ttfamily \#include "{}motor.\+h"{}}\newline
+{\ttfamily \#include "{}board.\+h"{}}\newline
+{\ttfamily \#include "{}usart.\+h"{}}\newline
+\doxysubsubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{motor_8c_a51741dbf9b0de1b8b56b5a6f1ef2e694}\label{motor_8c_a51741dbf9b0de1b8b56b5a6f1ef2e694} 
+void {\bfseries TIM1\+\_\+\+UP\+\_\+\+IRQHandler} (void)
+\begin{DoxyCompactList}\small\item\em 定时器1中断服务函数 \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_a9b3a7f55576e8e8d5747c3ee4c1d960b}\label{motor_8c_a9b3a7f55576e8e8d5747c3ee4c1d960b} 
+void {\bfseries MOTOR\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em 总初始化，仅调用一次此函数即可完成全部初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a83057e85f9cdec405b9682b4fa33d22e}{MOTOR\+\_\+\+ADC\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化电池电压检测\+ADC \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_abe7bddbacc5b8d177bdb56bd5a611a8f}{MOTOR\+\_\+\+GPIO\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 电机\+GPIO初始化 \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_a631d1b00db96e487c9599e3dc9d21e1a}\label{motor_8c_a631d1b00db96e487c9599e3dc9d21e1a} 
+void {\bfseries MOTOR\+\_\+\+Count\+TIM\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em 转速定时器初始化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a367d84ee0731dbe7931ab8cd024a92b4}{MOTOR\+\_\+\+Set\+\_\+\+State}} (int Motor\+\_\+\+Channel, int Motor\+\_\+\+State)
+\begin{DoxyCompactList}\small\item\em 选择电机前进方向，一般由内部调用 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a1a1166679af4013a92e900494657835e}{MOTOR\+\_\+\+Set\+\_\+\+Orientation}} (uint8\+\_\+t Orientation)
+\begin{DoxyCompactList}\small\item\em 设置小车安装方向 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a15a59e0b7dbafa7b18acae3a18ca020f}{MOTOR\+\_\+\+Set\+\_\+\+Operating\+Mode}} (uint8\+\_\+t Mode)
+\begin{DoxyCompactList}\small\item\em 设置操作模式 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a43cff0fc5b8b17f8f38c9ea441065d0f}{MOTOR\+\_\+\+Set\+\_\+\+PWM}} (uint8\+\_\+t Motor\+\_\+channel, int PWM)
+\begin{DoxyCompactList}\small\item\em 用来设置电机转动速度，自动设置旋转方向 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a57fb0df0ed1175e783d711c63312e8ea}{MOTOR\+\_\+\+Set\+\_\+\+PIDGoal\+Speed}} (uint8\+\_\+t Motor\+\_\+channel, float Goal\+\_\+\+Speed)
+\begin{DoxyCompactList}\small\item\em 设置\+PID目标速度 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{motor_8c_a768a040b8a1197af009508315b120b17}{MOTOR\+\_\+\+Get\+\_\+\+Speed}} (int Motor\+\_\+\+Channel)
+\begin{DoxyCompactList}\small\item\em 获取电机转速 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{motor_8c_abece6aafe009eccfa6aa8da4116fc580}{MOTOR\+\_\+\+Get\+\_\+\+PWM}} (int Motor\+\_\+\+Channel)
+\begin{DoxyCompactList}\small\item\em 获取电机\+PWM值 \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{motor_8c_ab09dceceef35523a1f2eb9269617a047}{MOTOR\+\_\+\+Get\+\_\+\+Battery\+Voltage}} (void)
+\begin{DoxyCompactList}\small\item\em 获取电池电压 \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{motor_8c_a9a7677fa901c8471fab0fa33f82cd16a}{MOTOR\+\_\+\+Get\+\_\+\+Goal\+Speed}} (uint8\+\_\+t Motor\+\_\+\+Channel)
+\begin{DoxyCompactList}\small\item\em 获取电机目标速度（自动模式下有效） \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a12b272cbb242fcb65c664e15e1185bae}{MOTOR\+\_\+\+ENCODER\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化电机编码器 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a814d46535cffab376d59f690eb9c3607}{MOTOR\+\_\+\+PWM\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em 初始化电机驱动\+PWM \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a65ebe2172b9afdf3ee81a634c204f50f}{MOTOR\+\_\+\+PWM\+\_\+\+Load}} (uint8\+\_\+t Motor\+\_\+\+Channel, uint16\+\_\+t PWM)
+\begin{DoxyCompactList}\small\item\em 装载电机\+PWM \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_a037a8c43ac6224905da534c5d7e4aeb4}\label{motor_8c_a037a8c43ac6224905da534c5d7e4aeb4} 
+void {\bfseries MOTOR\+\_\+\+PID\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em 初始化\+PID参数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a562ded4725036b4a1e9e8b78249be75c}{MOTOR\+\_\+\+PID\+\_\+\+Calculate}} (MOTOR\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}Motor\+Structure)
+\begin{DoxyCompactList}\small\item\em PID计算函数 \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_a4ac47ed6a01a6bf95ac7670dc2dea9f8}\label{motor_8c_a4ac47ed6a01a6bf95ac7670dc2dea9f8} 
+void {\bfseries MOTOR\+\_\+\+PID\+\_\+\+Tim\+Loop} (void)
+\begin{DoxyCompactList}\small\item\em PID定时器循环 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{motor_8c_a3da956b1aa9802bb2eab8f1abf668b87}{Filter\+\_\+\+Init}} (Fast\+Response\+Filter \texorpdfstring{$\ast$}{*}filter, float alpha, float init\+\_\+value)
+\begin{DoxyCompactList}\small\item\em 初始化滤波器(内部调用) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{motor_8c_a344389181533718b0965a8df949077e5}{Filter\+\_\+\+Process}} (Fast\+Response\+Filter \texorpdfstring{$\ast$}{*}filter, float raw\+\_\+value)
+\begin{DoxyCompactList}\small\item\em 快速响应滤波器处理函数(内部调用) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{motor_8c_a6c711ce98ed96187d842062a5ff35eb1}\label{motor_8c_a6c711ce98ed96187d842062a5ff35eb1} 
+MOTOR\+\_\+\+Type\+Def {\bfseries Motor\+Structure\+\_\+A}
+\begin{DoxyCompactList}\small\item\em A通道电机结构体 \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_aeff298f91376572d1bffa99414755ad0}\label{motor_8c_aeff298f91376572d1bffa99414755ad0} 
+MOTOR\+\_\+\+Type\+Def {\bfseries Motor\+Structure\+\_\+B}
+\begin{DoxyCompactList}\small\item\em B通道电机结构体 \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_a02b72a8107e17af08faa7120b3278de0}\label{motor_8c_a02b72a8107e17af08faa7120b3278de0} 
+Fast\+Response\+Filter {\bfseries filter\+\_\+A}
+\begin{DoxyCompactList}\small\item\em A通道滤波器 \end{DoxyCompactList}\item 
+\Hypertarget{motor_8c_aff426ab4c5bbc38c8baaf18477317f52}\label{motor_8c_aff426ab4c5bbc38c8baaf18477317f52} 
+Fast\+Response\+Filter {\bfseries filter\+\_\+B}
+\begin{DoxyCompactList}\small\item\em B通道滤波器 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{详细描述}
+电机驱动函数 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/05-\/20 
+\end{DoxyDate}
+\begin{DoxyNote}{注解}
+github仓库详见\+:\href{https://github.com/maker114/SMART_MOTOR}{\texttt{ SMART MOTOR}} 
+\end{DoxyNote}
+
+
+\doxysubsubsection{函数说明}
+\Hypertarget{motor_8c_a3da956b1aa9802bb2eab8f1abf668b87}\label{motor_8c_a3da956b1aa9802bb2eab8f1abf668b87} 
+\index{motor.c@{motor.c}!Filter\_Init@{Filter\_Init}}
+\index{Filter\_Init@{Filter\_Init}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{Filter\_Init()}{Filter\_Init()}}
+{\footnotesize\ttfamily void Filter\+\_\+\+Init (\begin{DoxyParamCaption}\item[{Fast\+Response\+Filter \texorpdfstring{$\ast$}{*}}]{filter,  }\item[{float}]{alpha,  }\item[{float}]{init\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+初始化滤波器(内部调用) 
+
+
+\begin{DoxyParams}{参数}
+{\em filter} & 滤波器实例指针 \\
+\hline
+{\em alpha} & 滤波系数(建议0.3-\/0.\+7) \\
+\hline
+{\em init\+\_\+value} & 初始值 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{motor_8c_a344389181533718b0965a8df949077e5}\label{motor_8c_a344389181533718b0965a8df949077e5} 
+\index{motor.c@{motor.c}!Filter\_Process@{Filter\_Process}}
+\index{Filter\_Process@{Filter\_Process}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{Filter\_Process()}{Filter\_Process()}}
+{\footnotesize\ttfamily int Filter\+\_\+\+Process (\begin{DoxyParamCaption}\item[{Fast\+Response\+Filter \texorpdfstring{$\ast$}{*}}]{filter,  }\item[{float}]{raw\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+快速响应滤波器处理函数(内部调用) 
+
+
+\begin{DoxyParams}{参数}
+{\em filter} & 滤波器实例指针 \\
+\hline
+{\em raw\+\_\+value} & 原始输入值 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+滤波后的值 
+\end{DoxyReturn}
+\Hypertarget{motor_8c_a83057e85f9cdec405b9682b4fa33d22e}\label{motor_8c_a83057e85f9cdec405b9682b4fa33d22e} 
+\index{motor.c@{motor.c}!MOTOR\_ADC\_Init@{MOTOR\_ADC\_Init}}
+\index{MOTOR\_ADC\_Init@{MOTOR\_ADC\_Init}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_ADC\_Init()}{MOTOR\_ADC\_Init()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+ADC\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+初始化电池电压检测\+ADC 
+
+\begin{DoxyNote}{注解}
+通道：\+ADC1-\/\+Channel2 
+
+引脚：\+PA2 
+\end{DoxyNote}
+\Hypertarget{motor_8c_a12b272cbb242fcb65c664e15e1185bae}\label{motor_8c_a12b272cbb242fcb65c664e15e1185bae} 
+\index{motor.c@{motor.c}!MOTOR\_ENCODER\_Init@{MOTOR\_ENCODER\_Init}}
+\index{MOTOR\_ENCODER\_Init@{MOTOR\_ENCODER\_Init}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_ENCODER\_Init()}{MOTOR\_ENCODER\_Init()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+ENCODER\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+初始化电机编码器 
+
+\begin{DoxyNote}{注解}
+
+\begin{DoxyItemize}
+\item 定时器：\+TIM2/\+TIM4
+\item 引脚：\+PA0/\+PA1/\+PB6/\+PB7
+\item 通道映射：
+\begin{DoxyItemize}
+\item MOTOR\+\_\+\+A：\+TIM2
+\begin{DoxyItemize}
+\item PA0-\/\texorpdfstring{$>$}{>}EA-\/A
+\item PA1-\/\texorpdfstring{$>$}{>}EA-\/B
+\end{DoxyItemize}
+\item MOTOR\+\_\+\+B：\+TIM4
+\begin{DoxyItemize}
+\item PB6-\/\texorpdfstring{$>$}{>}EB-\/A
+\item PB7-\/\texorpdfstring{$>$}{>}EB-\/B 
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{motor_8c_ab09dceceef35523a1f2eb9269617a047}\label{motor_8c_ab09dceceef35523a1f2eb9269617a047} 
+\index{motor.c@{motor.c}!MOTOR\_Get\_BatteryVoltage@{MOTOR\_Get\_BatteryVoltage}}
+\index{MOTOR\_Get\_BatteryVoltage@{MOTOR\_Get\_BatteryVoltage}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Get\_BatteryVoltage()}{MOTOR\_Get\_BatteryVoltage()}}
+{\footnotesize\ttfamily float MOTOR\+\_\+\+Get\+\_\+\+Battery\+Voltage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+获取电池电压 
+
+\begin{DoxyReturn}{返回}
+float 电池电压返回值 
+\end{DoxyReturn}
+\Hypertarget{motor_8c_a9a7677fa901c8471fab0fa33f82cd16a}\label{motor_8c_a9a7677fa901c8471fab0fa33f82cd16a} 
+\index{motor.c@{motor.c}!MOTOR\_Get\_GoalSpeed@{MOTOR\_Get\_GoalSpeed}}
+\index{MOTOR\_Get\_GoalSpeed@{MOTOR\_Get\_GoalSpeed}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Get\_GoalSpeed()}{MOTOR\_Get\_GoalSpeed()}}
+{\footnotesize\ttfamily float MOTOR\+\_\+\+Get\+\_\+\+Goal\+Speed (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Motor\+\_\+\+Channel }\end{DoxyParamCaption})}
+
+
+
+获取电机目标速度（自动模式下有效） 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+\+Channel} & 电机通道 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+float PID目标速度 
+\end{DoxyReturn}
+\Hypertarget{motor_8c_abece6aafe009eccfa6aa8da4116fc580}\label{motor_8c_abece6aafe009eccfa6aa8da4116fc580} 
+\index{motor.c@{motor.c}!MOTOR\_Get\_PWM@{MOTOR\_Get\_PWM}}
+\index{MOTOR\_Get\_PWM@{MOTOR\_Get\_PWM}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Get\_PWM()}{MOTOR\_Get\_PWM()}}
+{\footnotesize\ttfamily int MOTOR\+\_\+\+Get\+\_\+\+PWM (\begin{DoxyParamCaption}\item[{int}]{Motor\+\_\+\+Channel }\end{DoxyParamCaption})}
+
+
+
+获取电机\+PWM值 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+\+Channel} & 电机通道 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+int 返回电机\+PWM值
+\begin{DoxyItemize}
+\item 自动模式下返回\+PID结果
+\item 手动模式下返回传入\+PWM值 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\Hypertarget{motor_8c_a768a040b8a1197af009508315b120b17}\label{motor_8c_a768a040b8a1197af009508315b120b17} 
+\index{motor.c@{motor.c}!MOTOR\_Get\_Speed@{MOTOR\_Get\_Speed}}
+\index{MOTOR\_Get\_Speed@{MOTOR\_Get\_Speed}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Get\_Speed()}{MOTOR\_Get\_Speed()}}
+{\footnotesize\ttfamily int MOTOR\+\_\+\+Get\+\_\+\+Speed (\begin{DoxyParamCaption}\item[{int}]{Motor\+\_\+\+Channel }\end{DoxyParamCaption})}
+
+
+
+获取电机转速 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+\+Channel} & 电机通道 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+int 返回电机原始转速（正/负） 
+\end{DoxyReturn}
+\Hypertarget{motor_8c_abe7bddbacc5b8d177bdb56bd5a611a8f}\label{motor_8c_abe7bddbacc5b8d177bdb56bd5a611a8f} 
+\index{motor.c@{motor.c}!MOTOR\_GPIO\_Init@{MOTOR\_GPIO\_Init}}
+\index{MOTOR\_GPIO\_Init@{MOTOR\_GPIO\_Init}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_GPIO\_Init()}{MOTOR\_GPIO\_Init()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+GPIO\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+电机\+GPIO初始化 
+
+\begin{DoxyNote}{注解}
+有关引脚配置修改位于motor.\+h文件中 
+\end{DoxyNote}
+\Hypertarget{motor_8c_a562ded4725036b4a1e9e8b78249be75c}\label{motor_8c_a562ded4725036b4a1e9e8b78249be75c} 
+\index{motor.c@{motor.c}!MOTOR\_PID\_Calculate@{MOTOR\_PID\_Calculate}}
+\index{MOTOR\_PID\_Calculate@{MOTOR\_PID\_Calculate}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_PID\_Calculate()}{MOTOR\_PID\_Calculate()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+PID\+\_\+\+Calculate (\begin{DoxyParamCaption}\item[{MOTOR\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*}}]{Motor\+Structure }\end{DoxyParamCaption})}
+
+
+
+PID计算函数 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+Structure} & 电机结构体指针 \\
+\hline
+{\em Goal\+\_\+\+Speed} & 目标速度 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{motor_8c_a814d46535cffab376d59f690eb9c3607}\label{motor_8c_a814d46535cffab376d59f690eb9c3607} 
+\index{motor.c@{motor.c}!MOTOR\_PWM\_Init@{MOTOR\_PWM\_Init}}
+\index{MOTOR\_PWM\_Init@{MOTOR\_PWM\_Init}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_PWM\_Init()}{MOTOR\_PWM\_Init()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+PWM\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+初始化电机驱动\+PWM 
+
+\begin{DoxyNote}{注解}
+详细参数
+\begin{DoxyItemize}
+\item 频率：10\+KHz
+\item 最大比较值：7200
+\end{DoxyItemize}
+\end{DoxyNote}
+
+\begin{DoxyItemize}
+\item 通道：\+TIM3\+\_\+\+CH3和\+TIM3\+\_\+\+CH4
+\begin{DoxyItemize}
+\item 引脚：\+PB0（\+CH3）和 PB1（\+CH4）
+\end{DoxyItemize}
+\item 电机映射： PB0-\/\texorpdfstring{$>$}{>}MOTOR\+\_\+A PB1-\/\texorpdfstring{$>$}{>}MOTOR\+\_\+B 
+\end{DoxyItemize}\Hypertarget{motor_8c_a65ebe2172b9afdf3ee81a634c204f50f}\label{motor_8c_a65ebe2172b9afdf3ee81a634c204f50f} 
+\index{motor.c@{motor.c}!MOTOR\_PWM\_Load@{MOTOR\_PWM\_Load}}
+\index{MOTOR\_PWM\_Load@{MOTOR\_PWM\_Load}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_PWM\_Load()}{MOTOR\_PWM\_Load()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+PWM\+\_\+\+Load (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Motor\+\_\+\+Channel,  }\item[{uint16\+\_\+t}]{PWM }\end{DoxyParamCaption})}
+
+
+
+装载电机\+PWM 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+\+Channel} & 电机通道（motor\+\_\+a/motor\+\_\+b） \\
+\hline
+{\em PWM} & PWM值（0\texorpdfstring{$\sim$}{\string~}7200） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+
+\begin{DoxyItemize}
+\item 仅对对应通道的定时器进行占空比装载，不接受负数，不处理方向
+\item 一般仅内部调用，对电机进行调速需选择\+MOTOR\+\_\+\+Set\+\_\+\+PWM函数 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{motor_8c_a15a59e0b7dbafa7b18acae3a18ca020f}\label{motor_8c_a15a59e0b7dbafa7b18acae3a18ca020f} 
+\index{motor.c@{motor.c}!MOTOR\_Set\_OperatingMode@{MOTOR\_Set\_OperatingMode}}
+\index{MOTOR\_Set\_OperatingMode@{MOTOR\_Set\_OperatingMode}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Set\_OperatingMode()}{MOTOR\_Set\_OperatingMode()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+Set\+\_\+\+Operating\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Mode }\end{DoxyParamCaption})}
+
+
+
+设置操作模式 
+
+
+\begin{DoxyParams}{参数}
+{\em Mode} & 操作模式
+\begin{DoxyItemize}
+\item \#define MOTOR\+\_\+\+MANUAL 0 // 手动模式
+\item \#define MOTOR\+\_\+\+AUTO 1 // 自动模式 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{motor_8c_a1a1166679af4013a92e900494657835e}\label{motor_8c_a1a1166679af4013a92e900494657835e} 
+\index{motor.c@{motor.c}!MOTOR\_Set\_Orientation@{MOTOR\_Set\_Orientation}}
+\index{MOTOR\_Set\_Orientation@{MOTOR\_Set\_Orientation}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Set\_Orientation()}{MOTOR\_Set\_Orientation()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+Set\+\_\+\+Orientation (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Orientation }\end{DoxyParamCaption})}
+
+
+
+设置小车安装方向 
+
+
+\begin{DoxyParams}{参数}
+{\em Orientation} & 旋转方向
+\begin{DoxyItemize}
+\item \#define MOTOR\+\_\+\+Clockwise 0 // 顺时针旋转为正向
+\item \#define MOTOR\+\_\+\+Anticlockwise 1 // 逆时针旋转为正向 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\Hypertarget{motor_8c_a57fb0df0ed1175e783d711c63312e8ea}\label{motor_8c_a57fb0df0ed1175e783d711c63312e8ea} 
+\index{motor.c@{motor.c}!MOTOR\_Set\_PIDGoalSpeed@{MOTOR\_Set\_PIDGoalSpeed}}
+\index{MOTOR\_Set\_PIDGoalSpeed@{MOTOR\_Set\_PIDGoalSpeed}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Set\_PIDGoalSpeed()}{MOTOR\_Set\_PIDGoalSpeed()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+Set\+\_\+\+PIDGoal\+Speed (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Motor\+\_\+channel,  }\item[{float}]{Goal\+\_\+\+Speed }\end{DoxyParamCaption})}
+
+
+
+设置\+PID目标速度 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+channel} & 电机通道 \\
+\hline
+{\em Goal\+\_\+\+Speed} & 目标速度 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{motor_8c_a43cff0fc5b8b17f8f38c9ea441065d0f}\label{motor_8c_a43cff0fc5b8b17f8f38c9ea441065d0f} 
+\index{motor.c@{motor.c}!MOTOR\_Set\_PWM@{MOTOR\_Set\_PWM}}
+\index{MOTOR\_Set\_PWM@{MOTOR\_Set\_PWM}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Set\_PWM()}{MOTOR\_Set\_PWM()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+Set\+\_\+\+PWM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Motor\+\_\+channel,  }\item[{int}]{PWM }\end{DoxyParamCaption})}
+
+
+
+用来设置电机转动速度，自动设置旋转方向 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+\+Channel} & 电机通道 \\
+\hline
+{\em PWM} & 对应占空比值（\+MOTOR\+\_\+\+PWM\+\_\+\+MIN \texorpdfstring{$\sim$}{\string~} MOTOR\+\_\+\+PWM\+\_\+\+MAX） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+
+\begin{DoxyItemize}
+\item 设置对应通道的\+PWM值，根据输入数据的正负与安装方向（\+MOTOR\+\_\+\+Orientation）决定旋转方向
+\item 为避免\+PWM过零引脚频繁切换，\+PWM=0时不会执行\+MOTOR\+\_\+\+Set\+\_\+\+State(\+Motor\+\_\+channel, MOTOR\+\_\+\+STOP); 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{motor_8c_a367d84ee0731dbe7931ab8cd024a92b4}\label{motor_8c_a367d84ee0731dbe7931ab8cd024a92b4} 
+\index{motor.c@{motor.c}!MOTOR\_Set\_State@{MOTOR\_Set\_State}}
+\index{MOTOR\_Set\_State@{MOTOR\_Set\_State}!motor.c@{motor.c}}
+\doxyparagraph{\texorpdfstring{MOTOR\_Set\_State()}{MOTOR\_Set\_State()}}
+{\footnotesize\ttfamily void MOTOR\+\_\+\+Set\+\_\+\+State (\begin{DoxyParamCaption}\item[{int}]{Motor\+\_\+\+Channel,  }\item[{int}]{Motor\+\_\+\+State }\end{DoxyParamCaption})}
+
+
+
+选择电机前进方向，一般由内部调用 
+
+
+\begin{DoxyParams}{参数}
+{\em Motor\+\_\+\+Channel} & 电机通道 \\
+\hline
+{\em Motor\+\_\+\+State} & 电机状态
+\begin{DoxyItemize}
+\item MOTOR\+\_\+\+STOP停止(刹车)
+\item MOTOR\+\_\+\+FORWARD前进
+\item MOTOR\+\_\+\+BACKWARD后退 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+
+\begin{DoxyItemize}
+\item 运行方向：\+OTOR\+\_\+\+Clockwise顺时针，\+MOTOR\+\_\+\+Anticlockwise逆时针
+\item 轮子旋转方向与\+PWM值之间的关系由\+MOTOR\+\_\+\+Orientation决定，即由小车安装与前进方向决定
+\item 此函数一般仅内部调用，对电机进行调速需选择\+MOTOR\+\_\+\+Set\+\_\+\+PWM函数 
+\end{DoxyItemize}
+\end{DoxyNote}

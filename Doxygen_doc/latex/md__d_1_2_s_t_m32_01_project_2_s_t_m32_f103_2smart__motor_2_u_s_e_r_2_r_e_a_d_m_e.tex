@@ -1,0 +1,162 @@
+\doxysection{README}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e}{}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e}\index{README@{README}}
+\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md0}%
+ \hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md1}{}\doxysubsection{\texorpdfstring{定时器配置}{定时器配置}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md1}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ 定时器名   }&\cellcolor{\tableheadbgcolor}\textbf{ 功能   }&\cellcolor{\tableheadbgcolor}\textbf{ 通道号   }&\cellcolor{\tableheadbgcolor}\textbf{ 引脚    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ 定时器名   }&\cellcolor{\tableheadbgcolor}\textbf{ 功能   }&\cellcolor{\tableheadbgcolor}\textbf{ 通道号   }&\cellcolor{\tableheadbgcolor}\textbf{ 引脚    }\\\cline{1-4}
+\endhead
+TIM1   &速度计算定时器   &无   &无（内部定时器）    \\\cline{1-4}
+TIM2   &电机\+A编码器计数   &CH1, CH2   &PA0 (CH1), PA1 (CH2)    \\\cline{1-4}
+TIM3   &电机\+PWM驱动   &CH3, CH4   &PB0 (CH3), PB1 (CH4)    \\\cline{1-4}
+TIM4   &电机\+B编码器计数   &CH1, CH2   &PB6 (CH1), PB7 (CH2)   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{\texorpdfstring{WS2812 颜色映射}{WS2812 颜色映射}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md2}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 值   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 常量   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 颜色   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ RGB值    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 值   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 常量   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 颜色   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ RGB值    }\\\cline{1-4}
+\endhead
+0   &{\ttfamily WS2812\+\_\+\+BLACK}   &黑色   &(0, 0, 0)    \\\cline{1-4}
+1   &{\ttfamily WS2812\+\_\+\+RED}   &红色   &(255, 0, 0)    \\\cline{1-4}
+2   &{\ttfamily WS2812\+\_\+\+GREEN}   &绿色   &(0, 255, 0)    \\\cline{1-4}
+3   &{\ttfamily WS2812\+\_\+\+BLUE}   &蓝色   &(0, 0, 255)    \\\cline{1-4}
+4   &{\ttfamily WS2812\+\_\+\+YELLOW}   &黄色   &(255, 255, 0)    \\\cline{1-4}
+5   &{\ttfamily WS2812\+\_\+\+PURPLE}   &紫色   &(128, 0, 128)    \\\cline{1-4}
+6   &{\ttfamily WS2812\+\_\+\+CYAN}   &青色   &(0, 255, 255)   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{电机宏定义部分}{电机宏定义部分}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md3}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ 分类   }&\cellcolor{\tableheadbgcolor}\textbf{ 宏定义名称   }&\cellcolor{\tableheadbgcolor}\textbf{ 值   }&\cellcolor{\tableheadbgcolor}\textbf{ 描述    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ 分类   }&\cellcolor{\tableheadbgcolor}\textbf{ 宏定义名称   }&\cellcolor{\tableheadbgcolor}\textbf{ 值   }&\cellcolor{\tableheadbgcolor}\textbf{ 描述    }\\\cline{1-4}
+\endhead
+积分限幅   &{\ttfamily MOTORA\+\_\+\+I\+\_\+\+MAX}   &自定义   &电机\+A积分限幅    \\\cline{1-4}
+积分限幅   &{\ttfamily MOTORB\+\_\+\+I\+\_\+\+MAX}   &自定义   &电机\+B积分限幅    \\\cline{1-4}
+PID参数   &{\ttfamily MOTORA\+\_\+\+KP}   &自定义   &电机A PID-\/\+KP值    \\\cline{1-4}
+PID参数   &{\ttfamily MOTORA\+\_\+\+KI}   &自定义   &电机A PID-\/\+KI值    \\\cline{1-4}
+PID参数   &{\ttfamily MOTORA\+\_\+\+KD}   &自定义   &电机A PID-\/\+KD值    \\\cline{1-4}
+PID参数   &{\ttfamily MOTORB\+\_\+\+KP}   &自定义   &电机B PID-\/\+KP值    \\\cline{1-4}
+PID参数   &{\ttfamily MOTORB\+\_\+\+KI}   &自定义   &电机B PID-\/\+KI值    \\\cline{1-4}
+PID参数   &{\ttfamily MOTORB\+\_\+\+KD}   &自定义   &电机B PID-\/\+KD值    \\\cline{1-4}
+电机编号   &{\ttfamily MOTOR\+\_\+A}   &0   &电机\+A编号    \\\cline{1-4}
+电机编号   &{\ttfamily MOTOR\+\_\+B}   &1   &电机\+B编号    \\\cline{1-4}
+运行状态编号   &{\ttfamily MOTOR\+\_\+\+STOP}   &0   &电机停止状态编号    \\\cline{1-4}
+运行状态编号   &{\ttfamily MOTOR\+\_\+\+FORWARD}   &1   &电机正向运行状态编号    \\\cline{1-4}
+运行状态编号   &{\ttfamily MOTOR\+\_\+\+BACKWARD}   &2   &电机反向运行状态编号    \\\cline{1-4}
+安装方向   &{\ttfamily MOTOR\+\_\+\+Clockwise}   &0   &顺时针旋转为正向    \\\cline{1-4}
+安装方向   &{\ttfamily MOTOR\+\_\+\+Anticlockwise}   &1   &逆时针旋转为正向    \\\cline{1-4}
+操作模式   &{\ttfamily MOTOR\+\_\+\+AUTO}   &0   &自动模式（使用内部\+PID）    \\\cline{1-4}
+操作模式   &{\ttfamily MOTOR\+\_\+\+MANUAL}   &1   &手动模式（使用外部\+PID）    \\\cline{1-4}
+PWM限幅   &{\ttfamily MOTOR\+\_\+\+PWM\+\_\+\+MAX}   &自定义   &PWM最大限幅（补偿后）    \\\cline{1-4}
+PWM限幅   &{\ttfamily MOTOR\+\_\+\+PWM\+\_\+\+MIN}   &自定义   &PWM最小限幅（补偿后）    \\\cline{1-4}
+PWM限幅   &{\ttfamily MOTOR\+\_\+\+PWM\+\_\+\+Compensate\+\_\+A}   &自定义   &A通道\+PWM补偿值    \\\cline{1-4}
+PWM限幅   &{\ttfamily MOTOR\+\_\+\+PWM\+\_\+\+Compensate\+\_\+B}   &自定义   &B通道\+PWM补偿值    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+TIM\+\_\+A}   &自定义   &A通道引脚时钟    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+Group\+\_\+A}   &自定义   &A通道引脚组    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+AIN1}   &自定义   &A通道方向引脚1    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+AIN2}   &自定义   &A通道方向引脚2    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+TIM\+\_\+B}   &自定义   &B通道引脚时钟    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+Group\+\_\+B}   &自定义   &B通道引脚组    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+BIN1}   &自定义   &B通道方向引脚1    \\\cline{1-4}
+引脚定义   &{\ttfamily Direction\+\_\+\+BIN2}   &自定义   &B通道方向引脚2   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{总连接表}{总连接表}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md4}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 模块   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 名称   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 对应引脚   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 备注    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 模块   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 名称   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 对应引脚   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 备注    }\\\cline{1-4}
+\endhead
+PWM 定时器 -\/ TIM3   &PWM\+\_\+A   &PB0（\+CH3）   &控制电机 A 的 PWM 信号输出    \\\cline{1-4}
+PWM 定时器 -\/ TIM3   &PWM\+\_\+B   &PB1（\+CH4）   &控制电机 B 的 PWM 信号输出    \\\cline{1-4}
+编码器定时器 -\/ TIM2   &EA-\/A   &PA0   &电机 A 编码器 A 相输入    \\\cline{1-4}
+编码器定时器 -\/ TIM2   &EA-\/B   &PA1   &电机 A 编码器 B 相输入    \\\cline{1-4}
+编码器定时器 -\/ TIM4   &EB-\/A   &PB6   &电机 B 编码器 A 相输入    \\\cline{1-4}
+编码器定时器 -\/ TIM4   &EB-\/B   &PB7   &电机 B 编码器 B 相输入    \\\cline{1-4}
+方向控制   &AIN1   &PA3   &控制电机 A 方向的引脚 1    \\\cline{1-4}
+方向控制   &AIN2   &PA4   &控制电机 A 方向的引脚 2    \\\cline{1-4}
+方向控制   &BIN1   &PA5   &控制电机 B 方向的引脚 1    \\\cline{1-4}
+方向控制   &BIN2   &PA6   &控制电机 B 方向的引脚 2    \\\cline{1-4}
+电池检测   &ADC   &PA2（\+ADC1 -\/ CH2）   &用于检测电池电压    \\\cline{1-4}
+电压电流检测 -\/ INA226   &SDA   &PB13   &与 INA226 通信的数据线    \\\cline{1-4}
+电压电流检测 -\/ INA226   &SCL   &PB12   &与 INA226 通信的时钟线    \\\cline{1-4}
+OLED 显示   &SCL   &PB5   &OLED 显示屏时钟线    \\\cline{1-4}
+OLED 显示   &SDA   &PB8   &OLED 显示屏数据线    \\\cline{1-4}
+OLED 显示   &RES   &PB9   &OLED 显示屏复位引脚    \\\cline{1-4}
+OLED 显示   &DC   &PB14   &OLED 显示屏数据 / 命令控制引脚    \\\cline{1-4}
+OLED 显示   &CS   &PB15   &OLED 显示屏片选引脚    \\\cline{1-4}
+WS2812 LED 灯带   &DAT   &PA8   &控制 WS2812 LED 灯带的引脚    \\\cline{1-4}
+串口传输 -\/ USART1   &TX   &PA9   &USART1 的发送引脚    \\\cline{1-4}
+串口传输 -\/ USART1   &RX   &PA10   &USART1 的接收引脚    \\\cline{1-4}
+按键输入   &KEY1   &PA7   &按键1的接收引脚    \\\cline{1-4}
+按键输入   &KEY2   &PA11   &按键2的接收引脚    \\\cline{1-4}
+按键输入   &KEY3   &PA12   &按键3的接收引脚    \\\cline{1-4}
+蜂鸣器   &BEEP   &PB3   &蜂鸣器的发送引脚   \\\cline{1-4}
+\end{longtabu}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{串口数据包格式}{串口数据包格式}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md5}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{数据包格式：}{数据包格式：}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md6}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 字段名称   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 描述    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 字段名称   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 描述    }\\\cline{1-2}
+\endhead
+{\ttfamily LINK\+\_\+\+Frame\+Header1}   &帧头1    \\\cline{1-2}
+{\ttfamily LINK\+\_\+\+Frame\+Header2}   &帧头2    \\\cline{1-2}
+{\ttfamily LINK\+\_\+\+CMD}   &命令字段    \\\cline{1-2}
+{\ttfamily LINK\+\_\+\+DATA\+\_\+H}   &数据高字节    \\\cline{1-2}
+{\ttfamily LINK\+\_\+\+DATA\+\_\+L}   &数据低字节    \\\cline{1-2}
+{\ttfamily LINK\+\_\+\+Check\+Sum}   &校验和字段    \\\cline{1-2}
+{\ttfamily SUM}   &字段总数（枚举值）   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{发送命令：}{发送命令：}}\label{md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e_autotoc_md7}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 常量名称   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 值   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 描述    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 常量名称   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 值   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ 描述    }\\\cline{1-3}
+\endhead
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+NULL}   &0x00   &Null command (no operation)    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+LED}   &0x01   &设置\+LED，低字节\+LED编号，高字节\+LED状态    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+APWM}   &0x12   &设置电机A PWM（仅手动模式有效）    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+BPWM}   &0x22   &设置电机B PWM（仅手动模式有效）    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+AGoal\+Speed}   &0x13   &设置电机A 目标速度（仅自动模式有效）    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+BGoal\+Speed}   &0x23   &设置电机B 目标速度（仅自动模式有效）    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+Mode}   &0x04   &设置电机模式，1为手动模式，0为自动模式    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Orientation}   &0x05   &设置模块安装方向，1为逆时针，0为顺时针    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Switch\+OLED}   &0x06   &设置\+OLED开关，1为开，0为关    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+SET\+\_\+\+Motor\+Statue}   &0x07   &设置电机状态，1为启动，0为停止    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+ADC}   &0x08   &查询电池电量    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+Motor\+ASpeed}   &0x09   &查询电机\+A速度    \\\cline{1-3}
+{\ttfamily LINK\+\_\+\+CMD\+\_\+\+IN\+\_\+\+ASK\+\_\+\+Motor\+BSpeed}   &0x0A   &查询电机\+B速度   \\\cline{1-3}
+\end{longtabu}

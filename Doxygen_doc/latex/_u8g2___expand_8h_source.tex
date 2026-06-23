@@ -1,0 +1,89 @@
+\doxysection{U8g2\+\_\+\+Expand.\+h}
+\hypertarget{_u8g2___expand_8h_source}{}\label{_u8g2___expand_8h_source}\index{D:/ESP32Project/u8g2\_expand/src/U8g2\_Expand.h@{D:/ESP32Project/u8g2\_expand/src/U8g2\_Expand.h}}
+\mbox{\hyperlink{_u8g2___expand_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ \_U8G2EXPAND\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ \_U8G2EXPAND\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <U8g2lib.h>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00016\ \textcolor{comment}{U8G2字体后缀命名规则：}}
+\DoxyCodeLine{00017\ \textcolor{comment}{<purpose>\ \ \ 字体用途描述}}
+\DoxyCodeLine{00018\ \textcolor{comment}{t\ \ \ 透明字体，不使用背景色}}
+\DoxyCodeLine{00019\ \textcolor{comment}{h\ \ \ 所有字形具有相同高度}}
+\DoxyCodeLine{00020\ \textcolor{comment}{m\ \ \ 所有字形具有相同高度和宽度（等宽字体）}}
+\DoxyCodeLine{00021\ \textcolor{comment}{8\ \ \ 所有字形适配8x8像素框}}
+\DoxyCodeLine{00022\ \textcolor{comment}{}}
+\DoxyCodeLine{00023\ \textcolor{comment}{<char\ set>\ \ 字符集描述}}
+\DoxyCodeLine{00024\ \textcolor{comment}{f\ \ \ 字体包含最多256个字形（完整字符集）}}
+\DoxyCodeLine{00025\ \textcolor{comment}{r\ \ \ 字体仅包含ASCII码32至127范围的字符（标准ASCII字符集）}}
+\DoxyCodeLine{00026\ \textcolor{comment}{u\ \ \ 字体仅包含ASCII码32至95范围的字符（大写字母字符集）}}
+\DoxyCodeLine{00027\ \textcolor{comment}{n\ \ \ 字体仅包含数字及用于编写日期和时间字符串的额外字形}}
+\DoxyCodeLine{00028\ \textcolor{comment}{...\ 其他自定义字符列表}}
+\DoxyCodeLine{00029\ \textcolor{comment}{}}
+\DoxyCodeLine{00030\ \textcolor{comment}{(推荐后缀：mf)}}
+\DoxyCodeLine{00031\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{extern}\ U8G2\_SH1106\_128X64\_NONAME\_F\_4W\_HW\_SPI\ u8g2;\ \textcolor{comment}{//\ 定义U8g2库}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{/***********************设置部分**********************/}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ U8G2E\_PIN\_CS\ 14}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ U8G2E\_PIN\_DC\ 12}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ U8G2E\_PIN\_RST\ 13}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \textcolor{comment}{//\ 定义按键映射}}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ KEY\_NULL\ =\ 0,\ \ \ \ \textcolor{comment}{//\ 无返回}}
+\DoxyCodeLine{00043\ \ \ \ \ KEY\_DOWN\ =\ 3,\ \ \ \ \textcolor{comment}{//\ 向下}}
+\DoxyCodeLine{00044\ \ \ \ \ KEY\_UP\ =\ 2,\ \ \ \ \ \ \textcolor{comment}{//\ 向上}}
+\DoxyCodeLine{00045\ \ \ \ \ KEY\_CONFIRM\ =\ 1,\ \textcolor{comment}{//\ 确认}}
+\DoxyCodeLine{00046\ \ \ \ \ KEY\_EXIT\ =\ 4\ \ \ \ \ \textcolor{comment}{//\ 取消}}
+\DoxyCodeLine{00047\ \}\ Key\_mapping;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\textcolor{comment}{//\ 菜单选项结构体}}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ String\ Title;\ \ \ \ \ \ \ \textcolor{comment}{//\ 选项标题}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ Value;\ \ \ \ \ \ \ \textcolor{comment}{//\ 选项数值}}
+\DoxyCodeLine{00053\ \ \ \ \ uint8\_t\ Kind;\ \ \ \ \ \ \ \textcolor{comment}{//\ 选项种类}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ X\_Coordinate;\ \textcolor{comment}{//\ x轴坐标}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{float}\ Y\_Coordinate;\ \textcolor{comment}{//\ y轴坐标}}
+\DoxyCodeLine{00056\ \}\ \mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8G2E\_MenuOption}};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \textcolor{comment}{//\ 菜单选项类型}}
+\DoxyCodeLine{00059\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ U8G2E\_OPTION\_KEY\ =\ 0,\ \ \textcolor{comment}{//\ 开关类型}}
+\DoxyCodeLine{00061\ \ \ \ \ U8G2E\_OPTION\_NUM\ =\ 1,\ \ \textcolor{comment}{//\ 数值类型（整数/小数）}}
+\DoxyCodeLine{00062\ \ \ \ \ U8G2E\_OPTION\_PCT\ =\ 2,\ \ \textcolor{comment}{//\ 百分比类型（percent）}}
+\DoxyCodeLine{00063\ \ \ \ \ U8G2E\_OPTION\_TEXT\ =\ 3,\ \textcolor{comment}{//\ 文本类型(仅显示文本，没有数据更改)}}
+\DoxyCodeLine{00064\ \ \ \ \ U8G2E\_OPTION\_FUNC\ =\ 4,\ \textcolor{comment}{//\ 函数类型(仅执行函数，没有数据更改)}}
+\DoxyCodeLine{00065\ \}\ U8G2E\_OptionType;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \textcolor{comment}{//\ 动画显示模式}}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ Slow\ =\ 1,\ \ \ \ \ \ \ \textcolor{comment}{//\ 缓动}}
+\DoxyCodeLine{00070\ \ \ \ \ Elasticity\ =\ 2,\ \textcolor{comment}{//\ 弹性}}
+\DoxyCodeLine{00071\ \}\ Mode;}
+\DoxyCodeLine{00072\ \textcolor{comment}{/***********************函数声明部分**********************/}}
+\DoxyCodeLine{00073\ uint8\_t\ \mbox{\hyperlink{_u8g2___expand_8h_a34f1e520f561362143583a15c0d49c83}{U8G2E\_StrHeight}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str,\ uint8\_t\ max\_width,\ uint8\_t\ x);}
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ U8G2E\_SaveBuffer(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a18467585a9c520fb1b1fb4ec2d12c76b}{U8G2E\_CoverBuffer}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ U8G2E\_SignKeyFun(\textcolor{keywordtype}{int}\ Put\_in\_fun(\textcolor{keywordtype}{void}));}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ U8G2E\_CountDigits(\textcolor{keywordtype}{double}\ number,\ \textcolor{keywordtype}{int}\ *integer\_digits,\ \textcolor{keywordtype}{int}\ *decimal\_digits);}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a81fce3b829f6c7d0a1ea9c97328e7605}{U8G2E\_StartAnimation}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str2);}
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a4f7978e7fba0c8b1b00f4a5051ee75a6}{U8G2E\_PromptWindow}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str1,\ \textcolor{keywordtype}{bool}\ Key\_trigger\_enable);}
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a7f71cd68170f9c95de9ea11db1cb7701}{U8G2E\_NUMDisplay}}(\textcolor{keywordtype}{int}\ num,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{float}\ change[],\ \textcolor{keywordtype}{int}\ W,\ \textcolor{keywordtype}{int}\ H);}
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a1d1b52524fc3a677015c4bd88f429a8b}{U8G2E\_MenuDisplay}}(\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8G2E\_MenuOption}}\ MenuOption\_ARR[],\ uint8\_t\ valid\_num);}
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_acc22976c630f0f639007075268170066}{U8G2E\_MenuOptionDisplay}}(\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8G2E\_MenuOption}}\ MenuOption\_Member);}
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_ac055c400909261265546f2ef1c3b354c}{U8G2E\_MenuExecute}}(\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8G2E\_MenuOption}}\ *MenuOption\_Member);}
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_ab816dfec44894292bf2be68ef6244885}{U8G2E\_PCT\_ACTION}}(\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8G2E\_MenuOption}}\ *MenuOption\_Member);}
+\DoxyCodeLine{00085\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a63ea9ff5adcfdc5065bfd37415e40bea}{U8G2E\_NUM\_ACTION}}(\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8G2E\_MenuOption}}\ *MenuOption\_Member);}
+\DoxyCodeLine{00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a4082c54450051c77c729da17100be3ab}{U8G2E\_Blurring}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a737234bc7063eda3a6cdd1a90a342d8c}{U8G2E\_DrawWrappedText}}(u8g2\_uint\_t\ x,\ u8g2\_uint\_t\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str,\ u8g2\_uint\_t\ max\_width);}
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a6b0cd1e5572b487bdfff689a69879962}{U8G2E\_Init}}(\textcolor{keywordtype}{bool}\ Enable,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str2);}
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_u8g2___expand_8h_a0d245e0e577e789cbc4bce4e79a14139}{U8G2E\_MoveCursor}}(\textcolor{keywordtype}{int}\ GoalValue,\ \textcolor{keywordtype}{float}\ *CurrentValue,\ uint8\_t\ Mode);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

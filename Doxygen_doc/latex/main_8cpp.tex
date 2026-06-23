@@ -1,0 +1,87 @@
+\doxysection{D\+:/\+ESP32\+Project/u8g2\+\_\+expand/src/main.cpp 文件参考}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{D:/ESP32Project/u8g2\_expand/src/main.cpp@{D:/ESP32Project/u8g2\_expand/src/main.cpp}}
+
+
+U8g2库动画拓展  
+
+
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$U8g2lib.\+h$>$}\newline
+{\ttfamily \#include $<$SPI.\+h$>$}\newline
+{\ttfamily \#include $<$U8g2\+\_\+\+Expand.\+h$>$}\newline
+{\ttfamily \#include "{}driver/gpio.\+h"{}}\newline
+{\ttfamily \#include "{}esp\+\_\+now.\+h"{}}\newline
+{\ttfamily \#include "{}Wi\+Fi.\+h"{}}\newline
+\doxysubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a01055773558d3fb4ddec68693dec19f3}\label{main_8cpp_a01055773558d3fb4ddec68693dec19f3} 
+\#define {\bfseries Button1}~21
+\item 
+\Hypertarget{main_8cpp_a6f3663abbb615688cfe41f08f3790ef3}\label{main_8cpp_a6f3663abbb615688cfe41f08f3790ef3} 
+\#define {\bfseries Button2}~5
+\item 
+\Hypertarget{main_8cpp_a11802d130f2f8e5c93b43534a945aed0}\label{main_8cpp_a11802d130f2f8e5c93b43534a945aed0} 
+\#define {\bfseries Button3}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a14d9c80f1f5fc6b1528dc13eb5914617}\label{main_8cpp_a14d9c80f1f5fc6b1528dc13eb5914617} 
+int {\bfseries Key\+\_\+\+Scan} (void)
+\item 
+\Hypertarget{main_8cpp_a90aed28d44639d76c3425558405cacdd}\label{main_8cpp_a90aed28d44639d76c3425558405cacdd} 
+void {\bfseries Packaging\+\_\+1} (void)
+\item 
+\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d} 
+void {\bfseries setup} ()
+\item 
+\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f} 
+void {\bfseries loop} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{main_8cpp_a2e01f40652a0cec227b276de12f9d19d}\label{main_8cpp_a2e01f40652a0cec227b276de12f9d19d} 
+const int {\bfseries LED\+\_\+B} = 15
+\item 
+\Hypertarget{main_8cpp_afec881031770242cd6f1861aada4367b}\label{main_8cpp_afec881031770242cd6f1861aada4367b} 
+const int {\bfseries LED\+\_\+R} = 2
+\item 
+\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \mbox{\hyperlink{main_8cpp_a8207187c177de09c6210c2c0e5fc119e}{Menu\+Option\+\_\+\+ARR}} \mbox{[}7\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+U8g2库动画拓展 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/04-\/18 
+\end{DoxyDate}
+
+
+\doxysubsection{变量说明}
+\Hypertarget{main_8cpp_a8207187c177de09c6210c2c0e5fc119e}\label{main_8cpp_a8207187c177de09c6210c2c0e5fc119e} 
+\index{main.cpp@{main.cpp}!MenuOption\_ARR@{MenuOption\_ARR}}
+\index{MenuOption\_ARR@{MenuOption\_ARR}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{MenuOption\_ARR}{MenuOption\_ARR}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} Menu\+Option\+\_\+\+ARR\mbox{[}7\mbox{]}}
+
+{\bfseries 初始值\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Channel-\/1\ SW"{}},\ 0,\ U8G2E\_OPTION\_KEY\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Channel-\/2\ SW"{}},\ 0,\ U8G2E\_OPTION\_KEY\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Channel-\/3\ SW"{}},\ 0,\ U8G2E\_OPTION\_KEY\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Channel-\/4\ SW"{}},\ 0,\ U8G2E\_OPTION\_KEY\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}NUM\ Option5"{}},\ 134045,\ U8G2E\_OPTION\_NUM\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Text\ Option6"{}},\ 1,\ U8G2E\_OPTION\_KEY\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{"{}Text\ Option7"{}},\ 0,\ U8G2E\_OPTION\_KEY\}\}}
+
+\end{DoxyCode}

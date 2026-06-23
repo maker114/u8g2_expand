@@ -1,0 +1,58 @@
+\doxysubsection{usart\+\_\+link.\+h}
+\hypertarget{usart__link_8h_source}{}\label{usart__link_8h_source}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/usart\_link.h}}
+\mbox{\hyperlink{usart__link_8h}{浏览该文件的文档.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_\_USARTLINK\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_\_USARTLINK\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}stm32f10x.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}stm32f10x\_usart.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ LINK\_FRAME\_HEADER1\ 0xA1\ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ LINK\_FRAME\_HEADER2\ 0xB1\ }}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdaa9e1a7d1f51a48eac8d6581e3a16c085}{LINK\_FrameHeader1}},\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda09376bb3b818be518dd22db1b8fd2195}{LINK\_FrameHeader2}},\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda71f741ff622b95e85c75ddb7d141efe4}{LINK\_CMD}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdabb5b7ecaf675bba7c6bc0820e1341b4a}{LINK\_DATA\_H}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdafd29e07036a4f1df4a1e52d08af03c97}{LINK\_DATA\_L}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bdab707c7c3ee2f64f1149efb999aae3948}{LINK\_CheckSum}},\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bda82c030bf31e2d975e6a85cf67ba88bb4}{SUM}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{usart__link_8h_a68e533ebd478ec5917d059459f4962bd}{linkpackenum}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ LINK\_CMD\_IN\_NULL\ =\ 0x00,}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a007fbb5685eccd0cab41dbc92c2ad26d}{LINK\_CMD\_IN\_SET\_LED}}\ =\ 0x01,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a3935220d2ba8dccb2d0dfd229ef5e002}{LINK\_CMD\_IN\_SET\_MotorAPWM}}\ =\ 0x12,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a32563ed4190fdc23f8a742cb82ad8933}{LINK\_CMD\_IN\_SET\_MotorBPWM}}\ =\ 0x22,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a5fdd0752d426f56f7536d0d62bbe40ff}{LINK\_CMD\_IN\_SET\_MotorAGoalSpeed}}\ =\ 0x13,\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981acca2e5fac9c7844b943a9ad0feab840f}{LINK\_CMD\_IN\_SET\_MotorBGoalSpeed}}\ =\ 0x23,\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a404c65590a2ac88fe7b43c349482915b}{LINK\_CMD\_IN\_SET\_MotorMode}}\ =\ 0x04,\ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a07d8ea0f2db3d37b0ff904457435cb7b}{LINK\_CMD\_IN\_SET\_Orientation}}\ =\ 0x05,\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a18aee94fc26832629db40db0e45bc206}{LINK\_CMD\_IN\_SET\_SwitchOLED}}\ =\ 0x06,\ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a1542e6e6411dceab2ade8685cdec31e1}{LINK\_CMD\_IN\_SET\_MotorStatue}}\ =\ 0x07,\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a9b66e976231f55172c850d75ff7f72a9}{LINK\_CMD\_IN\_ASK\_ADC}}\ =\ 0x08,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a2f30e588b040bbab7f3aa248ed830ad6}{LINK\_CMD\_IN\_ASK\_MotorASpeed}}\ =\ 0x09,\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981a0960da733e2ed5c8d79b9bd27d544b51}{LINK\_CMD\_IN\_ASK\_MotorBSpeed}}\ =\ 0x0A,\ \ \ \ \ }
+\DoxyCodeLine{00043\ \}\ \mbox{\hyperlink{usart__link_8h_a3097bc2f8a4e594ac25f1b48a505a981}{linkcmd\_in}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258aa25a5d934242d4dc19b9b194ced49758}{LINK\_CMD\_OUT\_NULL}}\ =\ 0x00,\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a40d8b6b160f5bc240ee78f7deaa03884}{LINK\_CMD\_OUT\_RE\_ADC}}\ =\ 0x01,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a10bb0ebef17b63706d6c0b13cbcc9109}{LINK\_CMD\_OUT\_RE\_MotorASpeed}}\ =\ 0x02,\ }
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258a0b4a821bada6924c3bd4d7be5378d1fe}{LINK\_CMD\_OUT\_RE\_MotorBSpeed}}\ =\ 0x03,\ }
+\DoxyCodeLine{00051\ \}\ \mbox{\hyperlink{usart__link_8h_ad4ea5ff0a23742d3cadacace1cb64258}{linkcmd\_out}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart__link_8h_a4aa1f631924e1fc725bd4baf6c03c1e8}{LINK\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart__link_8h_a6a2a1b593c87ad63c2d36e83b473282e}{LINK\_SendPack}}(uint8\_t\ CMD,\ uint16\_t\ DATA);}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart__link_8h_a351dd3fb1e02a7f6584a098e0678941a}{LINK\_GetPack}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{usart__link_8h_a9aefa85023944f884dde62716217f15a}{LINK\_HandleData}}(uint8\_t\ CMD,\ int16\_t\ DATA);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

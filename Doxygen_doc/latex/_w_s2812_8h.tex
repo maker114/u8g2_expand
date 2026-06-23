@@ -1,0 +1,205 @@
+\doxysubsection{D\+:/\+STM32 Project/\+STM32\+F103/smart\+\_\+motor/\+USER/\+HARDWARE/\+WS2812.h 文件参考}
+\hypertarget{_w_s2812_8h}{}\label{_w_s2812_8h}\index{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/WS2812.h@{D:/STM32 Project/STM32F103/smart\_motor/USER/HARDWARE/WS2812.h}}
+
+
+WS2812驱动头文件  
+
+
+{\ttfamily \#include "{}delay.\+h"{}}\newline
+{\ttfamily \#include "{}usart.\+h"{}}\newline
+{\ttfamily \#include "{}sys.\+h"{}}\newline
+\doxysubsubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_w_s2812_8h_a41c77a95ae983c7074989fecb2731cab}\label{_w_s2812_8h_a41c77a95ae983c7074989fecb2731cab} 
+\#define {\bfseries WS2812\+\_\+\+BLACK}~0x000000
+\begin{DoxyCompactList}\small\item\em 黑色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_ae35f50c594da263da1ec0f8581a219ef}\label{_w_s2812_8h_ae35f50c594da263da1ec0f8581a219ef} 
+\#define {\bfseries WS2812\+\_\+\+WHITE}~0x\+FFFFFF
+\begin{DoxyCompactList}\small\item\em 白色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_afb85ccdac82e7266ae54a8149a852de6}\label{_w_s2812_8h_afb85ccdac82e7266ae54a8149a852de6} 
+\#define {\bfseries WS2812\+\_\+\+RED}~0x00\+FF00
+\begin{DoxyCompactList}\small\item\em 红色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_a1df698f054e11fb044e07eae8839455f}\label{_w_s2812_8h_a1df698f054e11fb044e07eae8839455f} 
+\#define {\bfseries WS2812\+\_\+\+GREEN}~0x\+FF0000
+\begin{DoxyCompactList}\small\item\em 绿色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_a6fddd5d59e8e7e6ea5fa46b67153ef31}\label{_w_s2812_8h_a6fddd5d59e8e7e6ea5fa46b67153ef31} 
+\#define {\bfseries WS2812\+\_\+\+BLUE}~0x0000\+FF
+\begin{DoxyCompactList}\small\item\em 蓝色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_a33eed6382ae50c2b4c78ae7a527e49b0}\label{_w_s2812_8h_a33eed6382ae50c2b4c78ae7a527e49b0} 
+\#define {\bfseries WS2812\+\_\+\+YELLOW}~0x\+FFFF00
+\begin{DoxyCompactList}\small\item\em 黄色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_a88415628d26d4a1287d8c4b24726835f}\label{_w_s2812_8h_a88415628d26d4a1287d8c4b24726835f} 
+\#define {\bfseries WS2812\+\_\+\+PURPLE}~0x00\+FFFF
+\begin{DoxyCompactList}\small\item\em 紫色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_ab9524bdb452efbeffaf6b3759a8e3305}\label{_w_s2812_8h_ab9524bdb452efbeffaf6b3759a8e3305} 
+\#define {\bfseries WS2812\+\_\+\+CYAN}~0x\+FF00\+FF
+\begin{DoxyCompactList}\small\item\em 青色 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_a15e62445bd894b5bb9a2c7fe653587f5}\label{_w_s2812_8h_a15e62445bd894b5bb9a2c7fe653587f5} 
+\#define {\bfseries WS2812\+\_\+\+ICEBLUE}~0x\+FF99\+FF
+\begin{DoxyCompactList}\small\item\em 雪蓝色 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_w_s2812_8h_ab01500f08920070b4863b61e1bf16dd6}{WS2812\+\_\+init}} (uint8\+\_\+t NUM)
+\begin{DoxyCompactList}\small\item\em 初始化\+WS2812引脚并定义灯的数量 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s2812_8h_abfeb0ddba57046aa0087ac4bbad4398e}{ws281x\+\_\+delay}} (unsigned int delay\+\_\+num)
+\begin{DoxyCompactList}\small\item\em ws281x模块用到的延时函数 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_ab922d66a8e90ee1a7cb564b4bbf1c76c}\label{_w_s2812_8h_ab922d66a8e90ee1a7cb564b4bbf1c76c} 
+void {\bfseries ws281x\+\_\+send\+Low} (void)
+\begin{DoxyCompactList}\small\item\em 根据\+WS281x芯片时序图编写的发送0码，1码与\+RESET码的函数 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_adf64701e5f6fc617c581089d9895152a}\label{_w_s2812_8h_adf64701e5f6fc617c581089d9895152a} 
+void {\bfseries ws281x\+\_\+send\+High} (void)
+\begin{DoxyCompactList}\small\item\em 发送1码 \end{DoxyCompactList}\item 
+\Hypertarget{_w_s2812_8h_ab78c2ad1bc3b9808f5a23ff38e0a386a}\label{_w_s2812_8h_ab78c2ad1bc3b9808f5a23ff38e0a386a} 
+void {\bfseries ws2811\+\_\+\+Reset} (void)
+\begin{DoxyCompactList}\small\item\em 发送\+RESET码 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s2812_8h_a1d7c228de344746df85a26ce7de7e67f}{ws281x\+\_\+send\+One}} (uint32\+\_\+t dat)
+\begin{DoxyCompactList}\small\item\em 发送点亮一个灯的数据（即24bit） \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s2812_8h_a4b4458a436e4cbc44edcfa3104589fe2}{WS2812\+\_\+\+Send\+Color}} (uint8\+\_\+t NUM, uint8\+\_\+t R, uint8\+\_\+t G, uint8\+\_\+t B)
+\begin{DoxyCompactList}\small\item\em 以\+RGB的形式发送颜色 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s2812_8h_a2eb8b439537b3fc6fe6660af38d982ef}{WS2812\+\_\+\+Send\+Color\+\_\+u32}} (uint8\+\_\+t NUM, uint32\+\_\+t Color)
+\begin{DoxyCompactList}\small\item\em 以24位\+GRB的形式发送颜色 \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{_w_s2812_8h_acf4c523689bd7d358725bc6a1924b5d7}{WS2812\+\_\+\+Wheel}} (uint32\+\_\+t pos)
+\begin{DoxyCompactList}\small\item\em 色彩轮盘（256色） \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s2812_8h_a4290cbd5ce4cf1bd24a809759108b1b7}{WS2812\+\_\+\+Stream\+Color}} (u8 pos)
+\begin{DoxyCompactList}\small\item\em 让所有灯珠显示以pos为起始的颜色流，在色轮上以步长step递增 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{详细描述}
+WS2812驱动头文件 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/06-\/16 
+\end{DoxyDate}
+
+
+\doxysubsubsection{函数说明}
+\Hypertarget{_w_s2812_8h_ab01500f08920070b4863b61e1bf16dd6}\label{_w_s2812_8h_ab01500f08920070b4863b61e1bf16dd6} 
+\index{WS2812.h@{WS2812.h}!WS2812\_init@{WS2812\_init}}
+\index{WS2812\_init@{WS2812\_init}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{WS2812\_init()}{WS2812\_init()}}
+{\footnotesize\ttfamily void WS2812\+\_\+init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{NUM }\end{DoxyParamCaption})}
+
+
+
+初始化\+WS2812引脚并定义灯的数量 
+
+
+\begin{DoxyParams}{参数}
+{\em NUM} & LED灯数量 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_w_s2812_8h_a4b4458a436e4cbc44edcfa3104589fe2}\label{_w_s2812_8h_a4b4458a436e4cbc44edcfa3104589fe2} 
+\index{WS2812.h@{WS2812.h}!WS2812\_SendColor@{WS2812\_SendColor}}
+\index{WS2812\_SendColor@{WS2812\_SendColor}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{WS2812\_SendColor()}{WS2812\_SendColor()}}
+{\footnotesize\ttfamily void WS2812\+\_\+\+Send\+Color (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{NUM,  }\item[{uint8\+\_\+t}]{R,  }\item[{uint8\+\_\+t}]{G,  }\item[{uint8\+\_\+t}]{B }\end{DoxyParamCaption})}
+
+
+
+以\+RGB的形式发送颜色 
+
+
+\begin{DoxyParams}{参数}
+{\em NUM} & 对应灯珠的编号，从0开始 \\
+\hline
+{\em R} & R通道颜色值 \\
+\hline
+{\em G} & G通道颜色值 \\
+\hline
+{\em B} & B通道颜色值 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_w_s2812_8h_a2eb8b439537b3fc6fe6660af38d982ef}\label{_w_s2812_8h_a2eb8b439537b3fc6fe6660af38d982ef} 
+\index{WS2812.h@{WS2812.h}!WS2812\_SendColor\_u32@{WS2812\_SendColor\_u32}}
+\index{WS2812\_SendColor\_u32@{WS2812\_SendColor\_u32}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{WS2812\_SendColor\_u32()}{WS2812\_SendColor\_u32()}}
+{\footnotesize\ttfamily void WS2812\+\_\+\+Send\+Color\+\_\+u32 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{NUM,  }\item[{uint32\+\_\+t}]{Color }\end{DoxyParamCaption})}
+
+
+
+以24位\+GRB的形式发送颜色 
+
+
+\begin{DoxyParams}{参数}
+{\em NUM} & 对应灯珠的编号，从0开始 \\
+\hline
+{\em Color} & 颜色的\+GRB编码（24位） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+常常搭配\+WS2812\+\_\+\+Wheel函数使用 
+\end{DoxyNote}
+\Hypertarget{_w_s2812_8h_a4290cbd5ce4cf1bd24a809759108b1b7}\label{_w_s2812_8h_a4290cbd5ce4cf1bd24a809759108b1b7} 
+\index{WS2812.h@{WS2812.h}!WS2812\_StreamColor@{WS2812\_StreamColor}}
+\index{WS2812\_StreamColor@{WS2812\_StreamColor}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{WS2812\_StreamColor()}{WS2812\_StreamColor()}}
+{\footnotesize\ttfamily void WS2812\+\_\+\+Stream\+Color (\begin{DoxyParamCaption}\item[{u8}]{pos }\end{DoxyParamCaption})}
+
+
+
+让所有灯珠显示以pos为起始的颜色流，在色轮上以步长step递增 
+
+
+\begin{DoxyParams}{参数}
+{\em pos} & 起始颜色 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_w_s2812_8h_acf4c523689bd7d358725bc6a1924b5d7}\label{_w_s2812_8h_acf4c523689bd7d358725bc6a1924b5d7} 
+\index{WS2812.h@{WS2812.h}!WS2812\_Wheel@{WS2812\_Wheel}}
+\index{WS2812\_Wheel@{WS2812\_Wheel}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{WS2812\_Wheel()}{WS2812\_Wheel()}}
+{\footnotesize\ttfamily uint32\+\_\+t WS2812\+\_\+\+Wheel (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+
+
+色彩轮盘（256色） 
+
+
+\begin{DoxyParams}{参数}
+{\em pos} & 颜色值 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+uint32\+\_\+t 输出的\+GRB编码，搭配\+WS2812\+\_\+\+Send\+Color\+\_\+u32函数使用 
+\end{DoxyReturn}
+\Hypertarget{_w_s2812_8h_abfeb0ddba57046aa0087ac4bbad4398e}\label{_w_s2812_8h_abfeb0ddba57046aa0087ac4bbad4398e} 
+\index{WS2812.h@{WS2812.h}!ws281x\_delay@{ws281x\_delay}}
+\index{ws281x\_delay@{ws281x\_delay}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{ws281x\_delay()}{ws281x\_delay()}}
+{\footnotesize\ttfamily void ws281x\+\_\+delay (\begin{DoxyParamCaption}\item[{unsigned int}]{delay\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+ws281x模块用到的延时函数 
+
+
+\begin{DoxyParams}{参数}
+{\em delay\+\_\+num} & \+:延时数 （示波器测量延时时间 = delay\+\_\+num \texorpdfstring{$\ast$}{*} 440ns ） \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_w_s2812_8h_a1d7c228de344746df85a26ce7de7e67f}\label{_w_s2812_8h_a1d7c228de344746df85a26ce7de7e67f} 
+\index{WS2812.h@{WS2812.h}!ws281x\_sendOne@{ws281x\_sendOne}}
+\index{ws281x\_sendOne@{ws281x\_sendOne}!WS2812.h@{WS2812.h}}
+\doxyparagraph{\texorpdfstring{ws281x\_sendOne()}{ws281x\_sendOne()}}
+{\footnotesize\ttfamily void ws281x\+\_\+send\+One (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{dat }\end{DoxyParamCaption})}
+
+
+
+发送点亮一个灯的数据（即24bit） 
+
+
+\begin{DoxyParams}{参数}
+{\em dat：颜色的24位编码} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+不包含帧间延时 
+\end{DoxyNote}

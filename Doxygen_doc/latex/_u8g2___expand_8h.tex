@@ -1,0 +1,341 @@
+\doxysection{D\+:/\+ESP32\+Project/u8g2\+\_\+expand/src/\+U8g2\+\_\+\+Expand.h 文件参考}
+\hypertarget{_u8g2___expand_8h}{}\label{_u8g2___expand_8h}\index{D:/ESP32Project/u8g2\_expand/src/U8g2\_Expand.h@{D:/ESP32Project/u8g2\_expand/src/U8g2\_Expand.h}}
+
+
+U8\+G2库扩展头文件  
+
+
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$U8g2lib.\+h$>$}\newline
+\doxysubsubsection*{结构体}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{宏定义}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_u8g2___expand_8h_a987ad41b2312b71f43e1c177975999eb}\label{_u8g2___expand_8h_a987ad41b2312b71f43e1c177975999eb} 
+\#define {\bfseries U8\+G2\+E\+\_\+\+PIN\+\_\+\+CS}~14
+\item 
+\Hypertarget{_u8g2___expand_8h_a59e9a2d36a718df3d4c56fb0880fcc76}\label{_u8g2___expand_8h_a59e9a2d36a718df3d4c56fb0880fcc76} 
+\#define {\bfseries U8\+G2\+E\+\_\+\+PIN\+\_\+\+DC}~12
+\item 
+\Hypertarget{_u8g2___expand_8h_a7c94ff1837554e2efca9add2d8bca589}\label{_u8g2___expand_8h_a7c94ff1837554e2efca9add2d8bca589} 
+\#define {\bfseries U8\+G2\+E\+\_\+\+PIN\+\_\+\+RST}~13
+\end{DoxyCompactItemize}
+\doxysubsubsection*{枚举}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_u8g2___expand_8h_a4fc42c52a32cf5fe535a77db27ad3df5}\label{_u8g2___expand_8h_a4fc42c52a32cf5fe535a77db27ad3df5} 
+enum {\bfseries Key\+\_\+mapping} \{ \newline
+{\bfseries KEY\+\_\+\+NULL} = 0
+, {\bfseries KEY\+\_\+\+DOWN} = 3
+, {\bfseries KEY\+\_\+\+UP} = 2
+, {\bfseries KEY\+\_\+\+CONFIRM} = 1
+, \newline
+{\bfseries KEY\+\_\+\+EXIT} = 4
+ \}
+\item 
+\Hypertarget{_u8g2___expand_8h_a1c73719caca327b5ab81301902bb9f58}\label{_u8g2___expand_8h_a1c73719caca327b5ab81301902bb9f58} 
+enum {\bfseries U8\+G2\+E\+\_\+\+Option\+Type} \{ \newline
+{\bfseries U8\+G2\+E\+\_\+\+OPTION\+\_\+\+KEY} = 0
+, {\bfseries U8\+G2\+E\+\_\+\+OPTION\+\_\+\+NUM} = 1
+, {\bfseries U8\+G2\+E\+\_\+\+OPTION\+\_\+\+PCT} = 2
+, {\bfseries U8\+G2\+E\+\_\+\+OPTION\+\_\+\+TEXT} = 3
+, \newline
+{\bfseries U8\+G2\+E\+\_\+\+OPTION\+\_\+\+FUNC} = 4
+ \}
+\item 
+\Hypertarget{_u8g2___expand_8h_a46c8a310cf4c094f8c80e1cb8dc1f911}\label{_u8g2___expand_8h_a46c8a310cf4c094f8c80e1cb8dc1f911} 
+enum {\bfseries Mode} \{ {\bfseries Slow} = 1
+, {\bfseries Elasticity} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{函数}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_u8g2___expand_8h_a34f1e520f561362143583a15c0d49c83}{U8\+G2\+E\+\_\+\+Str\+Height}} (const char \texorpdfstring{$\ast$}{*}str, uint8\+\_\+t max\+\_\+width, uint8\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em 获取字符串在当前字体和换行长度下的高度 \end{DoxyCompactList}\item 
+\Hypertarget{_u8g2___expand_8h_a20309644820810d64c8f3c319c60b398}\label{_u8g2___expand_8h_a20309644820810d64c8f3c319c60b398} 
+void {\bfseries U8\+G2\+E\+\_\+\+Save\+Buffer} (void)
+\item 
+\Hypertarget{_u8g2___expand_8h_a18467585a9c520fb1b1fb4ec2d12c76b}\label{_u8g2___expand_8h_a18467585a9c520fb1b1fb4ec2d12c76b} 
+void {\bfseries U8\+G2\+E\+\_\+\+Cover\+Buffer} (void)
+\begin{DoxyCompactList}\small\item\em 恢复缓冲区 \end{DoxyCompactList}\item 
+\Hypertarget{_u8g2___expand_8h_a7470186c2cb54d435ac93e635c219cd1}\label{_u8g2___expand_8h_a7470186c2cb54d435ac93e635c219cd1} 
+void {\bfseries U8\+G2\+E\+\_\+\+Sign\+Key\+Fun} (int Put\+\_\+in\+\_\+fun(void))
+\item 
+\Hypertarget{_u8g2___expand_8h_a61530f062aadf21476c7ecfc4f7da5c3}\label{_u8g2___expand_8h_a61530f062aadf21476c7ecfc4f7da5c3} 
+void {\bfseries U8\+G2\+E\+\_\+\+Count\+Digits} (double number, int \texorpdfstring{$\ast$}{*}integer\+\_\+digits, int \texorpdfstring{$\ast$}{*}decimal\+\_\+digits)
+\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a81fce3b829f6c7d0a1ea9c97328e7605}{U8\+G2\+E\+\_\+\+Start\+Animation}} (const char \texorpdfstring{$\ast$}{*}str1, const char \texorpdfstring{$\ast$}{*}str2)
+\begin{DoxyCompactList}\small\item\em 开机动画 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a4f7978e7fba0c8b1b00f4a5051ee75a6}{U8\+G2\+E\+\_\+\+Prompt\+Window}} (const char \texorpdfstring{$\ast$}{*}str1, bool Key\+\_\+trigger\+\_\+enable)
+\begin{DoxyCompactList}\small\item\em 弹窗提示 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a7f71cd68170f9c95de9ea11db1cb7701}{U8\+G2\+E\+\_\+\+NUMDisplay}} (int num, int x, int y, float change\mbox{[}$\,$\mbox{]}, int W, int H)
+\begin{DoxyCompactList}\small\item\em 丝滑数字显示函数 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a1d1b52524fc3a677015c4bd88f429a8b}{U8\+G2\+E\+\_\+\+Menu\+Display}} (\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} Menu\+Option\+\_\+\+ARR\mbox{[}$\,$\mbox{]}, uint8\+\_\+t valid\+\_\+num)
+\begin{DoxyCompactList}\small\item\em 丝滑移动菜单 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_acc22976c630f0f639007075268170066}{U8\+G2\+E\+\_\+\+Menu\+Option\+Display}} (\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} Menu\+Option\+\_\+\+Member)
+\begin{DoxyCompactList}\small\item\em 绘制菜单项 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_ac055c400909261265546f2ef1c3b354c}{U8\+G2\+E\+\_\+\+Menu\+Execute}} (\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \texorpdfstring{$\ast$}{*}Menu\+Option\+\_\+\+Member)
+\begin{DoxyCompactList}\small\item\em 执行菜单项动作 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_ab816dfec44894292bf2be68ef6244885}{U8\+G2\+E\+\_\+\+PCT\+\_\+\+ACTION}} (\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \texorpdfstring{$\ast$}{*}Menu\+Option\+\_\+\+Member)
+\begin{DoxyCompactList}\small\item\em 处理百分比选项 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a63ea9ff5adcfdc5065bfd37415e40bea}{U8\+G2\+E\+\_\+\+NUM\+\_\+\+ACTION}} (\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \texorpdfstring{$\ast$}{*}Menu\+Option\+\_\+\+Member)
+\begin{DoxyCompactList}\small\item\em 数字处理选项 \end{DoxyCompactList}\item 
+\Hypertarget{_u8g2___expand_8h_a4082c54450051c77c729da17100be3ab}\label{_u8g2___expand_8h_a4082c54450051c77c729da17100be3ab} 
+void {\bfseries U8\+G2\+E\+\_\+\+Blurring} (void)
+\begin{DoxyCompactList}\small\item\em 背景虚化 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a737234bc7063eda3a6cdd1a90a342d8c}{U8\+G2\+E\+\_\+\+Draw\+Wrapped\+Text}} (u8g2\+\_\+uint\+\_\+t x, u8g2\+\_\+uint\+\_\+t y, const char \texorpdfstring{$\ast$}{*}str, u8g2\+\_\+uint\+\_\+t max\+\_\+width)
+\begin{DoxyCompactList}\small\item\em 自动换行输出字符串 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a6b0cd1e5572b487bdfff689a69879962}{U8\+G2\+E\+\_\+\+Init}} (bool Enable, const char \texorpdfstring{$\ast$}{*}str1, const char \texorpdfstring{$\ast$}{*}str2)
+\begin{DoxyCompactList}\small\item\em 初始化\+OLED \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u8g2___expand_8h_a0d245e0e577e789cbc4bce4e79a14139}{U8\+G2\+E\+\_\+\+Move\+Cursor}} (int Goal\+Value, float \texorpdfstring{$\ast$}{*}Current\+Value, uint8\+\_\+t Mode)
+\begin{DoxyCompactList}\small\item\em 数字平滑移动 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{变量}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_u8g2___expand_8h_a219912b676b14760ff31dcc6b6d3ed7d}\label{_u8g2___expand_8h_a219912b676b14760ff31dcc6b6d3ed7d} 
+U8\+G2\+\_\+\+SH1106\+\_\+128\+X64\+\_\+\+NONAME\+\_\+\+F\+\_\+4\+W\+\_\+\+HW\+\_\+\+SPI {\bfseries u8g2}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{详细描述}
+U8\+G2库扩展头文件 
+
+\begin{DoxyAuthor}{作者}
+maker114 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{版本}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{日期}
+2025-\/06-\/23 
+\end{DoxyDate}
+
+
+\doxysubsection{函数说明}
+\Hypertarget{_u8g2___expand_8h_a737234bc7063eda3a6cdd1a90a342d8c}\label{_u8g2___expand_8h_a737234bc7063eda3a6cdd1a90a342d8c} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_DrawWrappedText@{U8G2E\_DrawWrappedText}}
+\index{U8G2E\_DrawWrappedText@{U8G2E\_DrawWrappedText}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_DrawWrappedText()}{U8G2E\_DrawWrappedText()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Draw\+Wrapped\+Text (\begin{DoxyParamCaption}\item[{u8g2\+\_\+uint\+\_\+t}]{x,  }\item[{u8g2\+\_\+uint\+\_\+t}]{y,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{u8g2\+\_\+uint\+\_\+t}]{max\+\_\+width }\end{DoxyParamCaption})}
+
+
+
+自动换行输出字符串 
+
+
+\begin{DoxyParams}{参数}
+{\em x} & x起点坐标 \\
+\hline
+{\em y} & y起点坐标 \\
+\hline
+{\em str} & 字符串 \\
+\hline
+{\em max\+\_\+width} & 最大宽度 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+需要在子程序外定义字体 
+\end{DoxyNote}
+\Hypertarget{_u8g2___expand_8h_a6b0cd1e5572b487bdfff689a69879962}\label{_u8g2___expand_8h_a6b0cd1e5572b487bdfff689a69879962} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_Init@{U8G2E\_Init}}
+\index{U8G2E\_Init@{U8G2E\_Init}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_Init()}{U8G2E\_Init()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Init (\begin{DoxyParamCaption}\item[{bool}]{Enable,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{str1,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{str2 }\end{DoxyParamCaption})}
+
+
+
+初始化\+OLED 
+
+
+\begin{DoxyParams}{参数}
+{\em Enable} & 是否启用开机动画 \\
+\hline
+{\em str1} & 开机动画第一行文字(主标题) \\
+\hline
+{\em str2} & 开机动画第二行文字(副标题） \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_a1d1b52524fc3a677015c4bd88f429a8b}\label{_u8g2___expand_8h_a1d1b52524fc3a677015c4bd88f429a8b} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_MenuDisplay@{U8G2E\_MenuDisplay}}
+\index{U8G2E\_MenuDisplay@{U8G2E\_MenuDisplay}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_MenuDisplay()}{U8G2E\_MenuDisplay()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Menu\+Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}}}]{Menu\+Option\+\_\+\+ARR\mbox{[}$\,$\mbox{]},  }\item[{uint8\+\_\+t}]{valid\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+丝滑移动菜单 
+
+
+\begin{DoxyParams}{参数}
+{\em Menu\+Option\+\_\+\+ARR} & 菜单结构体数组 \\
+\hline
+{\em valid\+\_\+num} & 有效选项数量 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_ac055c400909261265546f2ef1c3b354c}\label{_u8g2___expand_8h_ac055c400909261265546f2ef1c3b354c} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_MenuExecute@{U8G2E\_MenuExecute}}
+\index{U8G2E\_MenuExecute@{U8G2E\_MenuExecute}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_MenuExecute()}{U8G2E\_MenuExecute()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Menu\+Execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \texorpdfstring{$\ast$}{*}}]{Menu\+Option\+\_\+\+Member }\end{DoxyParamCaption})}
+
+
+
+执行菜单项动作 
+
+
+\begin{DoxyParams}{参数}
+{\em Menu\+Option\+\_\+\+Member} & 菜单结构体 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_acc22976c630f0f639007075268170066}\label{_u8g2___expand_8h_acc22976c630f0f639007075268170066} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_MenuOptionDisplay@{U8G2E\_MenuOptionDisplay}}
+\index{U8G2E\_MenuOptionDisplay@{U8G2E\_MenuOptionDisplay}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_MenuOptionDisplay()}{U8G2E\_MenuOptionDisplay()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Menu\+Option\+Display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}}}]{Menu\+Option\+\_\+\+Member }\end{DoxyParamCaption})}
+
+
+
+绘制菜单项 
+
+
+\begin{DoxyParams}{参数}
+{\em Menu\+Option\+\_\+\+Member} & 菜单选项结构体 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_a0d245e0e577e789cbc4bce4e79a14139}\label{_u8g2___expand_8h_a0d245e0e577e789cbc4bce4e79a14139} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_MoveCursor@{U8G2E\_MoveCursor}}
+\index{U8G2E\_MoveCursor@{U8G2E\_MoveCursor}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_MoveCursor()}{U8G2E\_MoveCursor()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Move\+Cursor (\begin{DoxyParamCaption}\item[{int}]{Goal\+Value,  }\item[{float \texorpdfstring{$\ast$}{*}}]{Current\+Value,  }\item[{uint8\+\_\+t}]{Mode }\end{DoxyParamCaption})}
+
+
+
+数字平滑移动 
+
+
+\begin{DoxyParams}{参数}
+{\em Goal\+Value} & 目标值 \\
+\hline
+{\em Current\+Value} & 待更改的当前值 \\
+\hline
+{\em Mode} & 移动模式（\+Slow或\+Elasticity） \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+函数不作延时，需要在每一帧的后面独立按照需求延时 
+\end{DoxyNote}
+\Hypertarget{_u8g2___expand_8h_a63ea9ff5adcfdc5065bfd37415e40bea}\label{_u8g2___expand_8h_a63ea9ff5adcfdc5065bfd37415e40bea} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_NUM\_ACTION@{U8G2E\_NUM\_ACTION}}
+\index{U8G2E\_NUM\_ACTION@{U8G2E\_NUM\_ACTION}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_NUM\_ACTION()}{U8G2E\_NUM\_ACTION()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+NUM\+\_\+\+ACTION (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \texorpdfstring{$\ast$}{*}}]{Menu\+Option\+\_\+\+Member }\end{DoxyParamCaption})}
+
+
+
+数字处理选项 
+
+
+\begin{DoxyParams}{参数}
+{\em Menu\+Option\+\_\+\+Member} & 菜单结构体 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_a7f71cd68170f9c95de9ea11db1cb7701}\label{_u8g2___expand_8h_a7f71cd68170f9c95de9ea11db1cb7701} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_NUMDisplay@{U8G2E\_NUMDisplay}}
+\index{U8G2E\_NUMDisplay@{U8G2E\_NUMDisplay}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_NUMDisplay()}{U8G2E\_NUMDisplay()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+NUMDisplay (\begin{DoxyParamCaption}\item[{int}]{num,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{float}]{change\mbox{[}$\,$\mbox{]},  }\item[{int}]{W,  }\item[{int}]{H }\end{DoxyParamCaption})}
+
+
+
+丝滑数字显示函数 
+
+
+\begin{DoxyParams}{参数}
+{\em num} & 待显示的数字 \\
+\hline
+{\em x} & 数字的x坐标 \\
+\hline
+{\em y} & 数字的y坐标 \\
+\hline
+{\em change} & 数字对应的数组 \\
+\hline
+{\em W} & 数字的宽度 \\
+\hline
+{\em H} & 数字的高度 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_ab816dfec44894292bf2be68ef6244885}\label{_u8g2___expand_8h_ab816dfec44894292bf2be68ef6244885} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_PCT\_ACTION@{U8G2E\_PCT\_ACTION}}
+\index{U8G2E\_PCT\_ACTION@{U8G2E\_PCT\_ACTION}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_PCT\_ACTION()}{U8G2E\_PCT\_ACTION()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+PCT\+\_\+\+ACTION (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u8_g2_e___menu_option}{U8\+G2\+E\+\_\+\+Menu\+Option}} \texorpdfstring{$\ast$}{*}}]{Menu\+Option\+\_\+\+Member }\end{DoxyParamCaption})}
+
+
+
+处理百分比选项 
+
+
+\begin{DoxyParams}{参数}
+{\em Menu\+Option\+\_\+\+Member} & 菜单结构体 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_a4f7978e7fba0c8b1b00f4a5051ee75a6}\label{_u8g2___expand_8h_a4f7978e7fba0c8b1b00f4a5051ee75a6} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_PromptWindow@{U8G2E\_PromptWindow}}
+\index{U8G2E\_PromptWindow@{U8G2E\_PromptWindow}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_PromptWindow()}{U8G2E\_PromptWindow()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Prompt\+Window (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str1,  }\item[{bool}]{Key\+\_\+trigger\+\_\+enable }\end{DoxyParamCaption})}
+
+
+
+弹窗提示 
+
+
+\begin{DoxyParams}{参数}
+{\em str1} & 提示内容 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{注解}
+弹窗提示，字体可调整，弹窗大小随字体与长度变换 
+\end{DoxyNote}
+\Hypertarget{_u8g2___expand_8h_a81fce3b829f6c7d0a1ea9c97328e7605}\label{_u8g2___expand_8h_a81fce3b829f6c7d0a1ea9c97328e7605} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_StartAnimation@{U8G2E\_StartAnimation}}
+\index{U8G2E\_StartAnimation@{U8G2E\_StartAnimation}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_StartAnimation()}{U8G2E\_StartAnimation()}}
+{\footnotesize\ttfamily void U8\+G2\+E\+\_\+\+Start\+Animation (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str1,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{str2 }\end{DoxyParamCaption})}
+
+
+
+开机动画 
+
+
+\begin{DoxyParams}{参数}
+{\em str1} & 主标题，最多10个字符 \\
+\hline
+{\em str2} & 副标题，最多17个字符 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u8g2___expand_8h_a34f1e520f561362143583a15c0d49c83}\label{_u8g2___expand_8h_a34f1e520f561362143583a15c0d49c83} 
+\index{U8g2\_Expand.h@{U8g2\_Expand.h}!U8G2E\_StrHeight@{U8G2E\_StrHeight}}
+\index{U8G2E\_StrHeight@{U8G2E\_StrHeight}!U8g2\_Expand.h@{U8g2\_Expand.h}}
+\doxysubsubsection{\texorpdfstring{U8G2E\_StrHeight()}{U8G2E\_StrHeight()}}
+{\footnotesize\ttfamily uint8\+\_\+t U8\+G2\+E\+\_\+\+Str\+Height (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{uint8\+\_\+t}]{max\+\_\+width,  }\item[{uint8\+\_\+t}]{x }\end{DoxyParamCaption})}
+
+
+
+获取字符串在当前字体和换行长度下的高度 
+
+
+\begin{DoxyParams}{参数}
+{\em str} & 字符串 \\
+\hline
+{\em max\+\_\+width} & 最大宽度 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{返回}
+uint8\+\_\+t 字符串高度 
+\end{DoxyReturn}
