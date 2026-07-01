@@ -178,32 +178,68 @@ uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x)
     return Y_Cursor;
 }
 
-/**
- * @brief 保存缓冲区
- *
+/* RLE压缩备份缓冲区
+ * 适配128x64单色屏：原缓冲区1024字节，最坏情况压缩后2倍大小
  */
-uint8_t Buffer_Backups[8 * 64 * 128]; // 缓冲区备份，大小为8 * u8g2.getBufferTileHeight() * u8g2.getBufferTileWidth()
+#define U8G2E_BACKUP_BUF_MAX 2048
+static uint8_t u8g2e_backup_buf[U8G2E_BACKUP_BUF_MAX];
+static uint16_t u8g2e_backup_len = 0;
+
+/**
+ * @brief  压缩并保存当前U8G2显示缓冲区
+ * @note   字节级RLE编码，完整遍历全部缓冲区字节，不改变内存布局
+ */
 void U8G2E_SaveBuffer(void)
 {
-    uint8_t *p = u8g2.getBufferPtr();
-    for (size_t i = 0; i < 8 * u8g2.getBufferTileHeight() * u8g2.getBufferTileWidth(); i++)
+    uint8_t *src = u8g2.getBufferPtr();
+    // 修正总字节数：tile数量 × 每个tile的8字节
+    uint16_t src_total = (uint16_t)u8g2.getBufferTileWidth() * u8g2.getBufferTileHeight() * 8;
+    uint16_t dst_idx = 0;
+    uint16_t i = 0;
+
+    while (i < src_total && dst_idx < U8G2E_BACKUP_BUF_MAX - 1u)
     {
-        Buffer_Backups[i] = *p;
-        p++;
+        uint8_t cur_byte = src[i];
+        uint8_t run_cnt = 1;
+
+        // 统计连续相同字节数，单字节计数上限255
+        while (i + run_cnt < src_total && src[i + run_cnt] == cur_byte && run_cnt < 0xFFu)
+        {
+            run_cnt++;
+        }
+
+        // RLE编码：[数据字节][重复次数]
+        u8g2e_backup_buf[dst_idx++] = cur_byte;
+        u8g2e_backup_buf[dst_idx++] = run_cnt;
+
+        i += run_cnt;
     }
+
+    u8g2e_backup_len = dst_idx;
 }
 
 /**
- * @brief 恢复缓冲区
- *
+ * @brief  解压备份数据并覆盖当前U8G2显示缓冲区
+ * @note   按原始字节顺序原样恢复，保证显存映射完全一致
  */
 void U8G2E_CoverBuffer(void)
 {
-    uint8_t *p = u8g2.getBufferPtr();
-    for (size_t i = 0; i < 8 * u8g2.getBufferTileHeight() * u8g2.getBufferTileWidth(); i++)
+    uint8_t *dst = u8g2.getBufferPtr();
+    // 与压缩端保持一致的总字节计算
+    uint16_t dst_total = (uint16_t)u8g2.getBufferTileWidth() * u8g2.getBufferTileHeight() * 8;
+    uint16_t src_idx = 0;
+    uint16_t dst_idx = 0;
+
+    while (src_idx < u8g2e_backup_len && dst_idx < dst_total)
     {
-        *p = Buffer_Backups[i];
-        p++;
+        uint8_t cur_byte = u8g2e_backup_buf[src_idx++];
+        uint8_t run_cnt = u8g2e_backup_buf[src_idx++];
+
+        // 按顺序连续写入，带边界保护
+        for (uint8_t j = 0; j < run_cnt && dst_idx < dst_total; j++)
+        {
+            dst[dst_idx++] = cur_byte;
+        }
     }
 }
 
@@ -218,6 +254,13 @@ void U8G2E_SignKeyFun(int Put_in_fun(void))
     KEY_Scan = Put_in_fun;
 }
 
+
+/**
+ * @brief 计算浮点数的整数位数和小数位数（小数自动去除末尾零）；0视为整数1位，NaN/Inf则直接返回不修改输出。
+ * @param number 要分析的double数值。
+ * @param[out] integer_digits 返回整数部分位数。
+ * @param[out] decimal_digits 返回小数部分位数（去尾零后）。
+ */
 void U8G2E_CountDigits(double number, int *integer_digits, int *decimal_digits)
 {
     char buf[32];
