@@ -5,10 +5,12 @@
 U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R2, U8G2E_PIN_CS, U8G2E_PIN_DC, U8G2E_PIN_RST); // 定义U8g2库
 
 /**
- * @brief 初始化OLED
- * @param Enable 是否启用开机动画
- * @param str1 开机动画第一行文字(主标题)
- * @param str2 开机动画第二行文字(副标题）
+ * @brief 初始化OLED并可选播放开机动画
+ * @details 启动U8G2库，开启UTF-8支持，设置默认字体，若Enable为true则播放动画。
+ * @param[in] Enable true播放动画，false直接完成初始化。
+ * @param[in] str1 开机动画主标题（Enable为true时有效）。
+ * @param[in] str2 开机动画副标题（Enable为true时有效）。
+ * @note U8g2实例化位于U8g2_Expand.cpp中,引脚定义位于U8g2_Expand.h中。
  */
 void U8G2E_Init(bool Enable, const char *str1, const char *str2)
 {
@@ -23,11 +25,11 @@ void U8G2E_Init(bool Enable, const char *str1, const char *str2)
 
 /**
  * @brief 数字平滑移动
- *
- * @param GoalValue 目标值
- * @param CurrentValue 待更改的当前值
- * @param Mode 移动模式（Slow或Elasticity）
- * @note 函数不作延时，需要在每一帧的后面独立按照需求延时
+ * @details 根据目标值和当前值，按指定的运动模式逐帧逼近目标。
+ * @param GoalValue 目标值。
+ * @param[inout] CurrentValue 当前浮点值。
+ * @param Mode 运动模式：`Slow`（缓动）或 `Elasticity`（弹性）。
+ * @note 函数不含延时，需在每帧循环中调用并自行控制帧率。
  */
 void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode)
 {
@@ -82,8 +84,8 @@ void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode)
 }
 
 /**
- * @brief 背景虚化
- *
+ * @brief 背景虚化效果
+ * @details 在显存上绘制棋盘格图案，实现半透明遮挡感。
  */
 void U8G2E_Blurring(void)
 {
@@ -99,13 +101,13 @@ void U8G2E_Blurring(void)
 }
 
 /**
- * @brief 自动换行输出字符串
- *
- * @param x x起点坐标
- * @param y y起点坐标
- * @param str 字符串
- * @param max_width 最大宽度
- * @note 需要在子程序外定义字体
+ * @brief 自动换行绘制字符串。
+ * @details 按最大宽度换行，支持空格跳过和 '\n' 强制换行。
+ * @param[in] x 起始X坐标。
+ * @param[in] y 起始Y坐标（顶部）。
+ * @param[in] str 要绘制的字符串。
+ * @param[in] max_width 单行最大宽度。
+ * @note 需要提前设置字体。
  */
 void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width)
 {
@@ -141,11 +143,13 @@ void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_u
 }
 
 /**
- * @brief 获取字符串在当前字体和换行长度下的高度
- *
- * @param str 字符串
- * @param max_width 最大宽度
- * @return uint8_t 字符串高度
+ * @brief 计算字符串在指定宽度下换行后的总高度。
+ * @details 根据当前字体和最大显示宽度，模拟换行并计算所需高度。
+ * @param[in] str 要测量的字符串。
+ * @param[in] max_width 单行最大宽度（像素）。
+ * @param[in] x 起始X坐标（用于换行计算）。
+ * @return 字符串换行后的总高度（像素）。
+ * @note 需要提前设置字体。
  */
 uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x)
 {
@@ -186,8 +190,8 @@ static uint8_t u8g2e_backup_buf[U8G2E_BACKUP_BUF_MAX];
 static uint16_t u8g2e_backup_len = 0;
 
 /**
- * @brief  压缩并保存当前U8G2显示缓冲区
- * @note   字节级RLE编码，完整遍历全部缓冲区字节，不改变内存布局
+ * @brief 压缩并保存当前U8G2显示缓冲区。
+ * @details 使用字节级RLE编码，将显存备份到内部静态数组。
  */
 void U8G2E_SaveBuffer(void)
 {
@@ -217,10 +221,9 @@ void U8G2E_SaveBuffer(void)
 
     u8g2e_backup_len = dst_idx;
 }
-
 /**
- * @brief  解压备份数据并覆盖当前U8G2显示缓冲区
- * @note   按原始字节顺序原样恢复，保证显存映射完全一致
+ * @brief 解压备份数据并覆盖当前U8G2显示缓冲区。
+ * @details 按原始字节顺序恢复显存，保证与保存时状态一致。
  */
 void U8G2E_CoverBuffer(void)
 {
@@ -244,8 +247,10 @@ void U8G2E_CoverBuffer(void)
 }
 
 /**
- * @brief 注册按键函数
- * @note  使用例：U8G2E_SignKeyFun(key2_scan_alone);
+ * @brief 注册按键扫描函数。
+ * @details 将外部按键读取函数指针保存到全局变量。
+ * @param[in] Put_in_fun 返回按键码的函数（无参，返回int）。
+ * @note 注册后，内部模块可通过 KEY_Scan() 调用。
  */
 typedef int (*Key_scan_fun)(void);
 Key_scan_fun KEY_Scan;
@@ -254,12 +259,12 @@ void U8G2E_SignKeyFun(int Put_in_fun(void))
     KEY_Scan = Put_in_fun;
 }
 
-
 /**
- * @brief 计算浮点数的整数位数和小数位数（小数自动去除末尾零）；0视为整数1位，NaN/Inf则直接返回不修改输出。
- * @param number 要分析的double数值。
- * @param[out] integer_digits 返回整数部分位数。
- * @param[out] decimal_digits 返回小数部分位数（去尾零后）。
+ * @brief 计算浮点数的整数位数和小数位数
+ * @details 0视为整数1位，NaN/Inf直接返回不修改输出。
+ * @param[in] number 要分析的浮点数。
+ * @param[out] integer_digits 整数部分位数。
+ * @param[out] decimal_digits 小数部分去尾零后的位数。
  */
 void U8G2E_CountDigits(double number, int *integer_digits, int *decimal_digits)
 {
@@ -338,11 +343,10 @@ void U8G2E_CountDigits(double number, int *integer_digits, int *decimal_digits)
 /*************************************动画部分***************************************/
 
 /**
- * @brief 开机动画
- *
- * @param str1 主标题，最多10个字符
- * @param str2 副标题，最多17个字符
- *
+ * @brief 显示开机动画。
+ * @details 以线条展开并滑入标题文字。
+ * @param[in] str1 主标题（最多约10字符）。
+ * @param[in] str2 副标题（最多约17字符）。
  */
 void U8G2E_StartAnimation(const char *str1, const char *str2)
 {
@@ -377,10 +381,11 @@ void U8G2E_StartAnimation(const char *str1, const char *str2)
 }
 
 /**
- * @brief 弹窗提示
- *
- * @param str1 提示内容
- * @note 弹窗提示，字体可调整，弹窗大小随字体与长度变换
+ * @brief 弹出提示窗口。
+ * @details 窗口从屏幕外滑入，停留后根据参数决定退出方式。
+ * @param[in] str1 提示内容（自动换行）。
+ * @param[in] Key_trigger_enable true按任意键退出，false延时1秒退出。
+ * @note 弹窗前自动保存并恢复背景，需提前设置字体。
  */
 void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable)
 {
@@ -429,14 +434,15 @@ void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable)
 }
 
 /**
- * @brief 丝滑数字显示函数
- *
- * @param num 待显示的数字
- * @param x 数字的x坐标
- * @param y 数字的y坐标
- * @param change 数字对应的数组
- * @param W 数字的宽度
- * @param H 数字的高度
+ * @brief 丝滑数字显示函数。
+ * @details 根据数字0~9的段码控制横竖线条长度动画。
+ * @param[in] num 要显示的数字。
+ * @param[in] x 左上角X坐标。
+ * @param[in] y 左上角Y坐标。
+ * @param[in,out] change 长度为8的浮点数组，存储各线段当前长度。
+ * @param[in] W 数字宽度。
+ * @param[in] H 数字高度。
+ * @note 调用前需初始化 change 数组,此函数单次只显示一个数字。
  */
 void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)
 {
@@ -462,10 +468,11 @@ void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)
 }
 
 /**
- * @brief 丝滑移动菜单
- *
- * @param MenuOption_ARR 菜单结构体数组
- * @param valid_num 有效选项数量
+ * @brief 丝滑移动菜单交互界面。
+ * @details 包含进入/退出动画、上下移动、边界回弹和选项执行。
+ * @param[in,out] MenuOption_ARR 菜单选项结构体数组。
+ * @param[in] valid_num 有效选项个数。
+ * @note 需提前注册按键函数，并确保 MenuOption_ARR 中 Kind 字段有效。
  */
 void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
 {
@@ -628,9 +635,10 @@ void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)
 }
 
 /**
- * @brief 绘制菜单项
- *
- * @param MenuOption_Member 菜单选项结构体
+ * @brief 绘制单个菜单选项。
+ * @details 根据选项类型显示不同样式。
+ * @param[in] MenuOption_Member 要绘制的菜单结构体。
+ * @note 字体由调用方设置，本函数不修改字体。
  */
 void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member)
 {
@@ -682,10 +690,10 @@ void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member)
 }
 
 /**
- * @brief 执行菜单项动作
- *
- * @param MenuOption_Member 菜单结构体
- *
+ * @brief 执行菜单选项的确认动作。
+ * @details 根据选项类型切换开关值、调出编辑界面或执行函数。
+ * @param[in,out] MenuOption_Member 指向菜单结构体的指针（会修改其 Value）。
+ * @note 对于函数类型，Value 需存储函数指针的整型值。
  */
 void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)
 {
@@ -712,9 +720,10 @@ void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)
 }
 
 /**
- * @brief 处理百分比选项
- *
- * @param MenuOption_Member 菜单结构体
+ * @brief 编辑百分比选项的专用界面。
+ * @details 弹出进度条及数值调节窗口，支持逐位调整。
+ * @param[in,out] MenuOption_Member 指向菜单结构体的指针（修改其 Value）。
+ * @note 自动保存/恢复背景，使用 U8G2E_SaveBuffer 和 U8G2E_Blurring。
  */
 void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)
 {
@@ -775,11 +784,11 @@ void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)
 }
 
 /**
- * @brief 数字处理选项
- *
- * @param MenuOption_Member 菜单结构体
+ * @brief 编辑数值选项的专用界面。
+ * @details 弹出数值调节窗口，支持逐位调整整数和小数。
+ * @param[in,out] MenuOption_Member 指向菜单结构体的指针（修改其 Value）。
+ * @note 使用 U8G2E_CountDigits 识别小数位。
  */
-
 void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member)
 {
     uint8_t key_result = 0;

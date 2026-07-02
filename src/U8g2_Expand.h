@@ -37,39 +37,61 @@ extern U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2; // 定义U8g2库
 #define U8G2E_PIN_DC 12
 #define U8G2E_PIN_RST 13
 
-typedef enum // 定义按键映射
+/**
+ * @brief 按键映射枚举。
+ * @details 定义按键扫描函数可能返回的键值，用于菜单交互。
+ */
+typedef enum
 {
-    KEY_NULL = 0,    // 无返回
-    KEY_DOWN = 3,    // 向下
-    KEY_UP = 2,      // 向上
-    KEY_CONFIRM = 1, // 确认
-    KEY_EXIT = 4     // 取消
+    KEY_NULL = 0,    ///< 无按键
+    KEY_DOWN = 3,    ///< 向下按键
+    KEY_UP = 2,      ///< 向上按键
+    KEY_CONFIRM = 1, ///< 确认按键
+    KEY_EXIT = 4     ///< 取消按键
 } Key_mapping;
 
-typedef struct // 菜单选项结构体
+/**
+ * @brief 菜单选项结构体。
+ * @details 存储一个菜单项的所有信息，包括标题、数值、类型和坐标，用于菜单显示和交互。
+ * @note 函数初始化使用例：{"Text Option1", (int)Packaging_1, U8G2E_OPTION_FUNC},
+ */
+typedef struct
 {
-    String Title;       // 选项标题
-    double Value;       // 选项数值
-    uint8_t Kind;       // 选项种类
-    float X_Coordinate; // x轴坐标
-    float Y_Coordinate; // y轴坐标
+    String Title;       ///< 选项标题（显示文本）
+    double Value;       ///< 选项数值（开关用0/1，百分比/数值为实际值，函数类型存储函数指针的整型值）
+    uint8_t Kind;       ///< 选项类型，取值见 U8G2E_OptionType 枚举
+    float X_Coordinate; ///< X轴坐标（用于菜单动画和定位，初始化无需赋值）
+    float Y_Coordinate; ///< Y轴坐标（用于菜单动画和定位，初始化无需赋值）
 } U8G2E_MenuOption;
 
-typedef enum // 菜单选项类型
+/**
+ * @brief 菜单选项类型枚举。
+ * @details 定义菜单项的行为类型，决定其显示样式和交互方式。
+ */
+typedef enum
 {
-    U8G2E_OPTION_KEY = 0,  // 开关类型
-    U8G2E_OPTION_NUM = 1,  // 数值类型（整数/小数）
-    U8G2E_OPTION_PCT = 2,  // 百分比类型（percent）
-    U8G2E_OPTION_TEXT = 3, // 文本类型(仅显示文本，没有数据更改)
-    U8G2E_OPTION_FUNC = 4, // 函数类型(仅执行函数，没有数据更改)
+    U8G2E_OPTION_KEY = 0,  ///< 开关类型（切换ON/OFF）
+    U8G2E_OPTION_NUM = 1,  ///< 数值类型（整数/小数可调）
+    U8G2E_OPTION_PCT = 2,  ///< 百分比类型（0~100%可调）
+    U8G2E_OPTION_TEXT = 3, ///< 纯文本类型（仅显示，无交互）
+    U8G2E_OPTION_FUNC = 4, ///< 函数类型（执行回调函数，Value存储函数指针）
 } U8G2E_OptionType;
 
-typedef enum // 动画显示模式
+/**
+ * @brief 动画移动模式枚举。 
+ * @details 定义数字平滑移动的两种运动曲线，用于 U8G2E_MoveCursor 函数。
+ */
+typedef enum
 {
-    Slow = 1,       // 缓动
-    Elasticity = 2, // 弹性
+    Slow = 1,       ///< 缓动模式（逐渐减速逼近目标）
+    Elasticity = 2, ///< 弹性模式（带回弹效果，模拟弹簧运动）
 } Mode;
+
 /***********************函数声明部分**********************/
+void U8G2E_Init(bool Enable, const char *str1, const char *str2);
+void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode);
+void U8G2E_Blurring(void);
+void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width);
 uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x);
 void U8G2E_SaveBuffer(void);
 void U8G2E_CoverBuffer(void);
@@ -83,9 +105,4 @@ void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member);
 void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member);
 void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member);
-void U8G2E_Blurring(void);
-void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width);
-void U8G2E_Init(bool Enable, const char *str1, const char *str2);
-void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode);
-
 #endif

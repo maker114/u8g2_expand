@@ -1,19 +1,10 @@
 var searchData=
 [
-  ['u8g2_5fexpand_2eh_0',['U8g2_Expand.h',['../_u8g2___expand_8h.html',1,'']]],
-  ['u8g2e_5fblurring_1',['U8G2E_Blurring',['../_u8g2___expand_8h.html#a4082c54450051c77c729da17100be3ab',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fcoverbuffer_2',['U8G2E_CoverBuffer',['../_u8g2___expand_8h.html#a18467585a9c520fb1b1fb4ec2d12c76b',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fdrawwrappedtext_3',['U8G2E_DrawWrappedText',['../_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5finit_4',['U8G2E_Init',['../_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fmenudisplay_5',['U8G2E_MenuDisplay',['../_u8g2___expand_8h.html#a1d1b52524fc3a677015c4bd88f429a8b',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fmenuexecute_6',['U8G2E_MenuExecute',['../_u8g2___expand_8h.html#ac055c400909261265546f2ef1c3b354c',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fmenuoption_7',['U8G2E_MenuOption',['../struct_u8_g2_e___menu_option.html',1,'']]],
-  ['u8g2e_5fmenuoptiondisplay_8',['U8G2E_MenuOptionDisplay',['../_u8g2___expand_8h.html#acc22976c630f0f639007075268170066',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fmovecursor_9',['U8G2E_MoveCursor',['../_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fnum_5faction_10',['U8G2E_NUM_ACTION',['../_u8g2___expand_8h.html#a63ea9ff5adcfdc5065bfd37415e40bea',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fnumdisplay_11',['U8G2E_NUMDisplay',['../_u8g2___expand_8h.html#a7f71cd68170f9c95de9ea11db1cb7701',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fpct_5faction_12',['U8G2E_PCT_ACTION',['../_u8g2___expand_8h.html#ab816dfec44894292bf2be68ef6244885',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fpromptwindow_13',['U8G2E_PromptWindow',['../_u8g2___expand_8h.html#a4f7978e7fba0c8b1b00f4a5051ee75a6',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fstartanimation_14',['U8G2E_StartAnimation',['../_u8g2___expand_8h.html#a81fce3b829f6c7d0a1ea9c97328e7605',1,'U8g2_Expand.cpp']]],
-  ['u8g2e_5fstrheight_15',['U8G2E_StrHeight',['../_u8g2___expand_8h.html#a34f1e520f561362143583a15c0d49c83',1,'U8g2_Expand.cpp']]]
+  ['key_5fconfirm_0',['KEY_CONFIRM',['../_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454',1,'U8g2_Expand.h']]],
+  ['key_5fdown_1',['KEY_DOWN',['../_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416',1,'U8g2_Expand.h']]],
+  ['key_5fexit_2',['KEY_EXIT',['../_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c',1,'U8g2_Expand.h']]],
+  ['key_5fmapping_3',['Key_mapping',['../_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5',1,'U8g2_Expand.h']]],
+  ['key_5fnull_4',['KEY_NULL',['../_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f',1,'U8g2_Expand.h']]],
+  ['key_5fup_5',['KEY_UP',['../_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd',1,'U8g2_Expand.h']]],
+  ['kind_6',['Kind',['../struct_u8_g2_e___menu_option.html#abfb11385cee4d707b50f886f4c2791fe',1,'U8G2E_MenuOption']]]
 ];

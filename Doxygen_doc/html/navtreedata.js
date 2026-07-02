@@ -24,30 +24,22 @@
 */
 var NAVTREE =
 [
-  [ "SMART MOTOR", "index.html", [
-    [ "README", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html", [
-      [ "定时器配置", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "WS2812 颜色映射", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md2", null ],
-      [ "电机宏定义部分", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md3", null ],
-      [ "总连接表", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "串口数据包格式", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md5", [
-        [ "数据包格式：", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md6", null ],
-        [ "发送命令：", "md__d_1_2_s_t_m32_01_project_2_s_t_m32_f103_2smart__motor_2_u_s_e_r_2_r_e_a_d_m_e.html#autotoc_md7", null ]
-      ] ]
-    ] ],
+  [ "U8G2_Expand", "index.html", [
     [ "结构体", "annotated.html", [
       [ "结构体", "annotated.html", "annotated_dup" ],
-      [ "结构体索引", "classes.html", null ]
+      [ "结构体索引", "classes.html", null ],
+      [ "成员变量", "functions.html", [
+        [ "全部", "functions.html", null ],
+        [ "变量", "functions_vars.html", null ]
+      ] ]
     ] ],
     [ "文件", "files.html", [
       [ "文件列表", "files.html", "files_dup" ],
       [ "全局定义", "globals.html", [
         [ "全部", "globals.html", null ],
         [ "函数", "globals_func.html", null ],
-        [ "变量", "globals_vars.html", null ],
         [ "枚举", "globals_enum.html", null ],
-        [ "枚举值", "globals_eval.html", null ],
-        [ "宏定义", "globals_defs.html", null ]
+        [ "枚举值", "globals_eval.html", null ]
       ] ]
     ] ]
   ] ]

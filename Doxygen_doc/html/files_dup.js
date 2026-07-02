@@ -1,5 +1,4 @@
 var files_dup =
 [
-    [ "src", "dir_e54f973d30ec2d1433717f05a8379e97.html", "dir_e54f973d30ec2d1433717f05a8379e97" ],
-    [ "STM32 Project", "dir_931234a3c317cabd3591a0440e39c79e.html", "dir_931234a3c317cabd3591a0440e39c79e" ]
+    [ "src", "dir_68267d1309a1af8e8297ef4c3efbcdba.html", "dir_68267d1309a1af8e8297ef4c3efbcdba" ]
 ];

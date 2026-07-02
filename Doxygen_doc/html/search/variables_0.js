@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['filter_5fa_0',['filter_A',['../motor_8c.html#a02b72a8107e17af08faa7120b3278de0',1,'motor.c']]],
-  ['filter_5fb_1',['filter_B',['../motor_8c.html#aff426ab4c5bbc38c8baaf18477317f52',1,'motor.c']]]
+  ['kind_0',['Kind',['../struct_u8_g2_e___menu_option.html#abfb11385cee4d707b50f886f4c2791fe',1,'U8G2E_MenuOption']]]
 ];

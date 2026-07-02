@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">Design by Maker114</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,22 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('_u8g2___expand_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,11 +96,6 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">U8g2_Expand.h</div></div>
 </div><!--header-->
@@ -114,79 +131,111 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#define U8G2E_PIN_DC 12</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#define U8G2E_PIN_RST 13</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">typedef</span> <span class="keyword">enum</span> <span class="comment">// 定义按键映射</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    KEY_NULL = 0,    <span class="comment">// 无返回</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    KEY_DOWN = 3,    <span class="comment">// 向下</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    KEY_UP = 2,      <span class="comment">// 向上</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    KEY_CONFIRM = 1, <span class="comment">// 确认</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    KEY_EXIT = 4     <span class="comment">// 取消</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} Key_mapping;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="};">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html">   49</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><span class="comment">// 菜单选项结构体</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    String Title;       <span class="comment">// 选项标题</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">double</span> Value;       <span class="comment">// 选项数值</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    uint8_t Kind;       <span class="comment">// 选项种类</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">float</span> X_Coordinate; <span class="comment">// x轴坐标</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">float</span> Y_Coordinate; <span class="comment">// y轴坐标</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>} <a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a>;</div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5">   44</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f">   46</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f">KEY_NULL</a> = 0,    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416">   47</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a> = 3,    </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd">   48</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd">KEY_UP</a> = 2,      </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454">   49</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454">KEY_CONFIRM</a> = 1, </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c">KEY_EXIT</a> = 4     </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c">   51</a></span>} <a class="code hl_enumeration" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5">Key_mapping</a>;</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">typedef</span> <span class="keyword">enum</span> <span class="comment">// 菜单选项类型</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="};">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html">   58</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>{</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    U8G2E_OPTION_KEY = 0,  <span class="comment">// 开关类型</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    U8G2E_OPTION_NUM = 1,  <span class="comment">// 数值类型（整数/小数）</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    U8G2E_OPTION_PCT = 2,  <span class="comment">// 百分比类型（percent）</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    U8G2E_OPTION_TEXT = 3, <span class="comment">// 文本类型(仅显示文本，没有数据更改)</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    U8G2E_OPTION_FUNC = 4, <span class="comment">// 函数类型(仅执行函数，没有数据更改)</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>} U8G2E_OptionType;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html#ab2cd177dd6c3c9b4e127e1b2a37c7ef7">   60</a></span>    String <a class="code hl_variable" href="struct_u8_g2_e___menu_option.html#ab2cd177dd6c3c9b4e127e1b2a37c7ef7">Title</a>;       </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html#a7b7e5af44fffe84c91c63ba0781ffdb3">   61</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="struct_u8_g2_e___menu_option.html#a7b7e5af44fffe84c91c63ba0781ffdb3">Value</a>;       </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html#abfb11385cee4d707b50f886f4c2791fe">   62</a></span>    uint8_t <a class="code hl_variable" href="struct_u8_g2_e___menu_option.html#abfb11385cee4d707b50f886f4c2791fe">Kind</a>;       </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html#afa1a0164f01f20b582eb4144ccbf084d">   63</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_u8_g2_e___menu_option.html#afa1a0164f01f20b582eb4144ccbf084d">X_Coordinate</a>; </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="struct_u8_g2_e___menu_option.html#afe5ee59faa53e9c81172917d81619b2f">   64</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_u8_g2_e___menu_option.html#afe5ee59faa53e9c81172917d81619b2f">Y_Coordinate</a>; </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>} <a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a>;</div>
+</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">typedef</span> <span class="keyword">enum</span> <span class="comment">// 动画显示模式</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Slow = 1,       <span class="comment">// 缓动</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    Elasticity = 2, <span class="comment">// 弹性</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>} Mode;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">/***********************函数声明部分**********************/</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>uint8_t <a class="code hl_function" href="_u8g2___expand_8h.html#a34f1e520f561362143583a15c0d49c83">U8G2E_StrHeight</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, uint8_t max_width, uint8_t x);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">void</span> U8G2E_SaveBuffer(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a18467585a9c520fb1b1fb4ec2d12c76b">U8G2E_CoverBuffer</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keywordtype">void</span> U8G2E_SignKeyFun(<span class="keywordtype">int</span> Put_in_fun(<span class="keywordtype">void</span>));</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keywordtype">void</span> U8G2E_CountDigits(<span class="keywordtype">double</span> number, <span class="keywordtype">int</span> *integer_digits, <span class="keywordtype">int</span> *decimal_digits);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a81fce3b829f6c7d0a1ea9c97328e7605">U8G2E_StartAnimation</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str1, <span class="keyword">const</span> <span class="keywordtype">char</span> *str2);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a4f7978e7fba0c8b1b00f4a5051ee75a6">U8G2E_PromptWindow</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str1, <span class="keywordtype">bool</span> Key_trigger_enable);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a7f71cd68170f9c95de9ea11db1cb7701">U8G2E_NUMDisplay</a>(<span class="keywordtype">int</span> num, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">float</span> change[], <span class="keywordtype">int</span> W, <span class="keywordtype">int</span> H);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a1d1b52524fc3a677015c4bd88f429a8b">U8G2E_MenuDisplay</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> MenuOption_ARR[], uint8_t valid_num);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#acc22976c630f0f639007075268170066">U8G2E_MenuOptionDisplay</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> MenuOption_Member);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#ac055c400909261265546f2ef1c3b354c">U8G2E_MenuExecute</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#ab816dfec44894292bf2be68ef6244885">U8G2E_PCT_ACTION</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a63ea9ff5adcfdc5065bfd37415e40bea">U8G2E_NUM_ACTION</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a4082c54450051c77c729da17100be3ab">U8G2E_Blurring</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c">U8G2E_DrawWrappedText</a>(u8g2_uint_t x, u8g2_uint_t y, <span class="keyword">const</span> <span class="keywordtype">char</span> *str, u8g2_uint_t max_width);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962">U8G2E_Init</a>(<span class="keywordtype">bool</span> Enable, <span class="keyword">const</span> <span class="keywordtype">char</span> *str1, <span class="keyword">const</span> <span class="keywordtype">char</span> *str2);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139">U8G2E_MoveCursor</a>(<span class="keywordtype">int</span> GoalValue, <span class="keywordtype">float</span> *CurrentValue, uint8_t Mode);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a0d245e0e577e789cbc4bce4e79a14139"><div class="ttname"><a href="_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139">U8G2E_MoveCursor</a></div><div class="ttdeci">void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode)</div><div class="ttdoc">数字平滑移动</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:32</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a18467585a9c520fb1b1fb4ec2d12c76b"><div class="ttname"><a href="_u8g2___expand_8h.html#a18467585a9c520fb1b1fb4ec2d12c76b">U8G2E_CoverBuffer</a></div><div class="ttdeci">void U8G2E_CoverBuffer(void)</div><div class="ttdoc">恢复缓冲区</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:200</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a1d1b52524fc3a677015c4bd88f429a8b"><div class="ttname"><a href="_u8g2___expand_8h.html#a1d1b52524fc3a677015c4bd88f429a8b">U8G2E_MenuDisplay</a></div><div class="ttdeci">void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)</div><div class="ttdoc">丝滑移动菜单</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:427</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a34f1e520f561362143583a15c0d49c83"><div class="ttname"><a href="_u8g2___expand_8h.html#a34f1e520f561362143583a15c0d49c83">U8G2E_StrHeight</a></div><div class="ttdeci">uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x)</div><div class="ttdoc">获取字符串在当前字体和换行长度下的高度</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:150</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a4082c54450051c77c729da17100be3ab"><div class="ttname"><a href="_u8g2___expand_8h.html#a4082c54450051c77c729da17100be3ab">U8G2E_Blurring</a></div><div class="ttdeci">void U8G2E_Blurring(void)</div><div class="ttdoc">背景虚化</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:88</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a4f7978e7fba0c8b1b00f4a5051ee75a6"><div class="ttname"><a href="_u8g2___expand_8h.html#a4f7978e7fba0c8b1b00f4a5051ee75a6">U8G2E_PromptWindow</a></div><div class="ttdeci">void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable)</div><div class="ttdoc">弹窗提示</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:342</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a63ea9ff5adcfdc5065bfd37415e40bea"><div class="ttname"><a href="_u8g2___expand_8h.html#a63ea9ff5adcfdc5065bfd37415e40bea">U8G2E_NUM_ACTION</a></div><div class="ttdeci">void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member)</div><div class="ttdoc">数字处理选项</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:740</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a6b0cd1e5572b487bdfff689a69879962"><div class="ttname"><a href="_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962">U8G2E_Init</a></div><div class="ttdeci">void U8G2E_Init(bool Enable, const char *str1, const char *str2)</div><div class="ttdoc">初始化OLED</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:13</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a737234bc7063eda3a6cdd1a90a342d8c"><div class="ttname"><a href="_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c">U8G2E_DrawWrappedText</a></div><div class="ttdeci">void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width)</div><div class="ttdoc">自动换行输出字符串</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:110</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a7f71cd68170f9c95de9ea11db1cb7701"><div class="ttname"><a href="_u8g2___expand_8h.html#a7f71cd68170f9c95de9ea11db1cb7701">U8G2E_NUMDisplay</a></div><div class="ttdeci">void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)</div><div class="ttdoc">丝滑数字显示函数</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:398</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_a81fce3b829f6c7d0a1ea9c97328e7605"><div class="ttname"><a href="_u8g2___expand_8h.html#a81fce3b829f6c7d0a1ea9c97328e7605">U8G2E_StartAnimation</a></div><div class="ttdeci">void U8G2E_StartAnimation(const char *str1, const char *str2)</div><div class="ttdoc">开机动画</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:304</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_ab816dfec44894292bf2be68ef6244885"><div class="ttname"><a href="_u8g2___expand_8h.html#ab816dfec44894292bf2be68ef6244885">U8G2E_PCT_ACTION</a></div><div class="ttdeci">void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)</div><div class="ttdoc">处理百分比选项</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:676</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_ac055c400909261265546f2ef1c3b354c"><div class="ttname"><a href="_u8g2___expand_8h.html#ac055c400909261265546f2ef1c3b354c">U8G2E_MenuExecute</a></div><div class="ttdeci">void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)</div><div class="ttdoc">执行菜单项动作</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:647</div></div>
-<div class="ttc" id="a_u8g2___expand_8h_html_acc22976c630f0f639007075268170066"><div class="ttname"><a href="_u8g2___expand_8h.html#acc22976c630f0f639007075268170066">U8G2E_MenuOptionDisplay</a></div><div class="ttdeci">void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member)</div><div class="ttdoc">绘制菜单项</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:592</div></div>
-<div class="ttc" id="astruct_u8_g2_e___menu_option_html"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a></div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:50</div></div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="};">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58">   71</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>{</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2">   73</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2">U8G2E_OPTION_KEY</a> = 0,  </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395">   74</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395">U8G2E_OPTION_NUM</a> = 1,  </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386">   75</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386">U8G2E_OPTION_PCT</a> = 2,  </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8">   76</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8">U8G2E_OPTION_TEXT</a> = 3, </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c">   77</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c">U8G2E_OPTION_FUNC</a> = 4, </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>} <a class="code hl_enumeration" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58">U8G2E_OptionType</a>;</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="foldopen" id="foldopen00084" data-start="{" data-end="};">
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">   84</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>{</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3">   86</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3">Slow</a> = 1,       </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63">   87</a></span>    <a class="code hl_enumvalue" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63">Elasticity</a> = 2, </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>} <a class="code hl_enumeration" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">Mode</a>;</div>
+</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">/***********************函数声明部分**********************/</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962">U8G2E_Init</a>(<span class="keywordtype">bool</span> Enable, <span class="keyword">const</span> <span class="keywordtype">char</span> *str1, <span class="keyword">const</span> <span class="keywordtype">char</span> *str2);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139">U8G2E_MoveCursor</a>(<span class="keywordtype">int</span> GoalValue, <span class="keywordtype">float</span> *CurrentValue, uint8_t <a class="code hl_enumeration" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">Mode</a>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a4082c54450051c77c729da17100be3ab">U8G2E_Blurring</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c">U8G2E_DrawWrappedText</a>(u8g2_uint_t x, u8g2_uint_t y, <span class="keyword">const</span> <span class="keywordtype">char</span> *str, u8g2_uint_t max_width);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>uint8_t <a class="code hl_function" href="_u8g2___expand_8h.html#a34f1e520f561362143583a15c0d49c83">U8G2E_StrHeight</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, uint8_t max_width, uint8_t x);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a20309644820810d64c8f3c319c60b398">U8G2E_SaveBuffer</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a18467585a9c520fb1b1fb4ec2d12c76b">U8G2E_CoverBuffer</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keywordtype">void</span> U8G2E_SignKeyFun(<span class="keywordtype">int</span> Put_in_fun(<span class="keywordtype">void</span>));</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a61530f062aadf21476c7ecfc4f7da5c3">U8G2E_CountDigits</a>(<span class="keywordtype">double</span> number, <span class="keywordtype">int</span> *integer_digits, <span class="keywordtype">int</span> *decimal_digits);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a81fce3b829f6c7d0a1ea9c97328e7605">U8G2E_StartAnimation</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str1, <span class="keyword">const</span> <span class="keywordtype">char</span> *str2);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a4f7978e7fba0c8b1b00f4a5051ee75a6">U8G2E_PromptWindow</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str1, <span class="keywordtype">bool</span> Key_trigger_enable);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a7f71cd68170f9c95de9ea11db1cb7701">U8G2E_NUMDisplay</a>(<span class="keywordtype">int</span> num, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">float</span> change[], <span class="keywordtype">int</span> W, <span class="keywordtype">int</span> H);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a1d1b52524fc3a677015c4bd88f429a8b">U8G2E_MenuDisplay</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> MenuOption_ARR[], uint8_t valid_num);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#acc22976c630f0f639007075268170066">U8G2E_MenuOptionDisplay</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> MenuOption_Member);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#ac055c400909261265546f2ef1c3b354c">U8G2E_MenuExecute</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#ab816dfec44894292bf2be68ef6244885">U8G2E_PCT_ACTION</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">void</span> <a class="code hl_function" href="_u8g2___expand_8h.html#a63ea9ff5adcfdc5065bfd37415e40bea">U8G2E_NUM_ACTION</a>(<a class="code hl_struct" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a0d245e0e577e789cbc4bce4e79a14139"><div class="ttname"><a href="_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139">U8G2E_MoveCursor</a></div><div class="ttdeci">void U8G2E_MoveCursor(int GoalValue, float *CurrentValue, uint8_t Mode)</div><div class="ttdoc">数字平滑移动</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:34</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a18467585a9c520fb1b1fb4ec2d12c76b"><div class="ttname"><a href="_u8g2___expand_8h.html#a18467585a9c520fb1b1fb4ec2d12c76b">U8G2E_CoverBuffer</a></div><div class="ttdeci">void U8G2E_CoverBuffer(void)</div><div class="ttdoc">解压备份数据并覆盖当前U8G2显示缓冲区。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:228</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1c73719caca327b5ab81301902bb9f58"><div class="ttname"><a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58">U8G2E_OptionType</a></div><div class="ttdeci">U8G2E_OptionType</div><div class="ttdoc">菜单选项类型枚举。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:72</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8"><div class="ttname"><a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8">U8G2E_OPTION_TEXT</a></div><div class="ttdeci">@ U8G2E_OPTION_TEXT</div><div class="ttdoc">纯文本类型（仅显示，无交互）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:76</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c"><div class="ttname"><a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c">U8G2E_OPTION_FUNC</a></div><div class="ttdeci">@ U8G2E_OPTION_FUNC</div><div class="ttdoc">函数类型（执行回调函数，Value存储函数指针）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:77</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386"><div class="ttname"><a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386">U8G2E_OPTION_PCT</a></div><div class="ttdeci">@ U8G2E_OPTION_PCT</div><div class="ttdoc">百分比类型（0~100可调）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:75</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395"><div class="ttname"><a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395">U8G2E_OPTION_NUM</a></div><div class="ttdeci">@ U8G2E_OPTION_NUM</div><div class="ttdoc">数值类型（整数/小数可调）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:74</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2"><div class="ttname"><a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2">U8G2E_OPTION_KEY</a></div><div class="ttdeci">@ U8G2E_OPTION_KEY</div><div class="ttdoc">开关类型（切换ON/OFF）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:73</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a1d1b52524fc3a677015c4bd88f429a8b"><div class="ttname"><a href="_u8g2___expand_8h.html#a1d1b52524fc3a677015c4bd88f429a8b">U8G2E_MenuDisplay</a></div><div class="ttdeci">void U8G2E_MenuDisplay(U8G2E_MenuOption MenuOption_ARR[], uint8_t valid_num)</div><div class="ttdoc">丝滑移动菜单交互界面。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:477</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a20309644820810d64c8f3c319c60b398"><div class="ttname"><a href="_u8g2___expand_8h.html#a20309644820810d64c8f3c319c60b398">U8G2E_SaveBuffer</a></div><div class="ttdeci">void U8G2E_SaveBuffer(void)</div><div class="ttdoc">压缩并保存当前U8G2显示缓冲区。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:196</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a34f1e520f561362143583a15c0d49c83"><div class="ttname"><a href="_u8g2___expand_8h.html#a34f1e520f561362143583a15c0d49c83">U8G2E_StrHeight</a></div><div class="ttdeci">uint8_t U8G2E_StrHeight(const char *str, uint8_t max_width, uint8_t x)</div><div class="ttdoc">计算字符串在指定宽度下换行后的总高度。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:154</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4082c54450051c77c729da17100be3ab"><div class="ttname"><a href="_u8g2___expand_8h.html#a4082c54450051c77c729da17100be3ab">U8G2E_Blurring</a></div><div class="ttdeci">void U8G2E_Blurring(void)</div><div class="ttdoc">背景虚化效果</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:90</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a46c8a310cf4c094f8c80e1cb8dc1f911"><div class="ttname"><a href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">动画移动模式枚举。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:85</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3"><div class="ttname"><a href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3">Slow</a></div><div class="ttdeci">@ Slow</div><div class="ttdoc">缓动模式（逐渐减速逼近目标）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:86</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63"><div class="ttname"><a href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63">Elasticity</a></div><div class="ttdeci">@ Elasticity</div><div class="ttdoc">弹性模式（带回弹效果，模拟弹簧运动）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:87</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4f7978e7fba0c8b1b00f4a5051ee75a6"><div class="ttname"><a href="_u8g2___expand_8h.html#a4f7978e7fba0c8b1b00f4a5051ee75a6">U8G2E_PromptWindow</a></div><div class="ttdeci">void U8G2E_PromptWindow(const char *str1, bool Key_trigger_enable)</div><div class="ttdoc">弹出提示窗口。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:390</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4fc42c52a32cf5fe535a77db27ad3df5"><div class="ttname"><a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5">Key_mapping</a></div><div class="ttdeci">Key_mapping</div><div class="ttdoc">按键映射枚举。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:45</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd"><div class="ttname"><a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd">KEY_UP</a></div><div class="ttdeci">@ KEY_UP</div><div class="ttdoc">向上按键</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:48</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c"><div class="ttname"><a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c">KEY_EXIT</a></div><div class="ttdeci">@ KEY_EXIT</div><div class="ttdoc">取消按键</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:50</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454"><div class="ttname"><a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454">KEY_CONFIRM</a></div><div class="ttdeci">@ KEY_CONFIRM</div><div class="ttdoc">确认按键</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:49</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416"><div class="ttname"><a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a></div><div class="ttdeci">@ KEY_DOWN</div><div class="ttdoc">向下按键</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:47</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f"><div class="ttname"><a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f">KEY_NULL</a></div><div class="ttdeci">@ KEY_NULL</div><div class="ttdoc">无按键</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:46</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a61530f062aadf21476c7ecfc4f7da5c3"><div class="ttname"><a href="_u8g2___expand_8h.html#a61530f062aadf21476c7ecfc4f7da5c3">U8G2E_CountDigits</a></div><div class="ttdeci">void U8G2E_CountDigits(double number, int *integer_digits, int *decimal_digits)</div><div class="ttdoc">计算浮点数的整数位数和小数位数</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:269</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a63ea9ff5adcfdc5065bfd37415e40bea"><div class="ttname"><a href="_u8g2___expand_8h.html#a63ea9ff5adcfdc5065bfd37415e40bea">U8G2E_NUM_ACTION</a></div><div class="ttdeci">void U8G2E_NUM_ACTION(U8G2E_MenuOption *MenuOption_Member)</div><div class="ttdoc">编辑数值选项的专用界面。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:792</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a6b0cd1e5572b487bdfff689a69879962"><div class="ttname"><a href="_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962">U8G2E_Init</a></div><div class="ttdeci">void U8G2E_Init(bool Enable, const char *str1, const char *str2)</div><div class="ttdoc">初始化OLED并可选播放开机动画</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:15</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a737234bc7063eda3a6cdd1a90a342d8c"><div class="ttname"><a href="_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c">U8G2E_DrawWrappedText</a></div><div class="ttdeci">void U8G2E_DrawWrappedText(u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width)</div><div class="ttdoc">自动换行绘制字符串。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:112</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a7f71cd68170f9c95de9ea11db1cb7701"><div class="ttname"><a href="_u8g2___expand_8h.html#a7f71cd68170f9c95de9ea11db1cb7701">U8G2E_NUMDisplay</a></div><div class="ttdeci">void U8G2E_NUMDisplay(int num, int x, int y, float change[], int W, int H)</div><div class="ttdoc">丝滑数字显示函数。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:447</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_a81fce3b829f6c7d0a1ea9c97328e7605"><div class="ttname"><a href="_u8g2___expand_8h.html#a81fce3b829f6c7d0a1ea9c97328e7605">U8G2E_StartAnimation</a></div><div class="ttdeci">void U8G2E_StartAnimation(const char *str1, const char *str2)</div><div class="ttdoc">显示开机动画。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:351</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_ab816dfec44894292bf2be68ef6244885"><div class="ttname"><a href="_u8g2___expand_8h.html#ab816dfec44894292bf2be68ef6244885">U8G2E_PCT_ACTION</a></div><div class="ttdeci">void U8G2E_PCT_ACTION(U8G2E_MenuOption *MenuOption_Member)</div><div class="ttdoc">编辑百分比选项的专用界面。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:728</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_ac055c400909261265546f2ef1c3b354c"><div class="ttname"><a href="_u8g2___expand_8h.html#ac055c400909261265546f2ef1c3b354c">U8G2E_MenuExecute</a></div><div class="ttdeci">void U8G2E_MenuExecute(U8G2E_MenuOption *MenuOption_Member)</div><div class="ttdoc">执行菜单选项的确认动作。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:698</div></div>
+<div class="ttc" id="a_u8g2___expand_8h_html_acc22976c630f0f639007075268170066"><div class="ttname"><a href="_u8g2___expand_8h.html#acc22976c630f0f639007075268170066">U8G2E_MenuOptionDisplay</a></div><div class="ttdeci">void U8G2E_MenuOptionDisplay(U8G2E_MenuOption MenuOption_Member)</div><div class="ttdoc">绘制单个菜单选项。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.cpp:643</div></div>
+<div class="ttc" id="astruct_u8_g2_e___menu_option_html"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a></div><div class="ttdoc">菜单选项结构体。</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:59</div></div>
+<div class="ttc" id="astruct_u8_g2_e___menu_option_html_a7b7e5af44fffe84c91c63ba0781ffdb3"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html#a7b7e5af44fffe84c91c63ba0781ffdb3">U8G2E_MenuOption::Value</a></div><div class="ttdeci">double Value</div><div class="ttdoc">选项数值（开关用0/1，百分比/数值为实际值，函数类型存储函数指针的整型值）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:61</div></div>
+<div class="ttc" id="astruct_u8_g2_e___menu_option_html_ab2cd177dd6c3c9b4e127e1b2a37c7ef7"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html#ab2cd177dd6c3c9b4e127e1b2a37c7ef7">U8G2E_MenuOption::Title</a></div><div class="ttdeci">String Title</div><div class="ttdoc">选项标题（显示文本）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:60</div></div>
+<div class="ttc" id="astruct_u8_g2_e___menu_option_html_abfb11385cee4d707b50f886f4c2791fe"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html#abfb11385cee4d707b50f886f4c2791fe">U8G2E_MenuOption::Kind</a></div><div class="ttdeci">uint8_t Kind</div><div class="ttdoc">选项类型，取值见 U8G2E_OptionType 枚举</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:62</div></div>
+<div class="ttc" id="astruct_u8_g2_e___menu_option_html_afa1a0164f01f20b582eb4144ccbf084d"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html#afa1a0164f01f20b582eb4144ccbf084d">U8G2E_MenuOption::X_Coordinate</a></div><div class="ttdeci">float X_Coordinate</div><div class="ttdoc">X轴坐标（用于菜单动画和定位，初始化无需赋值）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:63</div></div>
+<div class="ttc" id="astruct_u8_g2_e___menu_option_html_afe5ee59faa53e9c81172917d81619b2f"><div class="ttname"><a href="struct_u8_g2_e___menu_option.html#afe5ee59faa53e9c81172917d81619b2f">U8G2E_MenuOption::Y_Coordinate</a></div><div class="ttdeci">float Y_Coordinate</div><div class="ttdoc">Y轴坐标（用于菜单动画和定位，初始化无需赋值）</div><div class="ttdef"><b>Definition</b> U8g2_Expand.h:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_u8g2___expand_8h.html">U8g2_Expand.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

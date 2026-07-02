@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">Design by Maker114</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="搜索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('_u8g2___expand_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">结构体</a> &#124;
@@ -95,6 +117,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 结构体</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">菜单选项结构体。  <a href="struct_u8_g2_e___menu_option.html#details">更多...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -111,86 +134,87 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 枚举</h2></td></tr>
-<tr class="memitem:a4fc42c52a32cf5fe535a77db27ad3df5" id="r_a4fc42c52a32cf5fe535a77db27ad3df5"><td class="memItemLeft" align="right" valign="top"><a id="a4fc42c52a32cf5fe535a77db27ad3df5" name="a4fc42c52a32cf5fe535a77db27ad3df5"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Key_mapping</b> { <br />
-&#160;&#160;<b>KEY_NULL</b> = 0
-, <b>KEY_DOWN</b> = 3
-, <b>KEY_UP</b> = 2
-, <b>KEY_CONFIRM</b> = 1
+<tr class="memitem:a4fc42c52a32cf5fe535a77db27ad3df5" id="r_a4fc42c52a32cf5fe535a77db27ad3df5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5">Key_mapping</a> { <br />
+&#160;&#160;<a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f">KEY_NULL</a> = 0
+, <a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416">KEY_DOWN</a> = 3
+, <a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd">KEY_UP</a> = 2
+, <a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454">KEY_CONFIRM</a> = 1
 , <br />
-&#160;&#160;<b>KEY_EXIT</b> = 4
+&#160;&#160;<a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c">KEY_EXIT</a> = 4
 <br />
  }</td></tr>
+<tr class="memdesc:a4fc42c52a32cf5fe535a77db27ad3df5"><td class="mdescLeft">&#160;</td><td class="mdescRight">按键映射枚举。  <a href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5">更多...</a><br /></td></tr>
 <tr class="separator:a4fc42c52a32cf5fe535a77db27ad3df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c73719caca327b5ab81301902bb9f58" id="r_a1c73719caca327b5ab81301902bb9f58"><td class="memItemLeft" align="right" valign="top"><a id="a1c73719caca327b5ab81301902bb9f58" name="a1c73719caca327b5ab81301902bb9f58"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>U8G2E_OptionType</b> { <br />
-&#160;&#160;<b>U8G2E_OPTION_KEY</b> = 0
-, <b>U8G2E_OPTION_NUM</b> = 1
-, <b>U8G2E_OPTION_PCT</b> = 2
-, <b>U8G2E_OPTION_TEXT</b> = 3
+<tr class="memitem:a1c73719caca327b5ab81301902bb9f58" id="r_a1c73719caca327b5ab81301902bb9f58"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58">U8G2E_OptionType</a> { <br />
+&#160;&#160;<a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2">U8G2E_OPTION_KEY</a> = 0
+, <a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395">U8G2E_OPTION_NUM</a> = 1
+, <a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386">U8G2E_OPTION_PCT</a> = 2
+, <a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8">U8G2E_OPTION_TEXT</a> = 3
 , <br />
-&#160;&#160;<b>U8G2E_OPTION_FUNC</b> = 4
+&#160;&#160;<a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c">U8G2E_OPTION_FUNC</a> = 4
 <br />
  }</td></tr>
+<tr class="memdesc:a1c73719caca327b5ab81301902bb9f58"><td class="mdescLeft">&#160;</td><td class="mdescRight">菜单选项类型枚举。  <a href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58">更多...</a><br /></td></tr>
 <tr class="separator:a1c73719caca327b5ab81301902bb9f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46c8a310cf4c094f8c80e1cb8dc1f911" id="r_a46c8a310cf4c094f8c80e1cb8dc1f911"><td class="memItemLeft" align="right" valign="top"><a id="a46c8a310cf4c094f8c80e1cb8dc1f911" name="a46c8a310cf4c094f8c80e1cb8dc1f911"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Mode</b> { <b>Slow</b> = 1
-, <b>Elasticity</b> = 2
+<tr class="memitem:a46c8a310cf4c094f8c80e1cb8dc1f911" id="r_a46c8a310cf4c094f8c80e1cb8dc1f911"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">Mode</a> { <a class="el" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3">Slow</a> = 1
+, <a class="el" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63">Elasticity</a> = 2
  }</td></tr>
+<tr class="memdesc:a46c8a310cf4c094f8c80e1cb8dc1f911"><td class="mdescLeft">&#160;</td><td class="mdescRight">动画移动模式枚举。  <a href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">更多...</a><br /></td></tr>
 <tr class="separator:a46c8a310cf4c094f8c80e1cb8dc1f911"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 函数</h2></td></tr>
+<tr class="memitem:a6b0cd1e5572b487bdfff689a69879962" id="r_a6b0cd1e5572b487bdfff689a69879962"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962">U8G2E_Init</a> (bool Enable, const char *str1, const char *str2)</td></tr>
+<tr class="memdesc:a6b0cd1e5572b487bdfff689a69879962"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化OLED并可选播放开机动画  <br /></td></tr>
+<tr class="separator:a6b0cd1e5572b487bdfff689a69879962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d245e0e577e789cbc4bce4e79a14139" id="r_a0d245e0e577e789cbc4bce4e79a14139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139">U8G2E_MoveCursor</a> (int GoalValue, float *CurrentValue, uint8_t <a class="el" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">Mode</a>)</td></tr>
+<tr class="memdesc:a0d245e0e577e789cbc4bce4e79a14139"><td class="mdescLeft">&#160;</td><td class="mdescRight">数字平滑移动  <br /></td></tr>
+<tr class="separator:a0d245e0e577e789cbc4bce4e79a14139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4082c54450051c77c729da17100be3ab" id="r_a4082c54450051c77c729da17100be3ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a4082c54450051c77c729da17100be3ab">U8G2E_Blurring</a> (void)</td></tr>
+<tr class="memdesc:a4082c54450051c77c729da17100be3ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">背景虚化效果  <br /></td></tr>
+<tr class="separator:a4082c54450051c77c729da17100be3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a737234bc7063eda3a6cdd1a90a342d8c" id="r_a737234bc7063eda3a6cdd1a90a342d8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c">U8G2E_DrawWrappedText</a> (u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width)</td></tr>
+<tr class="memdesc:a737234bc7063eda3a6cdd1a90a342d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">自动换行绘制字符串。  <br /></td></tr>
+<tr class="separator:a737234bc7063eda3a6cdd1a90a342d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34f1e520f561362143583a15c0d49c83" id="r_a34f1e520f561362143583a15c0d49c83"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a34f1e520f561362143583a15c0d49c83">U8G2E_StrHeight</a> (const char *str, uint8_t max_width, uint8_t x)</td></tr>
-<tr class="memdesc:a34f1e520f561362143583a15c0d49c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取字符串在当前字体和换行长度下的高度  <br /></td></tr>
+<tr class="memdesc:a34f1e520f561362143583a15c0d49c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算字符串在指定宽度下换行后的总高度。  <br /></td></tr>
 <tr class="separator:a34f1e520f561362143583a15c0d49c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20309644820810d64c8f3c319c60b398" id="r_a20309644820810d64c8f3c319c60b398"><td class="memItemLeft" align="right" valign="top"><a id="a20309644820810d64c8f3c319c60b398" name="a20309644820810d64c8f3c319c60b398"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>U8G2E_SaveBuffer</b> (void)</td></tr>
+<tr class="memitem:a20309644820810d64c8f3c319c60b398" id="r_a20309644820810d64c8f3c319c60b398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a20309644820810d64c8f3c319c60b398">U8G2E_SaveBuffer</a> (void)</td></tr>
+<tr class="memdesc:a20309644820810d64c8f3c319c60b398"><td class="mdescLeft">&#160;</td><td class="mdescRight">压缩并保存当前U8G2显示缓冲区。  <br /></td></tr>
 <tr class="separator:a20309644820810d64c8f3c319c60b398"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18467585a9c520fb1b1fb4ec2d12c76b" id="r_a18467585a9c520fb1b1fb4ec2d12c76b"><td class="memItemLeft" align="right" valign="top"><a id="a18467585a9c520fb1b1fb4ec2d12c76b" name="a18467585a9c520fb1b1fb4ec2d12c76b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>U8G2E_CoverBuffer</b> (void)</td></tr>
-<tr class="memdesc:a18467585a9c520fb1b1fb4ec2d12c76b"><td class="mdescLeft">&#160;</td><td class="mdescRight">恢复缓冲区 <br /></td></tr>
+<tr class="memitem:a18467585a9c520fb1b1fb4ec2d12c76b" id="r_a18467585a9c520fb1b1fb4ec2d12c76b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a18467585a9c520fb1b1fb4ec2d12c76b">U8G2E_CoverBuffer</a> (void)</td></tr>
+<tr class="memdesc:a18467585a9c520fb1b1fb4ec2d12c76b"><td class="mdescLeft">&#160;</td><td class="mdescRight">解压备份数据并覆盖当前U8G2显示缓冲区。  <br /></td></tr>
 <tr class="separator:a18467585a9c520fb1b1fb4ec2d12c76b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7470186c2cb54d435ac93e635c219cd1" id="r_a7470186c2cb54d435ac93e635c219cd1"><td class="memItemLeft" align="right" valign="top"><a id="a7470186c2cb54d435ac93e635c219cd1" name="a7470186c2cb54d435ac93e635c219cd1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>U8G2E_SignKeyFun</b> (int Put_in_fun(void))</td></tr>
 <tr class="separator:a7470186c2cb54d435ac93e635c219cd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61530f062aadf21476c7ecfc4f7da5c3" id="r_a61530f062aadf21476c7ecfc4f7da5c3"><td class="memItemLeft" align="right" valign="top"><a id="a61530f062aadf21476c7ecfc4f7da5c3" name="a61530f062aadf21476c7ecfc4f7da5c3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>U8G2E_CountDigits</b> (double number, int *integer_digits, int *decimal_digits)</td></tr>
+<tr class="memitem:a61530f062aadf21476c7ecfc4f7da5c3" id="r_a61530f062aadf21476c7ecfc4f7da5c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a61530f062aadf21476c7ecfc4f7da5c3">U8G2E_CountDigits</a> (double number, int *integer_digits, int *decimal_digits)</td></tr>
+<tr class="memdesc:a61530f062aadf21476c7ecfc4f7da5c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">计算浮点数的整数位数和小数位数  <br /></td></tr>
 <tr class="separator:a61530f062aadf21476c7ecfc4f7da5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a81fce3b829f6c7d0a1ea9c97328e7605" id="r_a81fce3b829f6c7d0a1ea9c97328e7605"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a81fce3b829f6c7d0a1ea9c97328e7605">U8G2E_StartAnimation</a> (const char *str1, const char *str2)</td></tr>
-<tr class="memdesc:a81fce3b829f6c7d0a1ea9c97328e7605"><td class="mdescLeft">&#160;</td><td class="mdescRight">开机动画  <br /></td></tr>
+<tr class="memdesc:a81fce3b829f6c7d0a1ea9c97328e7605"><td class="mdescLeft">&#160;</td><td class="mdescRight">显示开机动画。  <br /></td></tr>
 <tr class="separator:a81fce3b829f6c7d0a1ea9c97328e7605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f7978e7fba0c8b1b00f4a5051ee75a6" id="r_a4f7978e7fba0c8b1b00f4a5051ee75a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a4f7978e7fba0c8b1b00f4a5051ee75a6">U8G2E_PromptWindow</a> (const char *str1, bool Key_trigger_enable)</td></tr>
-<tr class="memdesc:a4f7978e7fba0c8b1b00f4a5051ee75a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">弹窗提示  <br /></td></tr>
+<tr class="memdesc:a4f7978e7fba0c8b1b00f4a5051ee75a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">弹出提示窗口。  <br /></td></tr>
 <tr class="separator:a4f7978e7fba0c8b1b00f4a5051ee75a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f71cd68170f9c95de9ea11db1cb7701" id="r_a7f71cd68170f9c95de9ea11db1cb7701"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a7f71cd68170f9c95de9ea11db1cb7701">U8G2E_NUMDisplay</a> (int num, int x, int y, float change[], int W, int H)</td></tr>
-<tr class="memdesc:a7f71cd68170f9c95de9ea11db1cb7701"><td class="mdescLeft">&#160;</td><td class="mdescRight">丝滑数字显示函数  <br /></td></tr>
+<tr class="memdesc:a7f71cd68170f9c95de9ea11db1cb7701"><td class="mdescLeft">&#160;</td><td class="mdescRight">丝滑数字显示函数。  <br /></td></tr>
 <tr class="separator:a7f71cd68170f9c95de9ea11db1cb7701"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d1b52524fc3a677015c4bd88f429a8b" id="r_a1d1b52524fc3a677015c4bd88f429a8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a1d1b52524fc3a677015c4bd88f429a8b">U8G2E_MenuDisplay</a> (<a class="el" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> MenuOption_ARR[], uint8_t valid_num)</td></tr>
-<tr class="memdesc:a1d1b52524fc3a677015c4bd88f429a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">丝滑移动菜单  <br /></td></tr>
+<tr class="memdesc:a1d1b52524fc3a677015c4bd88f429a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">丝滑移动菜单交互界面。  <br /></td></tr>
 <tr class="separator:a1d1b52524fc3a677015c4bd88f429a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc22976c630f0f639007075268170066" id="r_acc22976c630f0f639007075268170066"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#acc22976c630f0f639007075268170066">U8G2E_MenuOptionDisplay</a> (<a class="el" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> MenuOption_Member)</td></tr>
-<tr class="memdesc:acc22976c630f0f639007075268170066"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制菜单项  <br /></td></tr>
+<tr class="memdesc:acc22976c630f0f639007075268170066"><td class="mdescLeft">&#160;</td><td class="mdescRight">绘制单个菜单选项。  <br /></td></tr>
 <tr class="separator:acc22976c630f0f639007075268170066"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac055c400909261265546f2ef1c3b354c" id="r_ac055c400909261265546f2ef1c3b354c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#ac055c400909261265546f2ef1c3b354c">U8G2E_MenuExecute</a> (<a class="el" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member)</td></tr>
-<tr class="memdesc:ac055c400909261265546f2ef1c3b354c"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行菜单项动作  <br /></td></tr>
+<tr class="memdesc:ac055c400909261265546f2ef1c3b354c"><td class="mdescLeft">&#160;</td><td class="mdescRight">执行菜单选项的确认动作。  <br /></td></tr>
 <tr class="separator:ac055c400909261265546f2ef1c3b354c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab816dfec44894292bf2be68ef6244885" id="r_ab816dfec44894292bf2be68ef6244885"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#ab816dfec44894292bf2be68ef6244885">U8G2E_PCT_ACTION</a> (<a class="el" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member)</td></tr>
-<tr class="memdesc:ab816dfec44894292bf2be68ef6244885"><td class="mdescLeft">&#160;</td><td class="mdescRight">处理百分比选项  <br /></td></tr>
+<tr class="memdesc:ab816dfec44894292bf2be68ef6244885"><td class="mdescLeft">&#160;</td><td class="mdescRight">编辑百分比选项的专用界面。  <br /></td></tr>
 <tr class="separator:ab816dfec44894292bf2be68ef6244885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ea9ff5adcfdc5065bfd37415e40bea" id="r_a63ea9ff5adcfdc5065bfd37415e40bea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a63ea9ff5adcfdc5065bfd37415e40bea">U8G2E_NUM_ACTION</a> (<a class="el" href="struct_u8_g2_e___menu_option.html">U8G2E_MenuOption</a> *MenuOption_Member)</td></tr>
-<tr class="memdesc:a63ea9ff5adcfdc5065bfd37415e40bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">数字处理选项  <br /></td></tr>
+<tr class="memdesc:a63ea9ff5adcfdc5065bfd37415e40bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">编辑数值选项的专用界面。  <br /></td></tr>
 <tr class="separator:a63ea9ff5adcfdc5065bfd37415e40bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4082c54450051c77c729da17100be3ab" id="r_a4082c54450051c77c729da17100be3ab"><td class="memItemLeft" align="right" valign="top"><a id="a4082c54450051c77c729da17100be3ab" name="a4082c54450051c77c729da17100be3ab"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>U8G2E_Blurring</b> (void)</td></tr>
-<tr class="memdesc:a4082c54450051c77c729da17100be3ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">背景虚化 <br /></td></tr>
-<tr class="separator:a4082c54450051c77c729da17100be3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a737234bc7063eda3a6cdd1a90a342d8c" id="r_a737234bc7063eda3a6cdd1a90a342d8c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a737234bc7063eda3a6cdd1a90a342d8c">U8G2E_DrawWrappedText</a> (u8g2_uint_t x, u8g2_uint_t y, const char *str, u8g2_uint_t max_width)</td></tr>
-<tr class="memdesc:a737234bc7063eda3a6cdd1a90a342d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">自动换行输出字符串  <br /></td></tr>
-<tr class="separator:a737234bc7063eda3a6cdd1a90a342d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b0cd1e5572b487bdfff689a69879962" id="r_a6b0cd1e5572b487bdfff689a69879962"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a6b0cd1e5572b487bdfff689a69879962">U8G2E_Init</a> (bool Enable, const char *str1, const char *str2)</td></tr>
-<tr class="memdesc:a6b0cd1e5572b487bdfff689a69879962"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化OLED  <br /></td></tr>
-<tr class="separator:a6b0cd1e5572b487bdfff689a69879962"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d245e0e577e789cbc4bce4e79a14139" id="r_a0d245e0e577e789cbc4bce4e79a14139"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_u8g2___expand_8h.html#a0d245e0e577e789cbc4bce4e79a14139">U8G2E_MoveCursor</a> (int GoalValue, float *CurrentValue, uint8_t Mode)</td></tr>
-<tr class="memdesc:a0d245e0e577e789cbc4bce4e79a14139"><td class="mdescLeft">&#160;</td><td class="mdescRight">数字平滑移动  <br /></td></tr>
-<tr class="separator:a0d245e0e577e789cbc4bce4e79a14139"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 变量</h2></td></tr>
@@ -203,7 +227,175 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
 <dl class="section author"><dt>作者</dt><dd>maker114 </dd></dl>
 <dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>日期</dt><dd>2025-06-23 </dd></dl>
-</div><h2 class="groupheader">函数说明</h2>
+</div><h2 class="groupheader">枚举类型说明</h2>
+<a id="a4fc42c52a32cf5fe535a77db27ad3df5" name="a4fc42c52a32cf5fe535a77db27ad3df5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc42c52a32cf5fe535a77db27ad3df5">&#9670;&#160;</a></span>Key_mapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_u8g2___expand_8h.html#a4fc42c52a32cf5fe535a77db27ad3df5">Key_mapping</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>按键映射枚举。 </p>
+<p>定义按键扫描函数可能返回的键值，用于菜单交互。 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f" name="a4fc42c52a32cf5fe535a77db27ad3df5ab089c5e7977d6e58737eb586ee153b7f"></a>KEY_NULL&#160;</td><td class="fielddoc"><p>无按键 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416" name="a4fc42c52a32cf5fe535a77db27ad3df5aa9cdac7967bf7d88fdb761138a2a3416"></a>KEY_DOWN&#160;</td><td class="fielddoc"><p>向下按键 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd" name="a4fc42c52a32cf5fe535a77db27ad3df5a0848a442d907968b211b97bc2bd88acd"></a>KEY_UP&#160;</td><td class="fielddoc"><p>向上按键 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454" name="a4fc42c52a32cf5fe535a77db27ad3df5a67c6dabeb29c03df7749b5153a6b1454"></a>KEY_CONFIRM&#160;</td><td class="fielddoc"><p>确认按键 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c" name="a4fc42c52a32cf5fe535a77db27ad3df5a09d181852044eba4ae48735bf5a8943c"></a>KEY_EXIT&#160;</td><td class="fielddoc"><p>取消按键 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a46c8a310cf4c094f8c80e1cb8dc1f911" name="a46c8a310cf4c094f8c80e1cb8dc1f911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c8a310cf4c094f8c80e1cb8dc1f911">&#9670;&#160;</a></span>Mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_u8g2___expand_8h.html#a46c8a310cf4c094f8c80e1cb8dc1f911">Mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>动画移动模式枚举。 </p>
+<p>定义数字平滑移动的两种运动曲线，用于 U8G2E_MoveCursor 函数。 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3" name="a46c8a310cf4c094f8c80e1cb8dc1f911a15e47d3c9733bd519c1bd00349ce10e3"></a>Slow&#160;</td><td class="fielddoc"><p>缓动模式（逐渐减速逼近目标） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63" name="a46c8a310cf4c094f8c80e1cb8dc1f911ae095730ff2a83892b1794c077a860d63"></a>Elasticity&#160;</td><td class="fielddoc"><p>弹性模式（带回弹效果，模拟弹簧运动） </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a1c73719caca327b5ab81301902bb9f58" name="a1c73719caca327b5ab81301902bb9f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c73719caca327b5ab81301902bb9f58">&#9670;&#160;</a></span>U8G2E_OptionType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_u8g2___expand_8h.html#a1c73719caca327b5ab81301902bb9f58">U8G2E_OptionType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>菜单选项类型枚举。 </p>
+<p>定义菜单项的行为类型，决定其显示样式和交互方式。 </p>
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2" name="a1c73719caca327b5ab81301902bb9f58abd6122e0808fcc7cf018858b615eecf2"></a>U8G2E_OPTION_KEY&#160;</td><td class="fielddoc"><p>开关类型（切换ON/OFF） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395" name="a1c73719caca327b5ab81301902bb9f58a8e919e58f05ec2fd31f42dc075795395"></a>U8G2E_OPTION_NUM&#160;</td><td class="fielddoc"><p>数值类型（整数/小数可调） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386" name="a1c73719caca327b5ab81301902bb9f58a88f6ff20f34c8596598e987f3c7e8386"></a>U8G2E_OPTION_PCT&#160;</td><td class="fielddoc"><p>百分比类型（0~100可调） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8" name="a1c73719caca327b5ab81301902bb9f58a3a8559a87392bde0888e0b8fecaa54a8"></a>U8G2E_OPTION_TEXT&#160;</td><td class="fielddoc"><p>纯文本类型（仅显示，无交互） </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c" name="a1c73719caca327b5ab81301902bb9f58a6193e96412d8a44b829e2d1ae61bb68c"></a>U8G2E_OPTION_FUNC&#160;</td><td class="fielddoc"><p>函数类型（执行回调函数，Value存储函数指针） </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a id="a4082c54450051c77c729da17100be3ab" name="a4082c54450051c77c729da17100be3ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4082c54450051c77c729da17100be3ab">&#9670;&#160;</a></span>U8G2E_Blurring()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void U8G2E_Blurring </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>背景虚化效果 </p>
+<p>在显存上绘制棋盘格图案，实现半透明遮挡感。 </p>
+
+</div>
+</div>
+<a id="a61530f062aadf21476c7ecfc4f7da5c3" name="a61530f062aadf21476c7ecfc4f7da5c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61530f062aadf21476c7ecfc4f7da5c3">&#9670;&#160;</a></span>U8G2E_CountDigits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void U8G2E_CountDigits </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>integer_digits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>decimal_digits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>计算浮点数的整数位数和小数位数 </p>
+<p>0视为整数1位，NaN/Inf直接返回不修改输出。 </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">number</td><td>要分析的浮点数。 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">integer_digits</td><td>整数部分位数。 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">decimal_digits</td><td>小数部分去尾零后的位数。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a18467585a9c520fb1b1fb4ec2d12c76b" name="a18467585a9c520fb1b1fb4ec2d12c76b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18467585a9c520fb1b1fb4ec2d12c76b">&#9670;&#160;</a></span>U8G2E_CoverBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void U8G2E_CoverBuffer </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解压备份数据并覆盖当前U8G2显示缓冲区。 </p>
+<p>按原始字节顺序恢复显存，保证与保存时状态一致。 </p>
+
+</div>
+</div>
 <a id="a737234bc7063eda3a6cdd1a90a342d8c" name="a737234bc7063eda3a6cdd1a90a342d8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a737234bc7063eda3a6cdd1a90a342d8c">&#9670;&#160;</a></span>U8G2E_DrawWrappedText()</h2>
 
@@ -242,17 +434,18 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>自动换行输出字符串 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>自动换行绘制字符串。 </p>
+<p>按最大宽度换行，支持空格跳过和 '<br  />
+' 强制换行。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>x起点坐标 </td></tr>
-    <tr><td class="paramname">y</td><td>y起点坐标 </td></tr>
-    <tr><td class="paramname">str</td><td>字符串 </td></tr>
-    <tr><td class="paramname">max_width</td><td>最大宽度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>起始X坐标。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>起始Y坐标（顶部）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>要绘制的字符串。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_width</td><td>单行最大宽度。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>注解</dt><dd>需要在子程序外定义字体 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>需要提前设置字体。 </dd></dl>
 
 </div>
 </div>
@@ -288,15 +481,16 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>初始化OLED </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>初始化OLED并可选播放开机动画 </p>
+<p>启动U8G2库，开启UTF-8支持，设置默认字体，若Enable为true则播放动画。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Enable</td><td>是否启用开机动画 </td></tr>
-    <tr><td class="paramname">str1</td><td>开机动画第一行文字(主标题) </td></tr>
-    <tr><td class="paramname">str2</td><td>开机动画第二行文字(副标题） </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Enable</td><td>true播放动画，false直接完成初始化。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str1</td><td>开机动画主标题（Enable为true时有效）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str2</td><td>开机动画副标题（Enable为true时有效）。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>U8g2实例化位于U8g2_Expand.cpp中,引脚定义位于U8g2_Expand.h中。 </dd></dl>
 
 </div>
 </div>
@@ -326,14 +520,15 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>丝滑移动菜单 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>丝滑移动菜单交互界面。 </p>
+<p>包含进入/退出动画、上下移动、边界回弹和选项执行。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MenuOption_ARR</td><td>菜单结构体数组 </td></tr>
-    <tr><td class="paramname">valid_num</td><td>有效选项数量 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">MenuOption_ARR</td><td>菜单选项结构体数组。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">valid_num</td><td>有效选项个数。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>需提前注册按键函数，并确保 MenuOption_ARR 中 Kind 字段有效。 </dd></dl>
 
 </div>
 </div>
@@ -353,13 +548,14 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>执行菜单项动作 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>执行菜单选项的确认动作。 </p>
+<p>根据选项类型切换开关值、调出编辑界面或执行函数。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MenuOption_Member</td><td>菜单结构体 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">MenuOption_Member</td><td>指向菜单结构体的指针（会修改其 Value）。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>对于函数类型，Value 需存储函数指针的整型值。 </dd></dl>
 
 </div>
 </div>
@@ -379,13 +575,14 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>绘制菜单项 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>绘制单个菜单选项。 </p>
+<p>根据选项类型显示不同样式。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MenuOption_Member</td><td>菜单选项结构体 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">MenuOption_Member</td><td>要绘制的菜单结构体。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>字体由调用方设置，本函数不修改字体。 </dd></dl>
 
 </div>
 </div>
@@ -422,15 +619,15 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
 </div><div class="memdoc">
 
 <p>数字平滑移动 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>根据目标值和当前值，按指定的运动模式逐帧逼近目标。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">GoalValue</td><td>目标值 </td></tr>
-    <tr><td class="paramname">CurrentValue</td><td>待更改的当前值 </td></tr>
-    <tr><td class="paramname">Mode</td><td>移动模式（Slow或Elasticity） </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">GoalValue</td><td>目标值。 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">CurrentValue</td><td>当前浮点值。 </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">Mode</td><td>运动模式：<code>Slow</code>（缓动）或 <code>Elasticity</code>（弹性）。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>注解</dt><dd>函数不作延时，需要在每一帧的后面独立按照需求延时 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>函数不含延时，需在每帧循环中调用并自行控制帧率。 </dd></dl>
 
 </div>
 </div>
@@ -450,13 +647,14 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>数字处理选项 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>编辑数值选项的专用界面。 </p>
+<p>弹出数值调节窗口，支持逐位调整整数和小数。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MenuOption_Member</td><td>菜单结构体 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">MenuOption_Member</td><td>指向菜单结构体的指针（修改其 Value）。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>使用 U8G2E_CountDigits 识别小数位。 </dd></dl>
 
 </div>
 </div>
@@ -510,18 +708,19 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>丝滑数字显示函数 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>丝滑数字显示函数。 </p>
+<p>根据数字0~9的段码控制横竖线条长度动画。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">num</td><td>待显示的数字 </td></tr>
-    <tr><td class="paramname">x</td><td>数字的x坐标 </td></tr>
-    <tr><td class="paramname">y</td><td>数字的y坐标 </td></tr>
-    <tr><td class="paramname">change</td><td>数字对应的数组 </td></tr>
-    <tr><td class="paramname">W</td><td>数字的宽度 </td></tr>
-    <tr><td class="paramname">H</td><td>数字的高度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">num</td><td>要显示的数字。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>左上角X坐标。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>左上角Y坐标。 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">change</td><td>长度为8的浮点数组，存储各线段当前长度。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">W</td><td>数字宽度。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">H</td><td>数字高度。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>调用前需初始化 change 数组,此函数单次只显示一个数字。 </dd></dl>
 
 </div>
 </div>
@@ -541,13 +740,14 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>处理百分比选项 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>编辑百分比选项的专用界面。 </p>
+<p>弹出进度条及数值调节窗口，支持逐位调整。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">MenuOption_Member</td><td>菜单结构体 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">MenuOption_Member</td><td>指向菜单结构体的指针（修改其 Value）。 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>注解</dt><dd>自动保存/恢复背景，使用 U8G2E_SaveBuffer 和 U8G2E_Blurring。 </dd></dl>
 
 </div>
 </div>
@@ -577,14 +777,36 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>弹窗提示 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>弹出提示窗口。 </p>
+<p>窗口从屏幕外滑入，停留后根据参数决定退出方式。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str1</td><td>提示内容 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str1</td><td>提示内容（自动换行）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Key_trigger_enable</td><td>true按任意键退出，false延时1秒退出。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>注解</dt><dd>弹窗提示，字体可调整，弹窗大小随字体与长度变换 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>弹窗前自动保存并恢复背景，需提前设置字体。 </dd></dl>
+
+</div>
+</div>
+<a id="a20309644820810d64c8f3c319c60b398" name="a20309644820810d64c8f3c319c60b398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20309644820810d64c8f3c319c60b398">&#9670;&#160;</a></span>U8G2E_SaveBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void U8G2E_SaveBuffer </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>压缩并保存当前U8G2显示缓冲区。 </p>
+<p>使用字节级RLE编码，将显存备份到内部静态数组。 </p>
 
 </div>
 </div>
@@ -614,11 +836,11 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>开机动画 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>显示开机动画。 </p>
+<p>以线条展开并滑入标题文字。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str1</td><td>主标题，最多10个字符 </td></tr>
-    <tr><td class="paramname">str2</td><td>副标题，最多17个字符 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str1</td><td>主标题（最多约10字符）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str2</td><td>副标题（最多约17字符）。 </td></tr>
   </table>
   </dd>
 </dl>
@@ -657,22 +879,28 @@ U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI&#160;</td><td class="memItemRight" valign=
       </table>
 </div><div class="memdoc">
 
-<p>获取字符串在当前字体和换行长度下的高度 </p>
-<dl class="params"><dt>参数</dt><dd>
+<p>计算字符串在指定宽度下换行后的总高度。 </p>
+<p>根据当前字体和最大显示宽度，模拟换行并计算所需高度。 </p><dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str</td><td>字符串 </td></tr>
-    <tr><td class="paramname">max_width</td><td>最大宽度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>要测量的字符串。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_width</td><td>单行最大宽度（像素）。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>起始X坐标（用于换行计算）。 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>uint8_t 字符串高度 </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>字符串换行后的总高度（像素）。 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>需要提前设置字体。 </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_u8g2___expand_8h.html">U8g2_Expand.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

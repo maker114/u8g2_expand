@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['motorstructure_5fa_0',['MotorStructure_A',['../motor_8c.html#a6c711ce98ed96187d842062a5ff35eb1',1,'motor.c']]],
-  ['motorstructure_5fb_1',['MotorStructure_B',['../motor_8c.html#aeff298f91376572d1bffa99414755ad0',1,'motor.c']]]
+  ['title_0',['Title',['../struct_u8_g2_e___menu_option.html#ab2cd177dd6c3c9b4e127e1b2a37c7ef7',1,'U8G2E_MenuOption']]]
 ];
